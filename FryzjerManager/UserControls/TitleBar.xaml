@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="FryzjerManager.UserControls.TitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FryzjerManager.UserControls"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="1024">
+    <Grid>
+        <Grid Grid.ColumnSpan="2" Background="#FF1475A2" MouseDown="TitleBar_MouseDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Width="800">
+                <Button Visibility="Visible" IsEnabled="False" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="45" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="10,0,0,0">
+                    <material:PackIcon Kind="ArrowLeft">
+                        <material:PackIcon.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        </material:PackIcon.LayoutTransform>
+                    </material:PackIcon>
+                </Button>
+                <Label Content="Fryzjer 2.0" Foreground="LightGray" Margin="10,0,0,0" FontSize="25" Height="43" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="45" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,10,0">
+                    <material:PackIcon Kind="CloseCircleOutline">
+                        <material:PackIcon.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        </material:PackIcon.LayoutTransform>
+                    </material:PackIcon>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

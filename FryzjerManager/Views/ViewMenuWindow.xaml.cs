@@ -24,9 +24,5 @@ namespace FryzjerManager.Views
         {
             InitializeComponent();
         }
-        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
     }
 }
