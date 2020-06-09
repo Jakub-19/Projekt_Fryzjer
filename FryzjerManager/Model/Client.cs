@@ -8,10 +8,10 @@ namespace FryzjerManager.Model
 {
     class Client
     {
-        public int ID;
-        public string Name;
-        public string LastName;
-        public string PhoneNumber;
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
 
         public Client(int id, string name, string lastName, string phoneNumber)
         {
