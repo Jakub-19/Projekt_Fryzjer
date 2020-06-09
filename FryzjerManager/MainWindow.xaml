@@ -3,10 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FryzjerManager"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:local="clr-namespace:FryzjerManager.ViewModel.ViewsViewModels"
+        xmlns:localview="clr-namespace:FryzjerManager.Views"
+        xmlns:mainview="clr-namespace:FryzjerManager.ViewModel"
+        xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="600" Width="1024" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="app.ico">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:ViewMenuWindowViewModel}">
+            <localview:ViewMenuWindow/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:ViewCustomerAddViewModel}">
+            <localview:ViewCustomerAdd/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:ViewServiceDoneViewModel}">
+            <localview:ViewServiceDone/>
+        </DataTemplate>
+    </Window.Resources>
+
+
+    <Window.DataContext>
+        <mainview:MainWindowViewModel />
+    </Window.DataContext>
+
     <Grid>
-        
+        <ContentControl Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

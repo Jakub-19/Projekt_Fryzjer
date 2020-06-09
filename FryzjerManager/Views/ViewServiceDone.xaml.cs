@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FryzjerManager
+namespace FryzjerManager.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy ViewServiceDone.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ViewServiceDone : UserControl
     {
-        public MainWindow()
+        public ViewServiceDone()
         {
             InitializeComponent();
         }
-        
     }
 }

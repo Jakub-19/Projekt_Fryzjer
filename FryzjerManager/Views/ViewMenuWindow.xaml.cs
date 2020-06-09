@@ -13,17 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FryzjerManager
+namespace FryzjerManager.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy ViewMenuWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ViewMenuWindow : UserControl
     {
-        public MainWindow()
+        public ViewMenuWindow()
         {
             InitializeComponent();
         }
-        
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }
