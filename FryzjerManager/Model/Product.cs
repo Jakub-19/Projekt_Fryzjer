@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
-    class SingleUseProduct
+    public class SingleUseProduct
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -21,7 +21,7 @@ namespace FryzjerManager.Model
             Price = price;
         }
     }
-    class Product : SingleUseProduct
+    public class Product : SingleUseProduct
     {
         public int Ml { get; set; }
         public int Capacity { get; set; }
