@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FryzjerManager.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,26 @@ namespace FryzjerManager.Model
 {
     class VisitRecord
     {
-        private List<Visit> visits;
+        public List<Visit> Visits { get; private set; }
 
-        public bool Add(Visit visit)
+        public VisitRecord()
         {
-            return false;
+            Visits = new List<Visit>();
+        }
+        public void GetVisits(Client client)
+        {
+            Data_Access data = Data_Access.getInstance();
+            Visits = data.ShowVisitsForClient(client);
+        }
+
+        public void Add(Visit visit)
+        {
+            Data_Access data = Data_Access.getInstance();
+            data.AddVisit(visit);
+        }
+        public void ClearList()
+        {
+            Visits = new List<Visit>();
         }
     }
 }

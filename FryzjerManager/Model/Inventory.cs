@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FryzjerManager.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,38 +9,61 @@ namespace FryzjerManager.Model
 {
     public class Inventory
     {
-        private List<Product> products;
-        private List<SingleUseProduct> singleUseProducts;
+        public List<Product> Products { get; private set; }
+        public List<SingleUseProduct> SingleUseProducts { get; private set; }
 
-        public bool AddNew(SingleUseProduct product)
+        public void AddNew(SingleUseProduct product)
         {
-
-            return false;
+            Data_Access data = Data_Access.getInstance();
+            if(!data.ProductExists(product))
+            {
+                data.AddSingleUseProduct(product);
+            }
         }
-        public bool AddNew(Product product)
+        public void AddNew(Product product)
         {
-
-            return false;
-        }
-        public bool AddN(SingleUseProduct product, uint quantity)
-        {
-
-            return false;
+            Data_Access data = Data_Access.getInstance();
+            if (!data.ProductExists(product))
+            {
+                data.AddProduct(product);
+            }
         }
         public bool Add(SingleUseProduct product, uint quantity)
         {
 
             return false;
         }
-        public bool UseUp(SingleUseProduct product, uint quantity)
+        public bool Add(Product product, uint quantity)
         {
 
             return false;
         }
-        public bool UseUp(Product product, uint milliliters)
+        public void UseUp(SingleUseProduct product, uint quantity)
         {
+            Data_Access data = Data_Access.getInstance();
+            product.Count = (int)((uint)product.Count - quantity);
+            //data.UpdateProductCount(product, product.Count);
+        }
+        public void UseUp(Product product, uint milliliters)
+        {
+            Data_Access data = Data_Access.getInstance();
+            while (milliliters > 0)
+            {
+                if (milliliters <= product.Ml)
+                {
+                    product.Ml = (int)((uint)product.Ml - milliliters);
 
-            return false;
+                    data.UpdateProductMl(product, product.Ml);
+                    //data.UpdateProductCount(product, product.Count);
+                    return;
+                }
+                else
+                {
+                    milliliters = milliliters - (uint)product.Ml;
+                    product.Ml = product.Capacity;
+                    product.Count--;
+                }
+            }
         }
     }
 }

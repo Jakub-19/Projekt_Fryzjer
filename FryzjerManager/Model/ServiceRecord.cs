@@ -9,12 +9,12 @@ namespace FryzjerManager.Model
 {
     class ServiceRecord
     {
-        private List<Service> services;
+        public List<Service> Services { get; private set; }
 
         public ServiceRecord()
         {
-            //Data_Access data = new Data_Access();
-            //services = data.
+            Data_Access data = Data_Access.getInstance();
+            Services = data.ShowAllServices();
         }
     }
 }

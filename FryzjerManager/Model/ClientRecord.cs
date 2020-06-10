@@ -1,6 +1,7 @@
 ﻿using FryzjerManager.DAL;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,18 @@ namespace FryzjerManager.Model
 {
     class ClientRecord
     {
-        private List<Client> clients;
+        public List<Client> Clients { get; private set; }
+
+        public ClientRecord()
+        {
+            Clients = new List<Client>();
+        }
+
+        public void GetClients(string name = "", string surname = "")
+        {
+            Data_Access data = Data_Access.getInstance();
+            Clients = data.FindClient(name, surname);
+        }
 
         public void AddNew(string name, string lastname, string phone)
         {
@@ -19,6 +31,10 @@ namespace FryzjerManager.Model
             {
                 data.AddClient(client);
             }
+        }
+        public void ClearList()
+        {
+            Clients = new List<Client>();
         }
     }
 }
