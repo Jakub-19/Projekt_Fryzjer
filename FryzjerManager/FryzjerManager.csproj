@@ -119,9 +119,11 @@
     </ApplicationDefinition>
     <Compile Include="DAL\Data_Access.cs" />
     <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\ClientRecord.cs" />
     <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Model\ServiceRecord.cs" />
     <Compile Include="Model\Visit.cs" />
     <Compile Include="Model\VisitRecord.cs" />
     <Compile Include="UserControls\TitleBar.xaml.cs">

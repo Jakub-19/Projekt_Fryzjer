@@ -41,6 +41,10 @@ namespace FryzjerManager.DAL
             else
                 return false;
         }
+        public bool ClientExists(Client client)
+        {
+            return ClientExists(client.Name, client.LastName);
+        }
 
         public List<Client> FindClient(string name, string lastName)
         {
