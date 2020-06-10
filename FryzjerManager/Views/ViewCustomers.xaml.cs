@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FryzjerManager.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy ViewMenuWindow.xaml
+    /// Logika interakcji dla klasy ViewCustomers.xaml
     /// </summary>
-    public partial class ViewMenuWindow : UserControl
+    public partial class ViewCustomers : UserControl
     {
-        public ViewMenuWindow()
+        public ViewCustomers()
         {
             InitializeComponent();
         }
