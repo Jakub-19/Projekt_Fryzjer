@@ -13,7 +13,7 @@ namespace FryzjerManager.Model
 
         public ServiceRecord()
         {
-            Data_Access data = new Data_Access();
+            //Data_Access data = new Data_Access();
             //services = data.
         }
     }

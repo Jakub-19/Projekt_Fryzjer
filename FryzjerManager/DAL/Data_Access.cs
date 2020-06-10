@@ -10,13 +10,22 @@ namespace FryzjerManager.DAL
     using Model;
     class Data_Access
     {
+        private static Data_Access instance;
         MySqlConnection mySqlConnection;
         MySqlConnection con;
         string cs = @"server=localhost;userid=root;password=;database=fryzjer";
-        public Data_Access()
+        private Data_Access()
         {
             mySqlConnection = new MySqlConnection(cs);
             con = mySqlConnection;
+        }
+        public static Data_Access getInstance()
+        {
+            if(instance==null)
+            {
+                instance = new Data_Access();
+            }
+            return instance;
         }
         #region Client
         public bool ClientExists(string name, string lastName)

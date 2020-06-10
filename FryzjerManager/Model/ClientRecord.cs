@@ -14,7 +14,7 @@ namespace FryzjerManager.Model
         public void AddNew(string name, string lastname, string phone)
         {
             Client client = new Client(name, lastname, phone);
-            Data_Access data = new Data_Access();
+            Data_Access data = Data_Access.getInstance();
             if(!data.ClientExists(client))
             {
                 data.AddClient(client);
