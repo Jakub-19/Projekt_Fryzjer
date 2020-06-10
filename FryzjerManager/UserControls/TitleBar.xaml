@@ -28,6 +28,14 @@
                 <Label Content="{Binding Path=ApplicationName, Mode=OneTime}" Foreground="LightGray" Margin="10,0,0,0" FontSize="25" Height="43" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="45" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,10,0"
+                        Click="ButtonMinimize_Click">
+                    <material:PackIcon Kind="WindowMinimize">
+                        <material:PackIcon.LayoutTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2"/>
+                        </material:PackIcon.LayoutTransform>
+                    </material:PackIcon>
+                </Button>
                 <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="45" Height="45" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,10,0">
                     <material:PackIcon Kind="CloseCircleOutline">
                         <material:PackIcon.LayoutTransform>

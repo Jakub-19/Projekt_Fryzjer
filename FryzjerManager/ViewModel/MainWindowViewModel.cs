@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,21 +19,25 @@ namespace FryzjerManager.ViewModel
         private ICommand _gotoViewCustomersCommand;
         private ICommand _gotoViewCustomerAddCommand;
         private ICommand _gotoViewServiceDoneCommand;
+        private ICommand _gotoViewMainStockCommand;
         private object _currentView;
         private object _viewMenuWindow;
         private object _viewCustomers;
         private object _viewCustomerAdd;
         private object _viewServiceDone;
-
+        private object _viewMainStock;
+        
         public MainWindowViewModel()
         {
             _viewMenuWindow = new V.ViewMenuWindow();
             _viewCustomers = new V.ViewCustomers();
             _viewCustomerAdd = new V.ViewCustomerAdd();
             _viewServiceDone = new V.ViewServiceDone();
+            _viewMainStock = new V.ViewMainStock();
 
             CurrentView = _viewMenuWindow;
         }
+
         #region ResourcesTextNames
         public string ViewMenuWindowCustomersButtonText{
             get{ return R.ViewMenuWindowCustomersButtonText; }}
@@ -48,6 +53,22 @@ namespace FryzjerManager.ViewModel
             get { return R.ViewCustomersAddCustomerButtonText; }}
         public string ViewCustomersServicesHistoryButtonText{
             get { return R.ViewCustomersServicesHistoryButtonText; }}
+        public string ViewMainStockAddDeliveryButtonText{
+            get { return R.ViewMainStockAddDeliveryButtonText; }}
+        public string ViewMainStockActualStockButtonText{
+            get { return R.ViewMainStockActualStockButtonText; }}
+        public string ViewCustomerAddLabelNameContent{
+            get { return R.ViewCustomerAddLabelNameContent; }}
+        public string ViewCustomerAddLabelSurnameContent{
+            get { return R.ViewCustomerAddLabelSurnameContent; }}
+        public string ViewCustomerAddLabelPhoneNumberContent{
+            get { return R.ViewCustomerAddLabelPhoneNumberContent; }}
+        public string ViewCustomerAddConfirmButtonText{
+            get { return R.ViewCustomerAddConfirmButtonText; }}
+        public string ViewServiceDoneLabelCustomerContent{
+            get { return R.ViewServiceDoneLabelCustomerContent; }}
+        public string ViewServiceDoneChooseButtonText{ 
+            get { return R.ViewServiceDoneChooseButtonText; }}
         #endregion
         public ICommand GotoViewMenuWindowCommand
         {
@@ -83,7 +104,7 @@ namespace FryzjerManager.ViewModel
                    }));
             }
         }
-        public ICommand GotoView3Command
+        public ICommand GotoViewServiceDoneCommand
         {
             get
             {
@@ -91,6 +112,17 @@ namespace FryzjerManager.ViewModel
                    x =>
                    {
                        GotoViewServiceDone();
+                   }));
+            }
+        }
+        public ICommand GotoViewMainStockCommand
+        {
+            get
+            {
+                return _gotoViewMainStockCommand ?? (_gotoViewMainStockCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewMainStock();
                    }));
             }
         }
@@ -121,6 +153,10 @@ namespace FryzjerManager.ViewModel
         private void GotoViewServiceDone()
         {
             CurrentView = _viewServiceDone;
+        }
+        private void GotoViewMainStock()
+        {
+            CurrentView = _viewMainStock;
         }
         #endregion
     }

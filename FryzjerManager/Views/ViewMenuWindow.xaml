@@ -36,7 +36,8 @@
                 </Grid>
             </Button>
 
-            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100">
+            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
+                    Command="{Binding GotoViewServiceDoneCommand}">
                 <Grid Width="400">
                     <material:PackIcon Kind="ContentCut" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
@@ -47,7 +48,8 @@
                 </Grid>
             </Button>
 
-            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100">
+            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
+                    Command="{Binding GotoViewMainStockCommand}">
                 <Grid Width="400">
                     <!--Kind="ContentPaste"-->
                         <material:PackIcon Kind="PackageVariant" VerticalAlignment="Center">

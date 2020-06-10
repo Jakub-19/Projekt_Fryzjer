@@ -70,6 +70,42 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ADD.
+        /// </summary>
+        internal static string ViewCustomerAddConfirmButtonText {
+            get {
+                return ResourceManager.GetString("ViewCustomerAddConfirmButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Name:.
+        /// </summary>
+        internal static string ViewCustomerAddLabelNameContent {
+            get {
+                return ResourceManager.GetString("ViewCustomerAddLabelNameContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Phone:.
+        /// </summary>
+        internal static string ViewCustomerAddLabelPhoneNumberContent {
+            get {
+                return ResourceManager.GetString("ViewCustomerAddLabelPhoneNumberContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Surname:.
+        /// </summary>
+        internal static string ViewCustomerAddLabelSurnameContent {
+            get {
+                return ResourceManager.GetString("ViewCustomerAddLabelSurnameContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu ADD CUSTOMER.
         /// </summary>
         internal static string ViewCustomersAddCustomerButtonText {
@@ -84,6 +120,24 @@ namespace FryzjerManager.Properties {
         internal static string ViewCustomersServicesHistoryButtonText {
             get {
                 return ResourceManager.GetString("ViewCustomersServicesHistoryButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ACTUAL STOCK.
+        /// </summary>
+        internal static string ViewMainStockActualStockButtonText {
+            get {
+                return ResourceManager.GetString("ViewMainStockActualStockButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu ADD DELIVERY.
+        /// </summary>
+        internal static string ViewMainStockAddDeliveryButtonText {
+            get {
+                return ResourceManager.GetString("ViewMainStockAddDeliveryButtonText", resourceCulture);
             }
         }
         
@@ -120,6 +174,24 @@ namespace FryzjerManager.Properties {
         internal static string ViewMenuWindowStockButtonText {
             get {
                 return ResourceManager.GetString("ViewMenuWindowStockButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Choose.
+        /// </summary>
+        internal static string ViewServiceDoneChooseButtonText {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneChooseButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Client:.
+        /// </summary>
+        internal static string ViewServiceDoneLabelCustomerContent {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneLabelCustomerContent", resourceCulture);
             }
         }
     }

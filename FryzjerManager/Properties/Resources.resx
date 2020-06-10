@@ -120,11 +120,29 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>HAIRDRESSER 2.0</value>
   </data>
+  <data name="ViewCustomerAddConfirmButtonText" xml:space="preserve">
+    <value>ADD</value>
+  </data>
+  <data name="ViewCustomerAddLabelNameContent" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="ViewCustomerAddLabelPhoneNumberContent" xml:space="preserve">
+    <value>Phone:</value>
+  </data>
+  <data name="ViewCustomerAddLabelSurnameContent" xml:space="preserve">
+    <value>Surname:</value>
+  </data>
   <data name="ViewCustomersAddCustomerButtonText" xml:space="preserve">
     <value>ADD CUSTOMER</value>
   </data>
   <data name="ViewCustomersServicesHistoryButtonText" xml:space="preserve">
     <value>SERVICES HISTORY</value>
+  </data>
+  <data name="ViewMainStockActualStockButtonText" xml:space="preserve">
+    <value>ACTUAL STOCK</value>
+  </data>
+  <data name="ViewMainStockAddDeliveryButtonText" xml:space="preserve">
+    <value>ADD DELIVERY</value>
   </data>
   <data name="ViewMenuWindowAuthorsButtonText" xml:space="preserve">
     <value>AUTHORS</value>
@@ -137,5 +155,11 @@
   </data>
   <data name="ViewMenuWindowStockButtonText" xml:space="preserve">
     <value>STOCK</value>
+  </data>
+  <data name="ViewServiceDoneChooseButtonText" xml:space="preserve">
+    <value>Choose</value>
+  </data>
+  <data name="ViewServiceDoneLabelCustomerContent" xml:space="preserve">
+    <value>Client:</value>
   </data>
 </root>

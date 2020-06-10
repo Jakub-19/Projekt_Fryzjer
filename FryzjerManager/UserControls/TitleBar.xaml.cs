@@ -35,5 +35,16 @@ namespace FryzjerManager.UserControls
             var window = parent as Window;
             window.DragMove();
         }
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            DependencyObject parent = sender as UIElement;
+            // Search up the visual tree to find the first parent window.
+            while ((parent is Window) == false)
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+            var window = parent as Window;
+            window.WindowState = WindowState.Minimized;
+        }
     }
 }
