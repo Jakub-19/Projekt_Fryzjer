@@ -19,7 +19,7 @@ namespace FryzjerManager.Model
         public string NameOfService { get; set; }
         public DateTime Date { get; set; }
         public int FullPrice { get; set; }
-        public Visit(int id, int id_k, int id_u, string nameOfService, int fullPrice, Client client, Service service, DateTime date)
+        public Visit(int id,  string nameOfService, int fullPrice, Client client, Service service, DateTime date)
         {
             ID = id;
             //ID_k = id_k;

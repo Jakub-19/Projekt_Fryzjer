@@ -114,7 +114,29 @@ namespace FryzjerManager.DAL
         #endregion
 
         #region Product
-        public List<SingleUseProduct> ShowAllProducts()
+        public List<Product> ShowAllProducts()
+        {
+            List<Product> products = new List<Product>();
+
+
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "SELECT * FROM products ";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Product product = new Product(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetInt32(5));
+                products.Add(product);
+            }
+            rdr.Close();
+            con.Close();
+            return products;
+        }
+        public List<SingleUseProduct> ShowAllSingleUseProducts()
         {
             List<SingleUseProduct> products = new List<SingleUseProduct>();
             try
@@ -130,15 +152,8 @@ namespace FryzjerManager.DAL
                 SingleUseProduct product = new SingleUseProduct(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3));
                 products.Add(product);
             }
+
             rdr.Close();
-            command = "SELECT * FROM products ";
-            cmd = new MySqlCommand(command, con);
-            rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                Product product = new Product(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetInt32(5));
-                products.Add(product);
-            }
             con.Close();
 
             return products;
@@ -172,7 +187,7 @@ namespace FryzjerManager.DAL
             MySqlDataReader rdr = cmd.ExecuteReader();
             con.Close();
         }
-        public List<SingleUseProduct> SearchProductByName(string name)
+        public List<SingleUseProduct> SearchSingleUseProductByName(string name)
         {
             List<SingleUseProduct> products = new List<SingleUseProduct>();
             try
@@ -187,21 +202,56 @@ namespace FryzjerManager.DAL
             {
                 SingleUseProduct product = new SingleUseProduct(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3));
                 products.Add(product);
+                Console.WriteLine(product.ToString());
             }
             rdr.Close();
-            command = "Select *from products where name like \"" + name + "%\"";
-            cmd = new MySqlCommand(command, con);
-            rdr = cmd.ExecuteReader();
+            con.Close();
+            return products;
+        }
+        public List<Product> SearchProductByName(string name)
+        {
+            List<Product> products = new List<Product>();
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "SELECT * FROM products where name like \"" + name + "%\"";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Product product = new Product(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetInt32(5));
+                products.Add(product);
+                Console.WriteLine(product.ToString());
+            }
+            rdr.Close();
+            con.Close();
+            return products;
+        }
+        public List<Product> ShowAvailableProducts()
+        {
+            List<Product> products = new List<Product>();
+
+
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "SELECT * FROM products where quantity_item <>0 and ml<>0";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
                 Product product = new Product(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetInt32(5));
                 products.Add(product);
             }
-
+            rdr.Close();
             con.Close();
             return products;
         }
-        public List<SingleUseProduct> ShowAvailableProducts()
+        public List<SingleUseProduct> ShowAvailableSingleUseProducts()
         {
             List<SingleUseProduct> products = new List<SingleUseProduct>();
             try
@@ -209,7 +259,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM disposable_products where quantity <> 0";
+            string command = "SELECT * FROM disposable_products where quantity<>0";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -217,15 +267,8 @@ namespace FryzjerManager.DAL
                 SingleUseProduct product = new SingleUseProduct(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3));
                 products.Add(product);
             }
+
             rdr.Close();
-            command = "SELECT * FROM products where quantity_item <> 0 and ml <> 0 ";
-            cmd = new MySqlCommand(command, con);
-            rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                Product product = new Product(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetInt32(5));
-                products.Add(product);
-            }
             con.Close();
 
             return products;
@@ -293,6 +336,78 @@ namespace FryzjerManager.DAL
                 return true;
             else
                 return false;
+        }
+        #endregion
+        public List<Service> ShowAllServices()
+        {
+            List<Service> services = new List<Service>();
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "SELECT * FROM services ";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Service service = new Service(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3));
+                services.Add(service);
+                Console.WriteLine(service.ToString());
+            }
+            return services;
+        }
+
+        #region Visits
+        public void AddVisit(Visit visit)
+        {
+            int? id_c = visit.Person.ID;
+            int id_s = visit.TypeOfService.ID;
+            var date = visit.Date;
+            var price = visit.FullPrice;
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "INSERT INTO visits(id_c, id_s, date, price) VALUES(" + id_c + "," + id_s + "," + date + "," + price + ")";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            con.Close();
+        }
+        public List<Visit> ShowVisitsForClient(Client client)
+        {
+            List<Visit> visits = new List<Visit>();
+            int? id_c = client.ID;
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "select v.id_v, v.id_s, s.name, s.price, s.time, v.date, v.price " +
+                "from visits v  left join services s " +
+                "on v.id_s=s.id_s " +
+                "where id_c like \"" + id_c + "\"";
+            int id_v, id_s, price, time, fullprice;
+            string name;
+            DateTime date;
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                id_v = rdr.GetInt32(0);
+                id_s = rdr.GetInt32(1);
+                name = rdr.GetString(2);
+                price = rdr.GetInt32(3);
+                time = rdr.GetInt32(4);
+                date = rdr.GetDateTime(5);
+                fullprice = rdr.GetInt32(6);
+                Service service = new Service(id_s, name, time, price);
+                Visit visit = new Visit(id_v, name, fullprice, client, service, date);
+                visits.Add(visit);
+
+            }
+            return visits;
         }
         #endregion
     }
