@@ -8,6 +8,7 @@
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="500"/>
@@ -20,19 +21,18 @@
         </Grid.RowDefinitions>
         
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar >
-                
-            </title:TitleBar>
+            <title:TitleBar />
         </Grid>
         <StackPanel Grid.Row="1" Margin="0,5,0,0">
-            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100">
+            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100" 
+                    Command="{Binding GotoViewCustomersCommand}">
                 <Grid Width="400">
                     <material:PackIcon Kind="AccountMultiple" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="KLIENCI" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowCustomersButtonText, Mode=OneTime}" FontSize="50"/>
                 </Grid>
             </Button>
 
@@ -43,7 +43,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="USŁUGI" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowServicesButtonText, Mode=OneTime}" FontSize="50"/>
                 </Grid>
             </Button>
 
@@ -55,7 +55,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="MAGAZYN" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowStockButtonText, Mode=OneTime}" FontSize="50"/>
                 </Grid>
             </Button>
 
@@ -66,7 +66,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="AUTORZY" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowAuthorsButtonText, Mode=OneTime}" FontSize="50"/>
                 </Grid>
             </Button>
         </StackPanel>

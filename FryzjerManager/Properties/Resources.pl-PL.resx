@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationName" xml:space="preserve">
-    <value>HAIRDRESSER 2.0</value>
+    <value>FRYZJER 2.0</value>
   </data>
   <data name="ViewCustomersAddCustomerButtonText" xml:space="preserve">
-    <value>ADD CUSTOMER</value>
+    <value>DODAJ KLIENTA</value>
   </data>
   <data name="ViewCustomersServicesHistoryButtonText" xml:space="preserve">
-    <value>SERVICES HISTORY</value>
+    <value>HISTORIA WIZYT</value>
   </data>
   <data name="ViewMenuWindowAuthorsButtonText" xml:space="preserve">
-    <value>AUTHORS</value>
+    <value>AUTORZY</value>
   </data>
   <data name="ViewMenuWindowCustomersButtonText" xml:space="preserve">
-    <value>CUSTOMERS</value>
+    <value>KLIENCI</value>
   </data>
   <data name="ViewMenuWindowServicesButtonText" xml:space="preserve">
-    <value>SERVICES</value>
+    <value>USŁUGI</value>
   </data>
   <data name="ViewMenuWindowStockButtonText" xml:space="preserve">
-    <value>STOCK</value>
+    <value>MAGAZYN</value>
   </data>
 </root>
