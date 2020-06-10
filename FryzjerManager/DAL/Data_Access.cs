@@ -159,8 +159,8 @@ namespace FryzjerManager.DAL
             return products;
         }
 
-        public void UpdateProductCount(SingleUseProduct product, int newCount)
-        {
+        public void UpdateProductCount(SingleUseProduct product, int newCount)//Mam wrazenie ze tutaj jest blad, bo zmieni sie ilosc dwoch produktow jednego jednorazowego i jednego wielorazowego o tym samym id.
+        {                                                                     //Byc moze sie myle, bo nie dokonca znam dzialanie komunikacji z baza danych, ale wydaje mi sie ze zostana wykonane oba ponizsze polecenia SQL.
             try
             {
                 con.Open();
@@ -336,6 +336,14 @@ namespace FryzjerManager.DAL
                 return true;
             else
                 return false;
+        }
+        public bool ProductExists(Product product)
+        {
+            return ProductExists(product.Name);
+        }
+        public bool ProductExists(SingleUseProduct product)
+        {
+            return ProductExists(product.Name);
         }
         #endregion
         public List<Service> ShowAllServices()
