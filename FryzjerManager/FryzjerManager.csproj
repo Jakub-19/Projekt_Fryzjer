@@ -118,9 +118,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\Inventory.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\Visit.cs" />
+    <Compile Include="Model\VisitRecord.cs" />
     <Compile Include="UserControls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
