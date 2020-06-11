@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=Title}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
+            <title:TitleBar Title="{Binding Path=CustomerAddViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
         </Grid>
         <Label Grid.Row="1" Grid.Column="0" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Right"
                Content="{Binding Path=ViewCustomerAddLabelNameContent}"/>

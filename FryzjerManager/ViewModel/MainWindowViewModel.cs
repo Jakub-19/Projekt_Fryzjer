@@ -26,7 +26,7 @@ namespace FryzjerManager.ViewModel
         private object _viewCustomerAdd;
         private object _viewServiceDone;
         private object _viewMainStock;
-        
+
         public MainWindowViewModel()
         {
             _viewMenuWindow = new V.ViewMenuWindow();
@@ -37,7 +37,6 @@ namespace FryzjerManager.ViewModel
 
             CurrentView = _viewMenuWindow;
         }
-
         #region VisitConfig
         private ServiceRecord serviceRecord = new ServiceRecord();
         public ObservableCollection<string> Services
@@ -69,7 +68,7 @@ namespace FryzjerManager.ViewModel
             get
             {
                 ObservableCollection<string> list = new ObservableCollection<string>();
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 15; i++)
                     list.Add("Produkt" + i);
 
                 return list;
@@ -122,6 +121,26 @@ namespace FryzjerManager.ViewModel
             get { return R.ViewServiceDoneChooseButtonText; }}
         public string ListViewWithCheckboxesSelectAllCheckboxContent{
             get { return R.ListViewWithCheckboxesSelectAllCheckboxContent; }}
+        public string CustomersViewName{
+            get { return R.CustomersViewName; }}
+        public string CustomerAddViewName{
+            get { return R.CustomerAddViewName; }}
+        public string ServiceDoneViewName{
+            get { return R.ServiceDoneViewName; }}
+        public string MainStockViewName{
+            get { return R.MainStockViewName; }}
+        public string ViewServiceDoneAcceptButtonText{
+            get { return R.ViewServiceDoneAcceptButtonText; }}
+        public string ViewServiceDoneDoneServicesLabelContent{
+            get { return R.ViewServiceDoneDoneServicesLabelContent; }}
+        public string ViewServiceDoneUsedProductsMultiTextBlockText{
+            get { return R.ViewServiceDoneUsedProductsMultiTextBlockText; }}
+        public string ViewServiceDoneUsedProductsSingleTextBlockText{
+            get { return R.ViewServiceDoneUsedProductsSingleTextBlockText; }}
+        public string ViewServiceDoneNameLabelContent{
+            get { return R.ViewServiceDoneNameLabelContent; }}
+        public string ViewServiceDoneAmountLabelContent{
+            get { return R.ViewServiceDoneAmountLabelContent; }}
         #endregion
 
         public ICommand GotoViewMenuWindowCommand

@@ -120,8 +120,20 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>HAIRDRESSER 2.0</value>
   </data>
+  <data name="CustomerAddViewName" xml:space="preserve">
+    <value>Adding Customer</value>
+  </data>
+  <data name="CustomersViewName" xml:space="preserve">
+    <value>Customers</value>
+  </data>
   <data name="ListViewWithCheckboxesSelectAllCheckboxContent" xml:space="preserve">
     <value>Select all</value>
+  </data>
+  <data name="MainStockViewName" xml:space="preserve">
+    <value>Main Stock</value>
+  </data>
+  <data name="ServiceDoneViewName" xml:space="preserve">
+    <value>Adding Done Service</value>
   </data>
   <data name="ViewCustomerAddConfirmButtonText" xml:space="preserve">
     <value>ADD</value>
@@ -159,10 +171,28 @@
   <data name="ViewMenuWindowStockButtonText" xml:space="preserve">
     <value>STOCK</value>
   </data>
+  <data name="ViewServiceDoneAcceptButtonText" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="ViewServiceDoneAmountLabelContent" xml:space="preserve">
+    <value>Amount</value>
+  </data>
   <data name="ViewServiceDoneChooseButtonText" xml:space="preserve">
     <value>Choose</value>
   </data>
+  <data name="ViewServiceDoneDoneServicesLabelContent" xml:space="preserve">
+    <value>Services Done</value>
+  </data>
   <data name="ViewServiceDoneLabelCustomerContent" xml:space="preserve">
     <value>Client:</value>
+  </data>
+  <data name="ViewServiceDoneNameLabelContent" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ViewServiceDoneUsedProductsMultiTextBlockText" xml:space="preserve">
+    <value>Used multi-use products</value>
+  </data>
+  <data name="ViewServiceDoneUsedProductsSingleTextBlockText" xml:space="preserve">
+    <value>Used single-use products</value>
   </data>
 </root>

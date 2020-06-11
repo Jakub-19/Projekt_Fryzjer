@@ -70,11 +70,47 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Adding Customer.
+        /// </summary>
+        internal static string CustomerAddViewName {
+            get {
+                return ResourceManager.GetString("CustomerAddViewName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Customers.
+        /// </summary>
+        internal static string CustomersViewName {
+            get {
+                return ResourceManager.GetString("CustomersViewName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Select all.
         /// </summary>
         internal static string ListViewWithCheckboxesSelectAllCheckboxContent {
             get {
                 return ResourceManager.GetString("ListViewWithCheckboxesSelectAllCheckboxContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Main Stock.
+        /// </summary>
+        internal static string MainStockViewName {
+            get {
+                return ResourceManager.GetString("MainStockViewName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Adding Done Service.
+        /// </summary>
+        internal static string ServiceDoneViewName {
+            get {
+                return ResourceManager.GetString("ServiceDoneViewName", resourceCulture);
             }
         }
         
@@ -187,6 +223,24 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Accept.
+        /// </summary>
+        internal static string ViewServiceDoneAcceptButtonText {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneAcceptButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Amount.
+        /// </summary>
+        internal static string ViewServiceDoneAmountLabelContent {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneAmountLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Choose.
         /// </summary>
         internal static string ViewServiceDoneChooseButtonText {
@@ -196,11 +250,47 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Services Done.
+        /// </summary>
+        internal static string ViewServiceDoneDoneServicesLabelContent {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneDoneServicesLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Client:.
         /// </summary>
         internal static string ViewServiceDoneLabelCustomerContent {
             get {
                 return ResourceManager.GetString("ViewServiceDoneLabelCustomerContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Name.
+        /// </summary>
+        internal static string ViewServiceDoneNameLabelContent {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneNameLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Used multi-use products.
+        /// </summary>
+        internal static string ViewServiceDoneUsedProductsMultiTextBlockText {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneUsedProductsMultiTextBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Used single-use products.
+        /// </summary>
+        internal static string ViewServiceDoneUsedProductsSingleTextBlockText {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneUsedProductsSingleTextBlockText", resourceCulture);
             }
         }
     }

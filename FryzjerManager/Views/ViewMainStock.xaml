@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=ApplicationName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
+            <title:TitleBar Title="{Binding Path=MainStockViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
         </Grid>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="80,0,80,80">
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100">
