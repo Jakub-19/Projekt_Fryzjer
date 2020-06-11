@@ -83,7 +83,19 @@ namespace FryzjerManager.ViewModel
         public string ListViewWithCheckboxesSelectAllCheckboxContent{
             get { return R.ListViewWithCheckboxesSelectAllCheckboxContent; }}
         #endregion
+
         public ICommand GotoViewMenuWindowCommand
+        {
+            get
+            {
+                return _gotoViewMenuWindowCommand ?? (_gotoViewMenuWindowCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewMenuWindow();
+                   }));
+            }
+        }
+        public ICommand GoBackCommand
         {
             get
             {

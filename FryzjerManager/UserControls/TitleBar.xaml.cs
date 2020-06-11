@@ -24,6 +24,24 @@ namespace FryzjerManager.UserControls
         {
             InitializeComponent();
         }
+        public static readonly DependencyProperty GoHome = DependencyProperty.Register(nameof(goHome), typeof(ICommand), typeof(TitleBar), new FrameworkPropertyMetadata(null));
+        public ICommand goHome
+        {
+            get { return (ICommand)GetValue(GoHome); }
+            set { SetValue(GoHome, value); }
+        }
+        public static readonly DependencyProperty GoBack = DependencyProperty.Register(nameof(goBack), typeof(ICommand), typeof(TitleBar), new FrameworkPropertyMetadata(null));
+        public ICommand goBack
+        {
+            get { return (ICommand)GetValue(GoBack); }
+            set { SetValue(GoBack, value); }
+        }
+        public static readonly DependencyProperty title = DependencyProperty.Register("Title", typeof(string), typeof(TitleBar), new FrameworkPropertyMetadata(null));
+        public string Title
+        {
+            get { return (string)GetValue(title); }
+            set { SetValue(title, value); }
+        }
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DependencyObject parent = sender as UIElement;
@@ -46,5 +64,10 @@ namespace FryzjerManager.UserControls
             var window = parent as Window;
             window.WindowState = WindowState.Minimized;
         }
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
     }
 }

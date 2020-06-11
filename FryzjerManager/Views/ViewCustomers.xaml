@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FryzjerManager.Views"
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
@@ -16,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar />
+            <title:TitleBar Title="{Binding Path=ApplicationName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
         </Grid>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="80,0,80,80">
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
