@@ -159,20 +159,27 @@ namespace FryzjerManager.DAL
             return products;
         }
 
-        public void UpdateProductCount(SingleUseProduct product, int newCount)//Mam wrazenie ze tutaj jest blad, bo zmieni sie ilosc dwoch produktow jednego jednorazowego i jednego wielorazowego o tym samym id.
-        {                                                                     //Byc moze sie myle, bo nie dokonca znam dzialanie komunikacji z baza danych, ale wydaje mi sie ze zostana wykonane oba ponizsze polecenia SQL.
+        public void UpdateProductCount(SingleUseProduct product, int newCount)//powinno działać poprawnie
+        {                                                                    
             try
             {
                 con.Open();
             }
             catch { }
-            string command = "UPDATE products set quantity_item=" + newCount.ToString() + " Where id_p=" + product.ID.ToString();
-            MySqlCommand cmd = new MySqlCommand(command, con);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            rdr.Close();
-            command = "UPDATE disposable_products set quantity=" + newCount.ToString() + " Where id_p=" + product.ID.ToString();
-            cmd = new MySqlCommand(command, con);
-            rdr = cmd.ExecuteReader();
+            if (product is Product)
+            {
+                string command = "UPDATE products set quantity_item=" + newCount.ToString() + " Where id_p=" + product.ID.ToString();
+                MySqlCommand cmd = new MySqlCommand(command, con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Close();
+            }
+            else if (product is SingleUseProduct)
+            {
+                string command = "UPDATE disposable_products set quantity=" + newCount.ToString() + " Where id_p=" + product.ID.ToString();
+                MySqlCommand cmd = new MySqlCommand(command, con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Close();
+            }
             con.Close();
         }
         public void UpdateProductMl(Product product, int newml)
