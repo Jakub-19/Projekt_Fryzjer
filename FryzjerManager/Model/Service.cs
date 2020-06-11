@@ -17,8 +17,13 @@ namespace FryzjerManager.Model
         {
             ID = id;
             Name = name;
-            Time = Time;
+            Time = time;
             Price = price;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

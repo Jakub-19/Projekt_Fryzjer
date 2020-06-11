@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-
+using FryzjerManager.Model;
 
 namespace FryzjerManager.ViewModel
 {
@@ -34,21 +34,61 @@ namespace FryzjerManager.ViewModel
             _viewCustomerAdd = new V.ViewCustomerAdd();
             _viewServiceDone = new V.ViewServiceDone();
             _viewMainStock = new V.ViewMainStock();
-            SetDataContext();
 
             CurrentView = _viewMenuWindow;
         }
-        private void SetDataContext()
+
+        #region VisitConfig
+        private ServiceRecord serviceRecord = new ServiceRecord();
+        public ObservableCollection<string> Services
         {
-            _items.Add("Item 1");
-            _items.Add("Item 2");
-            _items.Add("Item 3");
-            _items.Add("Item 4");
-            _items.Add("Item 5");
+            get
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                foreach (var v in serviceRecord.Services)
+                    list.Add(v.Name);
+
+                return list;
+            }
+            set {}
         }
-        private ObservableCollection<string> _items = new ObservableCollection<string>();
-        public ObservableCollection<string> Items { get { return _items; } set { SetDataContext(); } }
-            
+        public ObservableCollection<string> SingleUseProducts
+        {
+            get
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                for(int i = 0; i < 10; i++)
+                    list.Add("Produkt" + i);
+
+                return list;
+            }
+            set { }
+        }
+        public ObservableCollection<string> Products
+        {
+            get
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                for (int i = 0; i < 10; i++)
+                    list.Add("Produkt" + i);
+
+                return list;
+            }
+            set { }
+        }
+        public ObservableCollection<string> Clients
+        {
+            get
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                for (int i = 0; i < 10; i++)
+                    list.Add("Krzysztof" + i);
+
+                return list;
+            }
+            set { }
+        }
+        #endregion
         #region ResourcesTextNames
         public string ViewMenuWindowCustomersButtonText{
             get{ return R.ViewMenuWindowCustomersButtonText; }}

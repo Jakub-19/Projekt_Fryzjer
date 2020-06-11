@@ -41,7 +41,7 @@
         <ListView
 			x:Name="checkedListView"
 			SelectionMode="Multiple"
-			ItemsSource="{Binding Path=Items}"
+			ItemsSource="{Binding Path=Services}"
 			ItemTemplate="{StaticResource ItemDataTemplate}"
 			CheckBox.Unchecked="OnUncheckItem" />
     </StackPanel>
