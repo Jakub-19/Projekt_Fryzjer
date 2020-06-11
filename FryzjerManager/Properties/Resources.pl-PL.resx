@@ -120,6 +120,9 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>FRYZJER 2.0</value>
   </data>
+  <data name="ListViewWithCheckboxesSelectAllCheckboxContent" xml:space="preserve">
+    <value>Zaznacz wszystkie</value>
+  </data>
   <data name="ViewCustomerAddConfirmButtonText" xml:space="preserve">
     <value>DODAJ</value>
   </data>
@@ -155,5 +158,11 @@
   </data>
   <data name="ViewMenuWindowStockButtonText" xml:space="preserve">
     <value>MAGAZYN</value>
+  </data>
+  <data name="ViewServiceDoneChooseButtonText" xml:space="preserve">
+    <value>Wybierz</value>
+  </data>
+  <data name="ViewServiceDoneLabelCustomerContent" xml:space="preserve">
+    <value>Klient:</value>
   </data>
 </root>

@@ -61,7 +61,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
+            <title:ListViewWithCheckboxes Grid.Column="0" Margin="20">
+                
+            </title:ListViewWithCheckboxes>
+            
         </Grid>
 
         </Grid>

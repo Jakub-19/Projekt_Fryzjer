@@ -120,6 +120,9 @@
   <data name="ApplicationName" xml:space="preserve">
     <value>HAIRDRESSER 2.0</value>
   </data>
+  <data name="ListViewWithCheckboxesSelectAllCheckboxContent" xml:space="preserve">
+    <value>Select all</value>
+  </data>
   <data name="ViewCustomerAddConfirmButtonText" xml:space="preserve">
     <value>ADD</value>
   </data>

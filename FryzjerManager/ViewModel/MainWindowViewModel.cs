@@ -34,10 +34,21 @@ namespace FryzjerManager.ViewModel
             _viewCustomerAdd = new V.ViewCustomerAdd();
             _viewServiceDone = new V.ViewServiceDone();
             _viewMainStock = new V.ViewMainStock();
+            SetDataContext();
 
             CurrentView = _viewMenuWindow;
         }
-
+        private void SetDataContext()
+        {
+            _items.Add("Item 1");
+            _items.Add("Item 2");
+            _items.Add("Item 3");
+            _items.Add("Item 4");
+            _items.Add("Item 5");
+        }
+        private ObservableCollection<string> _items = new ObservableCollection<string>();
+        public ObservableCollection<string> Items { get { return _items; } set { SetDataContext(); } }
+            
         #region ResourcesTextNames
         public string ViewMenuWindowCustomersButtonText{
             get{ return R.ViewMenuWindowCustomersButtonText; }}
@@ -69,6 +80,8 @@ namespace FryzjerManager.ViewModel
             get { return R.ViewServiceDoneLabelCustomerContent; }}
         public string ViewServiceDoneChooseButtonText{ 
             get { return R.ViewServiceDoneChooseButtonText; }}
+        public string ListViewWithCheckboxesSelectAllCheckboxContent{
+            get { return R.ListViewWithCheckboxesSelectAllCheckboxContent; }}
         #endregion
         public ICommand GotoViewMenuWindowCommand
         {

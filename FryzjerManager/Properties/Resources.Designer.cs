@@ -70,6 +70,15 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Select all.
+        /// </summary>
+        internal static string ListViewWithCheckboxesSelectAllCheckboxContent {
+            get {
+                return ResourceManager.GetString("ListViewWithCheckboxesSelectAllCheckboxContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu ADD.
         /// </summary>
         internal static string ViewCustomerAddConfirmButtonText {

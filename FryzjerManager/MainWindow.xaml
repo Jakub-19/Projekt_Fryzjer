@@ -14,6 +14,10 @@
             <localview:ViewMenuWindow/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type local:ViewCustomersViewModel}">
+            <localview:ViewCustomers/>
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type local:ViewCustomerAddViewModel}">
             <localview:ViewCustomerAdd/>
         </DataTemplate>
@@ -21,6 +25,12 @@
         <DataTemplate DataType="{x:Type local:ViewServiceDoneViewModel}">
             <localview:ViewServiceDone/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type local:ViewMainStockViewModel}">
+            <localview:ViewMainStock/>
+        </DataTemplate>
+
+        
     </Window.Resources>
 
 
