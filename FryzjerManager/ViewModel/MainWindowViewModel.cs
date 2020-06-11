@@ -20,7 +20,9 @@ namespace FryzjerManager.ViewModel
         private ICommand _gotoViewCustomerAddCommand;
         private ICommand _gotoViewServiceDoneCommand;
         private ICommand _gotoViewMainStockCommand;
+        private ICommand _gotoPreviousViewCommand;
         private object _currentView;
+        private object _previousView;
         private object _viewMenuWindow;
         private object _viewCustomers;
         private object _viewCustomerAdd;
@@ -158,10 +160,10 @@ namespace FryzjerManager.ViewModel
         {
             get
             {
-                return _gotoViewMenuWindowCommand ?? (_gotoViewMenuWindowCommand = new RelayCommand(
+                return _gotoPreviousViewCommand ?? (_gotoPreviousViewCommand = new RelayCommand(
                    x =>
                    {
-                       GotoViewMenuWindow();
+                       GotoPreviousView();
                    }));
             }
         }
@@ -222,24 +224,34 @@ namespace FryzjerManager.ViewModel
         }
 
         #region GotoView Methods
+        private void GotoPreviousView()
+        {
+            CurrentView = _previousView;
+            _previousView = _viewMenuWindow;
+        }
         private void GotoViewMenuWindow()
         {
+            _previousView = CurrentView;
             CurrentView = _viewMenuWindow;
         }
         private void GotoViewCustomers()
         {
+            _previousView = CurrentView;
             CurrentView = _viewCustomers;
         }
         private void GotoViewCustomerAdd()
         {
+            _previousView = CurrentView;
             CurrentView = _viewCustomerAdd;
         }
         private void GotoViewServiceDone()
         {
+            _previousView = CurrentView;
             CurrentView = _viewServiceDone;
         }
         private void GotoViewMainStock()
         {
+            _previousView = CurrentView;
             CurrentView = _viewMainStock;
         }
         #endregion
