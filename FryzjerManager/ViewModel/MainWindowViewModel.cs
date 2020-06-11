@@ -63,6 +63,10 @@ namespace FryzjerManager.ViewModel
                        OnPropertyChanged(nameof(ClientPhone));
                        //Informacja zwrotna przydalaby sie
                        GotoPreviousView();
+                   },
+                   x=>
+                   {
+                       return !string.IsNullOrEmpty(ClientName) && !string.IsNullOrEmpty(ClientSurname) && !string.IsNullOrEmpty(ClientPhone);
                    }));
             }
         }
