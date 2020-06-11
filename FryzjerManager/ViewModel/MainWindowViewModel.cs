@@ -39,7 +39,37 @@ namespace FryzjerManager.ViewModel
 
             CurrentView = _viewMenuWindow;
         }
-        #region VisitConfig
+        #region ClientRecord
+        private ClientRecord clientRecord = new ClientRecord();
+
+        #region AddNew
+        public string ClientName { get; set; }
+        public string ClientSurname { get; set; }
+        public string ClientPhone { get; set; }
+        private ICommand _addNewClient;
+        public ICommand AddNewClient
+        {
+            get
+            {
+                return _addNewClient ?? (_addNewClient = new RelayCommand(
+                   x =>
+                   {
+                       clientRecord.AddNew(ClientName, ClientSurname, ClientPhone);
+                       ClientName = "";
+                       ClientSurname = "";
+                       ClientPhone = "";
+                       OnPropertyChanged(nameof(ClientName));
+                       OnPropertyChanged(nameof(ClientSurname));
+                       OnPropertyChanged(nameof(ClientPhone));
+                       //Informacja zwrotna przydalaby sie
+                       GotoPreviousView();
+                   }));
+            }
+        }
+        #endregion
+
+        #endregion
+        #region VisitRecord
         private ServiceRecord serviceRecord = new ServiceRecord();
         public ObservableCollection<string> Services
         {

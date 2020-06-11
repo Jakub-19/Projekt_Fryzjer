@@ -370,6 +370,7 @@ namespace FryzjerManager.DAL
                 services.Add(service);
                 Console.WriteLine(service.ToString());
             }
+            con.Close();//
             return services;
         }
 

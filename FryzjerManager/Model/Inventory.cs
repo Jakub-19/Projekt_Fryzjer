@@ -65,5 +65,10 @@ namespace FryzjerManager.Model
                 }
             }
         }
+        public void Clear()
+        {
+            Products = new List<Product>();
+            SingleUseProducts = new List<SingleUseProduct>();
+        }
     }
 }
