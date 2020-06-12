@@ -44,11 +44,54 @@ namespace FryzjerManager.ViewModel
         }
         #region ClientRecord
         private ClientRecord clientRecord = new ClientRecord();
-
-        #region AddNew
+        public ObservableCollection<Client> Clients
+        {
+            get
+            {
+                ObservableCollection<Client> list =  new ObservableCollection<Client>();
+                foreach (var v in clientRecord.Clients)
+                    list.Add(v);
+                    
+                return list;
+            }
+            set { }
+        }
         public string ClientName { get; set; }
         public string ClientSurname { get; set; }
         public string ClientPhone { get; set; }
+        #region Search
+        private ICommand _searchClient;
+        public ICommand SearchClient
+        {
+            get
+            {
+                return _searchClient ?? (_searchClient = new RelayCommand(
+                   x =>
+                   {
+                       clientRecord.GetClients(ClientName, ClientSurname);
+                       OnPropertyChanged(nameof(Clients));
+                   }));
+            }
+        }
+        private ICommand _selectClient;
+        public ICommand SelectClient
+        {
+            get
+            {
+                return _selectClient ?? (_selectClient = new RelayCommand(
+                   x =>
+                   {
+                        //ClientName =
+                        //ClientSurname=
+                        //ClientPhone =
+
+
+                       }));
+            }
+        }
+        #endregion
+
+        #region AddNew
         private ICommand _addNewClient;
         public ICommand AddNewClient
         {
@@ -109,18 +152,6 @@ namespace FryzjerManager.ViewModel
                 ObservableCollection<string> list = new ObservableCollection<string>();
                 for (int i = 0; i < 15; i++)
                     list.Add("Produkt" + i);
-
-                return list;
-            }
-            set { }
-        }
-        public ObservableCollection<string> Clients
-        {
-            get
-            {
-                ObservableCollection<string> list = new ObservableCollection<string>();
-                for (int i = 0; i < 10; i++)
-                    list.Add("Krzysztof" + i);
 
                 return list;
             }
