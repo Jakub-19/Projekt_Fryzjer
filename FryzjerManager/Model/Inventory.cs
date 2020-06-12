@@ -11,6 +11,11 @@ namespace FryzjerManager.Model
     {
         public List<Product> Products { get; private set; }
         public List<SingleUseProduct> SingleUseProducts { get; private set; }
+        public Inventory()
+        {
+            Products = new List<Product>();
+            SingleUseProducts = new List<SingleUseProduct>();
+        }
 
         public void AddNew(SingleUseProduct product)
         {
@@ -64,6 +69,12 @@ namespace FryzjerManager.Model
                     product.Count--;
                 }
             }
+        }
+        public void GetProducts(string name)
+        {
+            Data_Access data = Data_Access.getInstance();
+            Products = data.SearchProductByName(name);
+            SingleUseProducts = data.SearchSingleUseProductByName(name);
         }
         public void Clear()
         {

@@ -20,6 +20,10 @@ namespace FryzjerManager.Model
             Count = count;
             Price = price;
         }
+        public override string ToString()
+        {
+            return ID+" "+Name;
+        }
     }
     public class Product : SingleUseProduct
     {

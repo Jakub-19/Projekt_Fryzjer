@@ -25,10 +25,10 @@
                Content="Nazwa szukanego produktu:"/>
             <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" >
                 <TextBox Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="400" Height="40"
-                       Text="{Binding Path=ClientName}"/>
+                       Text="{Binding Path=ProductName, Mode=TwoWay}"/>
             </Border>
             <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="20,0,0,0"
-                        Command="{Binding SearchClient}">
+                        Command="{Binding SearchProduct}">
                 <Grid Width="150">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30"/>
@@ -43,11 +43,11 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=Clients}">
+        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=AllProductsRecord}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding Path=Name}"/>
-                    <GridViewColumn Header="Nazwa" Width="800" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding Path=ID}"/>
+                    <GridViewColumn Header="Nazwa" Width="800" DisplayMemberBinding="{Binding Path=Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>

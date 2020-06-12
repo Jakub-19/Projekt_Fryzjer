@@ -79,7 +79,7 @@
                     <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Width="265" TextAlignment="Center" Foreground="#FF3D3D3D"
                     Text="{Binding Path=ViewServiceDoneUsedProductsMultiTextBlockText}"/>
                     <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="35" Width="45" Margin="5,0,0,0"
-                            Command="{Binding GotoViewProductSearchCommand}">
+                            Command="{Binding ProductPlusButton}">
                         <material:PackIcon Kind="Add" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <material:PackIcon.LayoutTransform>
                                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -118,7 +118,7 @@
                     <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Width="265" TextAlignment="Center" Foreground="#FF3D3D3D"
                     Text="{Binding Path=ViewServiceDoneUsedProductsSingleTextBlockText}"/>
                     <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="35" Width="45" Margin="5,0,0,0"
-                            Command="{Binding GotoViewProductSearchCommand}">
+                            Command="{Binding SingleUseProductPlusButton}">
                         <material:PackIcon Kind="Add" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <material:PackIcon.LayoutTransform>
                                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>

@@ -51,10 +51,10 @@ namespace FryzjerManager.ViewModel
         {
             get
             {
-                ObservableCollection<Client> list =  new ObservableCollection<Client>();
+                ObservableCollection<Client> list = new ObservableCollection<Client>();
                 foreach (var v in clientRecord.Clients)
                     list.Add(v);
-                    
+
                 return list;
             }
             set { }
@@ -89,7 +89,7 @@ namespace FryzjerManager.ViewModel
                        ClientSurname = CurrentClient.LastName;
                        ClientPhone = CurrentClient.PhoneNumber;
                        GotoViewServiceDone();
-                       }));
+                   }));
             }
         }
         #endregion
@@ -113,7 +113,7 @@ namespace FryzjerManager.ViewModel
                        //Informacja zwrotna przydalaby sie
                        GotoPreviousView();
                    },
-                   x=>
+                   x =>
                    {
                        return !string.IsNullOrEmpty(ClientName) && !string.IsNullOrEmpty(ClientSurname) && !string.IsNullOrEmpty(ClientPhone);
                    }));
@@ -121,6 +121,93 @@ namespace FryzjerManager.ViewModel
         }
         #endregion
 
+        #endregion
+        #region Inventory
+        Inventory inventory = new Inventory();
+        private List<SingleUseProduct> usedSingleUseProducts = new List<SingleUseProduct>();
+        private List<Product> usedProducts = new List<Product>();
+        private List<SingleUseProduct> _allProductsRecord;//=new List<SingleUseProduct>();
+
+        public ObservableCollection<SingleUseProduct> AllProductsRecord
+        {
+            get
+            {
+                ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
+                foreach (SingleUseProduct v in _allProductsRecord)
+                    list.Add(v);
+
+                return list;
+            }
+            set 
+            {
+            }
+        }
+        public ObservableCollection<string> SingleUseProducts
+        {
+            get
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                foreach (var v in usedSingleUseProducts)
+                    list.Add(v.Name);
+
+                return list;
+            }
+            set { }
+        }
+        public ObservableCollection<string> Products
+        {
+            get
+            {
+                ObservableCollection<string> list = new ObservableCollection<string>();
+                foreach (var v in usedProducts)
+                    list.Add(v.Name);
+
+                return list;
+            }
+            set { }
+        }
+        private ICommand _singleUseProductPlusButton;
+        public ICommand SingleUseProductPlusButton
+        {
+            get
+            {
+                return _singleUseProductPlusButton ?? (_singleUseProductPlusButton = new RelayCommand(
+                   x =>
+                   {
+                       _allProductsRecord = inventory.SingleUseProducts;
+                       GotoViewProductSearch();
+                   }));
+            }
+        }
+        private ICommand _productPlusButton;
+        public ICommand ProductPlusButton
+        {
+            get
+            {
+                return _productPlusButton ?? (_productPlusButton = new RelayCommand(
+                   x =>
+                   {
+                       _allProductsRecord = new List<SingleUseProduct>();
+                       foreach (var v in inventory.Products)
+                           _allProductsRecord.Add(v as SingleUseProduct);
+                       GotoViewProductSearch();
+                   }));
+            }
+        }
+        public string ProductName{get;set;}
+        private ICommand _searchProduct;
+        public ICommand SearchProduct
+        {
+            get
+            {
+                return _searchProduct ?? (_searchProduct = new RelayCommand(
+                   x =>
+                   {
+                       inventory.GetProducts(ProductName);
+                       OnPropertyChanged(nameof(AllProductsRecord));
+                   }));
+            }
+        }
         #endregion
         #region VisitRecord
         private ServiceRecord serviceRecord = new ServiceRecord();
@@ -135,30 +222,6 @@ namespace FryzjerManager.ViewModel
                 return list;
             }
             set {}
-        }
-        public ObservableCollection<string> SingleUseProducts
-        {
-            get
-            {
-                ObservableCollection<string> list = new ObservableCollection<string>();
-                for(int i = 0; i < 10; i++)
-                    list.Add("Produkt" + i);
-
-                return list;
-            }
-            set { }
-        }
-        public ObservableCollection<string> Products
-        {
-            get
-            {
-                ObservableCollection<string> list = new ObservableCollection<string>();
-                for (int i = 0; i < 15; i++)
-                    list.Add("Produkt" + i);
-
-                return list;
-            }
-            set { }
         }
         #endregion
         #region ResourcesTextNames
