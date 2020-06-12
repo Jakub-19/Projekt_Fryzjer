@@ -40,7 +40,7 @@
                         <ColumnDefinition Width="30"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <material:PackIcon Kind="Filter" VerticalAlignment="Center">
+                    <material:PackIcon Kind="AccountSearch" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
                             <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                         </material:PackIcon.LayoutTransform>
@@ -49,7 +49,7 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=Clients}">
+        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=Clients}" SelectedItem="{Binding Path=CurrentClient, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Imię" Width="250" DisplayMemberBinding="{Binding Path=Name}"/>
@@ -58,7 +58,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180">
+        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Command="{Binding SelectClient}">
             <Grid Width="150">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"/>

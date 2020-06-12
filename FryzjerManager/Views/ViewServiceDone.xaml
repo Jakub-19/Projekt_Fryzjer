@@ -32,15 +32,15 @@
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                 <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50">
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="220" Height="40"
-                       Text="Stanisław"/>
+                       Text="{Binding Path=ClientName}"/>
                 </Border>
                 <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" Margin="15">
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="260" Height="40"
-                       Text="Brzęczyszczykiewicz"/>
+                       Text="{Binding Path=ClientSurname}"/>
                 </Border>
                 <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50">
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="180" Height="40"
-                       Text="+482334569"/>
+                       Text="{Binding Path=ClientPhone}"/>
                 </Border>
                 <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="15,0,0,0"
                         Command="{Binding GotoViewCustomerSearchCommand}">

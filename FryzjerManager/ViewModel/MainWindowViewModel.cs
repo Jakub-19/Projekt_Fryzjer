@@ -59,6 +59,7 @@ namespace FryzjerManager.ViewModel
         public string ClientName { get; set; }
         public string ClientSurname { get; set; }
         public string ClientPhone { get; set; }
+        public Client CurrentClient { get; set; }
         #region Search
         private ICommand _searchClient;
         public ICommand SearchClient
@@ -81,11 +82,10 @@ namespace FryzjerManager.ViewModel
                 return _selectClient ?? (_selectClient = new RelayCommand(
                    x =>
                    {
-                        //ClientName =
-                        //ClientSurname=
-                        //ClientPhone =
-
-
+                       ClientName = CurrentClient.Name;
+                       ClientSurname = CurrentClient.LastName;
+                       ClientPhone = CurrentClient.PhoneNumber;
+                       GotoViewServiceDone();
                        }));
             }
         }
@@ -320,6 +320,9 @@ namespace FryzjerManager.ViewModel
         }
         private void GotoViewCustomerSearch()
         {
+            ClientName = "";
+            ClientSurname = "";
+            ClientPhone = "";
             _previousView = CurrentView;
             CurrentView = _viewCustomerSearch;
         }
