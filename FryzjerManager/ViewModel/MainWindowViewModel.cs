@@ -187,13 +187,15 @@ namespace FryzjerManager.ViewModel
             }
             set { }
         }
-        public ObservableCollection<string> Products
+        public ObservableCollection<SingleUseProduct> Products
         {
             get
             {
-                ObservableCollection<string> list = new ObservableCollection<string>();
-                foreach (var v in usedProducts)
-                    list.Add(v.Name);
+                ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
+                //foreach (var v in usedProducts)
+                //list.Add(v.Name);
+                for (int i = 0; i < 20; i++)
+                    list.Add(new SingleUseProduct(i, "Nazwa "+ i, 60, 60));
 
                 return list;
             }

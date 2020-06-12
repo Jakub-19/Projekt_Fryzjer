@@ -104,10 +104,24 @@
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer Grid.Row="1" Margin="10">
-                    <ItemsControl ItemsSource="{Binding Path=Products, Mode=OneWay}">
+                    <ItemsControl ItemsSource="{Binding usedProducts}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
-                                <title:UsedProduct/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Margin="4,5,0,5"
+                                        Text="{Binding Name, Mode=OneWay}">
+                                    </TextBlock>
+                                    <Border Grid.Column="1" BorderBrush="DarkGray" BorderThickness="1">
+                                        <TextBox Grid.Column="1" Height="29"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
+                                        Text="ml"/>
+                                </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
@@ -143,10 +157,24 @@
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer Grid.Row="1" Margin="10">
-                    <ItemsControl ItemsSource="{Binding Path=Products, Mode=OneWay}">
+                    <ItemsControl ItemsSource="{Binding usedSingleUseProducts}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
-                                <title:UsedProduct/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Margin="4,5,0,5"
+                                        Text="{Binding Name, Mode=OneWay}">
+                                    </TextBlock>
+                                    <Border Grid.Column="1" BorderBrush="DarkGray" BorderThickness="1">
+                                        <TextBox Grid.Column="1" Height="29"/>
+                                    </Border>
+                                    <TextBlock Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"
+                                        Text="szt"/>
+                                </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
