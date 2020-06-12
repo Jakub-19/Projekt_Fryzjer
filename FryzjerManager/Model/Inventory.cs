@@ -74,6 +74,10 @@ namespace FryzjerManager.Model
         {
             Data_Access data = Data_Access.getInstance();
             Products = data.SearchProductByName(name);
+        }
+        public void GetSingleUseProducts(string name)
+        {
+            Data_Access data = Data_Access.getInstance();
             SingleUseProducts = data.SearchSingleUseProductByName(name);
         }
         public void Clear()

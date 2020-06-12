@@ -45,7 +45,7 @@
                             <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Filtruj" FontSize="23"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Szukaj" FontSize="23"/>
                 </Grid>
             </Button>
         </StackPanel>

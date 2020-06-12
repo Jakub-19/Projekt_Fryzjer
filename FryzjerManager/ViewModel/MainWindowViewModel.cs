@@ -148,8 +148,8 @@ namespace FryzjerManager.ViewModel
         Inventory inventory = new Inventory();
         private List<SingleUseProduct> usedSingleUseProducts = new List<SingleUseProduct>();
         private List<Product> usedProducts = new List<Product>();
-        private List<SingleUseProduct> _allProductsRecord;
-        private void InventoryDataVlear()
+        private bool IsSingleProducts;
+        private void InventoryDataClear()
         {
             ProductName = "";
         }
@@ -158,14 +158,21 @@ namespace FryzjerManager.ViewModel
             get
             {
                 ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
-                foreach (SingleUseProduct v in _allProductsRecord)
-                    list.Add(v);
+                if(IsSingleProducts)
+                {
+                    foreach (var v in inventory.SingleUseProducts)
+                        list.Add(v);
+                }
+                else
+                {
+                    foreach (var v in inventory.Products)
+                        list.Add(v);
+                }
 
                 return list;
             }
             set 
-            {
-            }
+            {}
         }
         public ObservableCollection<string> SingleUseProducts
         {
@@ -199,7 +206,8 @@ namespace FryzjerManager.ViewModel
                 return _singleUseProductPlusButton ?? (_singleUseProductPlusButton = new RelayCommand(
                    x =>
                    {
-                       _allProductsRecord = inventory.SingleUseProducts;
+                       ProductName = "";
+                       IsSingleProducts = true;
                        GotoViewProductSearch();
                    }));
             }
@@ -212,9 +220,8 @@ namespace FryzjerManager.ViewModel
                 return _productPlusButton ?? (_productPlusButton = new RelayCommand(
                    x =>
                    {
-                       _allProductsRecord = new List<SingleUseProduct>();
-                       foreach (var v in inventory.Products)
-                           _allProductsRecord.Add(v as SingleUseProduct);
+                       ProductName = "";
+                       IsSingleProducts = false;
                        GotoViewProductSearch();
                    }));
             }
@@ -228,7 +235,14 @@ namespace FryzjerManager.ViewModel
                 return _searchProduct ?? (_searchProduct = new RelayCommand(
                    x =>
                    {
-                       inventory.GetProducts(ProductName);
+                       if (IsSingleProducts)
+                       {
+                           inventory.GetSingleUseProducts(ProductName);
+                       }
+                       else
+                       {
+                           inventory.GetProducts(ProductName);
+                       }
                        OnPropertyChanged(nameof(AllProductsRecord));
                    }));
             }
