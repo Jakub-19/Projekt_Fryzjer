@@ -141,6 +141,7 @@
     <Compile Include="ViewModel\ViewModelBase\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomerAddViewModel.cs" />
+    <Compile Include="ViewModel\ViewsViewModels\ViewCustomerSearchViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomersViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewMainStockViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewMenuWindowViewModel.cs" />
@@ -150,6 +151,9 @@
     </Compile>
     <Compile Include="Views\ViewCustomers.xaml.cs">
       <DependentUpon>ViewCustomers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewCustomerSearch.xaml.cs">
+      <DependentUpon>ViewCustomerSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewMainStock.xaml.cs">
       <DependentUpon>ViewMainStock.xaml</DependentUpon>
@@ -189,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewCustomers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewCustomerSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

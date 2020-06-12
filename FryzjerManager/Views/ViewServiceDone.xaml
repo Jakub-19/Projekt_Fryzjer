@@ -42,7 +42,8 @@
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="180" Height="40"
                        Text="+482334569"/>
                 </Border>
-                <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="15,0,0,0">
+                <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="15,0,0,0"
+                        Command="{Binding GotoViewCustomerSearchCommand}">
                     <Grid Width="150">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
@@ -64,7 +65,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0"  Margin="10">
+            <StackPanel Grid.Column="0"  Margin="10" Background="#FFB6B6B6">
                 <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Content="{Binding Path=ViewServiceDoneDoneServicesLabelContent}" Foreground="#FF3D3D3D"/>
                 <title:ListViewWithCheckboxes Margin="20">
@@ -111,7 +112,7 @@
                     </ItemsControl>
                 </ScrollViewer>
             </Grid>
-            <StackPanel Grid.Column="2" Margin="10">
+            <StackPanel Grid.Column="2" Margin="10" Background="#FFB6B6B6">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Width="265" TextAlignment="Center" Foreground="#FF3D3D3D"
                     Text="{Binding Path=ViewServiceDoneUsedProductsSingleTextBlockText}"/>

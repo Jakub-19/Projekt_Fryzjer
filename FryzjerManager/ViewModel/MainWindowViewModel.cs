@@ -21,11 +21,13 @@ namespace FryzjerManager.ViewModel
         private ICommand _gotoViewServiceDoneCommand;
         private ICommand _gotoViewMainStockCommand;
         private ICommand _gotoPreviousViewCommand;
+        private ICommand _gotoViewCustomerSearchCommand;
         private object _currentView;
         private object _previousView;
         private object _viewMenuWindow;
         private object _viewCustomers;
         private object _viewCustomerAdd;
+        private object _viewCustomerSearch;
         private object _viewServiceDone;
         private object _viewMainStock;
 
@@ -36,6 +38,7 @@ namespace FryzjerManager.ViewModel
             _viewCustomerAdd = new V.ViewCustomerAdd();
             _viewServiceDone = new V.ViewServiceDone();
             _viewMainStock = new V.ViewMainStock();
+            _viewCustomerSearch = new V.ViewCustomerSearch();
 
             CurrentView = _viewMenuWindow;
         }
@@ -190,6 +193,17 @@ namespace FryzjerManager.ViewModel
                    }));
             }
         }
+        public ICommand GotoViewCustomerSearchCommand
+        {
+            get
+            {
+                return _gotoViewCustomerSearchCommand ?? (_gotoViewCustomerSearchCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewCustomerSearch();
+                   }));
+            }
+        }
         public ICommand GoBackCommand
         {
             get
@@ -272,6 +286,11 @@ namespace FryzjerManager.ViewModel
         {
             _previousView = CurrentView;
             CurrentView = _viewCustomers;
+        }
+        private void GotoViewCustomerSearch()
+        {
+            _previousView = CurrentView;
+            CurrentView = _viewCustomerSearch;
         }
         private void GotoViewCustomerAdd()
         {
