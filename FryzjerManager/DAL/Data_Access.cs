@@ -13,7 +13,7 @@ namespace FryzjerManager.DAL
         private static Data_Access instance;
         MySqlConnection mySqlConnection;
         MySqlConnection con;
-        string cs = @"server=localhost;userid=root;password=;database=fryzjer";
+        string cs = @"server=localhost;userid=root;password=;database=fryzjer;charset=utf8";
         private Data_Access()
         {
             mySqlConnection = new MySqlConnection(cs);
@@ -28,14 +28,14 @@ namespace FryzjerManager.DAL
             return instance;
         }
         #region Client
-        public bool ClientExists(string name, string lastName)
+        public bool ClientExists(string name, string lastName, string number)
         {
             try
             {
                 con.Open();
             }
             catch { }
-            string command = "SELECT EXISTS(SELECT * FROM clients WHERE name like\"" + name + "\" AND surname like \"" + lastName + "\")";
+            string command = "SELECT EXISTS(SELECT * FROM clients WHERE name like\"" + name + "\" AND surname like \"" + lastName + "\" AND  phone_number like \"" + number + "\")";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             int l = 0;
@@ -52,7 +52,7 @@ namespace FryzjerManager.DAL
         }
         public bool ClientExists(Client client)
         {
-            return ClientExists(client.Name, client.LastName);
+            return ClientExists(client.Name, client.LastName, client.PhoneNumber);
         }
 
         public List<Client> FindClient(string name, string lastName)
@@ -112,10 +112,20 @@ namespace FryzjerManager.DAL
 
         }
         #endregion
+        public void Start()
+        {
+            con.Open();
 
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "use fryzjer";
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
         #region Product
         public List<Product> ShowAllProducts()
         {
+            Start();
             List<Product> products = new List<Product>();
 
 
@@ -356,11 +366,9 @@ namespace FryzjerManager.DAL
         public List<Service> ShowAllServices()
         {
             List<Service> services = new List<Service>();
-            try
-            {
+            
                 con.Open();
-            }
-            catch { }
+            
             string command = "SELECT * FROM services ";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
