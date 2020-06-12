@@ -61,7 +61,8 @@
                 </Grid>
             </Button>
 
-            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100">
+            <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
+                    Command="{Binding GotoViewAuthorsCommand}">
                 <Grid Width="400">
                     <material:PackIcon Kind="Feather" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
