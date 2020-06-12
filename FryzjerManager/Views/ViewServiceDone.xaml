@@ -104,7 +104,7 @@
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer Grid.Row="1" Margin="10">
-                    <ItemsControl ItemsSource="{Binding usedProducts}">
+                    <ItemsControl ItemsSource="{Binding UsedProducts}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
                                 <Grid>
@@ -157,7 +157,7 @@
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer Grid.Row="1" Margin="10">
-                    <ItemsControl ItemsSource="{Binding usedSingleUseProducts}">
+                    <ItemsControl ItemsSource="{Binding UsedSingleUseProducts}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
                                 <Grid>

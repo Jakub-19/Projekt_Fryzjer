@@ -43,7 +43,7 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=AllProductsRecord}">
+        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=AllProductsRecord}" SelectedItem="{Binding Path=CurrentProduct}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding Path=ID}"/>
@@ -51,7 +51,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180">
+        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Command="{Binding SelectProduct}">
             <Grid Width="150">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"/>

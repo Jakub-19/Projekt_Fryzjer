@@ -146,8 +146,8 @@ namespace FryzjerManager.ViewModel
         #endregion
         #region Inventory
         Inventory inventory = new Inventory();
-        private List<SingleUseProduct> usedSingleUseProducts = new List<SingleUseProduct>();
-        private List<Product> usedProducts = new List<Product>();
+        private List<SingleUseProduct> _usedSingleUseProducts = new List<SingleUseProduct>();
+        private List<Product> _usedProducts = new List<Product>();
         private bool IsSingleProducts;
         public SingleUseProduct CurrentProduct { get; set; }
         private void InventoryDataClear()
@@ -175,27 +175,25 @@ namespace FryzjerManager.ViewModel
             set 
             {}
         }
-        public ObservableCollection<string> SingleUseProducts
+        public ObservableCollection<SingleUseProduct> UsedSingleUseProducts
         {
             get
             {
-                ObservableCollection<string> list = new ObservableCollection<string>();
-                foreach (var v in usedSingleUseProducts)
-                    list.Add(v.Name);
+                ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
+                foreach (var v in _usedSingleUseProducts)
+                    list.Add(v);
 
                 return list;
             }
             set { }
         }
-        public ObservableCollection<SingleUseProduct> Products
+        public ObservableCollection<Product> UsedProducts
         {
             get
             {
-                ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
-                //foreach (var v in usedProducts)
-                //list.Add(v.Name);
-                for (int i = 0; i < 20; i++)
-                    list.Add(new SingleUseProduct(i, "Nazwa "+ i, 60, 60));
+                ObservableCollection<Product> list = new ObservableCollection<Product>();
+                foreach (var v in _usedProducts)
+                    list.Add(v);
 
                 return list;
             }
@@ -230,8 +228,32 @@ namespace FryzjerManager.ViewModel
             }
         }
         public string ProductName{get;set;}
+        private ICommand _selectProduct;
+        public ICommand SelectProduct
+        {
+            get
+            {
+                return _selectProduct ?? (_selectProduct = new RelayCommand(
+                   x =>
+                   {
+                       if (IsSingleProducts)
+                       {
+                           _usedSingleUseProducts.Add(CurrentProduct);
+                       }
+                       else
+                       {
+                           _usedProducts.Add(CurrentProduct as Product);
+                       }
+                       GotoViewServiceDone();
+                   },
+                    x =>
+                    {
+                        return CurrentProduct != null;
+                    }));
+            }
+        }
         private ICommand _searchProduct;
-        public ICommand SearchProduct
+        public ICommand  SearchProduct
         {
             get
             {
@@ -248,26 +270,6 @@ namespace FryzjerManager.ViewModel
                        }
                        OnPropertyChanged(nameof(AllProductsRecord));
                    }));
-            }
-        }
-        private ICommand _selectProduct;
-        public ICommand SelectProduct
-        {
-            get
-            {
-                return _selectProduct ?? (_selectProduct = new RelayCommand(
-                   x =>
-                   {
-                       ClientName = CurrentClient.Name;
-                       ClientSurname = CurrentClient.LastName;
-                       ClientPhone = CurrentClient.PhoneNumber;
-                       GotoViewServiceDone();
-                   },
-                   x =>
-                   {
-                       return CurrentClient != null;
-                   }
-                   ));
             }
         }
         #endregion
