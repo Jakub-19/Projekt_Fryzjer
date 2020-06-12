@@ -140,6 +140,8 @@
     <Compile Include="ViewModel\ViewModelBase\EventRaiser.cs" />
     <Compile Include="ViewModel\ViewModelBase\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModelBase\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewsViewModels\ViewActualStockViewModel.cs" />
+    <Compile Include="ViewModel\ViewsViewModels\ViewAuthorsViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomerAddViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomerSearchViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomersViewModel.cs" />
@@ -147,6 +149,13 @@
     <Compile Include="ViewModel\ViewsViewModels\ViewMenuWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewProductSearchViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewServiceDoneViewModel.cs" />
+    <Compile Include="ViewModel\ViewsViewModels\ViewServicesHistoryViewModel.cs" />
+    <Compile Include="Views\ViewActualStock.xaml.cs">
+      <DependentUpon>ViewActualStock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewAuthors.xaml.cs">
+      <DependentUpon>ViewAuthors.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewCustomerAdd.xaml.cs">
       <DependentUpon>ViewCustomerAdd.xaml</DependentUpon>
     </Compile>
@@ -167,6 +176,9 @@
     </Compile>
     <Compile Include="Views\ViewServiceDone.xaml.cs">
       <DependentUpon>ViewServiceDone.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewServicesHistory.xaml.cs">
+      <DependentUpon>ViewServicesHistory.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +201,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\UsedProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewActualStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewAuthors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,6 +237,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewServiceDone.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewServicesHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

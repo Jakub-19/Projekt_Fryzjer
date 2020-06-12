@@ -29,7 +29,8 @@
                     <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMainStockAddDeliveryButtonText, Mode=OneTime}" FontSize="50"/>
                 </Grid>
             </Button>
-            <Button Margin="15,40,15,15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100">
+            <Button Margin="15,40,15,15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
+                    Command="{Binding GotoViewActualStockCommand}">
                 <Grid Width="700">
                     <material:PackIcon Kind="TextBoxSearch" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>

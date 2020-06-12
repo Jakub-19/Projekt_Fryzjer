@@ -22,6 +22,9 @@ namespace FryzjerManager.ViewModel
         private ICommand _gotoViewMainStockCommand;
         private ICommand _gotoPreviousViewCommand;
         private ICommand _gotoViewCustomerSearchCommand;
+        private ICommand _gotoViewServicesHistoryCommand;
+        private ICommand _gotoViewActualStockCommand;
+        private ICommand _gotoViewAuthorsCommand;
         private ICommand _gotoViewProductSearchCommand;
         private object _currentView;
         private object _previousView;
@@ -32,6 +35,9 @@ namespace FryzjerManager.ViewModel
         private object _viewServiceDone;
         private object _viewMainStock;
         private object _viewProductSearch;
+        private object _viewServicesHistory;
+        private object _viewActualStock;
+        private object _viewAuthors;
 
         public MainWindowViewModel()
         {
@@ -42,6 +48,9 @@ namespace FryzjerManager.ViewModel
             _viewMainStock = new V.ViewMainStock();
             _viewCustomerSearch = new V.ViewCustomerSearch();
             _viewProductSearch = new V.ViewProductSearch();
+            _viewServicesHistory = new V.ViewServicesHistory();
+            _viewActualStock = new V.ViewActualStock();
+            _viewAuthors = new V.ViewAuthors();
 
             CurrentView = _viewMenuWindow;
         }
@@ -295,6 +304,39 @@ namespace FryzjerManager.ViewModel
                    }));
             }
         }
+        public ICommand GotoViewServicesHistoryCommand
+        {
+            get
+            {
+                return _gotoViewServicesHistoryCommand ?? (_gotoViewServicesHistoryCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewServicesHistory();
+                   }));
+            }
+        }
+        public ICommand GotoViewActualStockCommand
+        {
+            get
+            {
+                return _gotoViewActualStockCommand ?? (_gotoViewActualStockCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewActualStock();
+                   }));
+            }
+        }
+        public ICommand GotoViewAuthorsCommand
+        {
+            get
+            {
+                return _gotoViewAuthorsCommand ?? (_gotoViewAuthorsCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewAuthors();
+                   }));
+            }
+        }
         public ICommand GotoViewCustomerSearchCommand
         {
             get
@@ -303,17 +345,6 @@ namespace FryzjerManager.ViewModel
                    x =>
                    {
                        GotoViewCustomerSearch();
-                   }));
-            }
-        }
-        public ICommand GotoViewProductSearchCommand
-        {
-            get
-            {
-                return _gotoViewProductSearchCommand ?? (_gotoViewProductSearchCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewProductSearch();
                    }));
             }
         }
@@ -427,6 +458,21 @@ namespace FryzjerManager.ViewModel
         {
             _previousView = CurrentView;
             CurrentView = _viewMainStock;
+        }
+        private void GotoViewServicesHistory()
+        {
+            _previousView = CurrentView;
+            CurrentView = _viewServicesHistory;
+        }
+        private void GotoViewActualStock()
+        {
+            _previousView = CurrentView;
+            CurrentView = _viewActualStock;
+        }
+        private void GotoViewAuthors()
+        {
+            _previousView = CurrentView;
+            CurrentView = _viewAuthors;
         }
         #endregion
     }

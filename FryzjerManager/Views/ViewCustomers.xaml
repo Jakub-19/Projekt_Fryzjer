@@ -30,7 +30,8 @@
                     <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewCustomersAddCustomerButtonText, Mode=OneTime}" FontSize="50"/>
                 </Grid>
             </Button>
-            <Button Margin="15,40,15,15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100">
+            <Button Margin="15,40,15,15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
+                    Command="{Binding GotoViewServicesHistoryCommand}">
                 <Grid Width="700">
                     <material:PackIcon Kind="History" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
@@ -40,6 +41,7 @@
                     <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewCustomersServicesHistoryButtonText, Mode=OneTime}" FontSize="50"/>
                 </Grid>
             </Button>
+            
         </StackPanel>
     </Grid>
 </UserControl>

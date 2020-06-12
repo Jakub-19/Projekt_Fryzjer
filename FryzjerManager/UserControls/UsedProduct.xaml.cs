@@ -24,5 +24,11 @@ namespace FryzjerManager.UserControls
         {
             InitializeComponent();
         }
+        public static readonly DependencyProperty productName = DependencyProperty.Register("ProductName", typeof(string), typeof(TitleBar), new FrameworkPropertyMetadata(null));
+        public string ProductName
+        {
+            get { return (string)GetValue(productName); }
+            set { SetValue(productName, value); }
+        }
     }
 }
