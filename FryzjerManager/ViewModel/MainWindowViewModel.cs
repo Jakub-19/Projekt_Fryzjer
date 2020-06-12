@@ -98,7 +98,12 @@ namespace FryzjerManager.ViewModel
                        ClientSurname = CurrentClient.LastName;
                        ClientPhone = CurrentClient.PhoneNumber;
                        GotoViewServiceDone();
-                   }));
+                   },
+                   x=>
+                   {
+                       return CurrentClient != null;
+                   }
+                   ));
             }
         }
         #endregion
@@ -135,7 +140,7 @@ namespace FryzjerManager.ViewModel
         Inventory inventory = new Inventory();
         private List<SingleUseProduct> usedSingleUseProducts = new List<SingleUseProduct>();
         private List<Product> usedProducts = new List<Product>();
-        private List<SingleUseProduct> _allProductsRecord;//=new List<SingleUseProduct>();
+        private List<SingleUseProduct> _allProductsRecord;
 
         public ObservableCollection<SingleUseProduct> AllProductsRecord
         {
