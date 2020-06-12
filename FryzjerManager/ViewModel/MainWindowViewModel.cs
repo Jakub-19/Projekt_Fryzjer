@@ -72,6 +72,13 @@ namespace FryzjerManager.ViewModel
         public string ClientSurname { get; set; }
         public string ClientPhone { get; set; }
         public Client CurrentClient { get; set; }
+        private void ClientDataClear()
+        {
+            ClientName = "";
+            ClientSurname = "";
+            ClientPhone = "";
+            CurrentClient = null;
+        }
         #region Search
         private ICommand _searchClient;
         public ICommand SearchClient
@@ -118,9 +125,10 @@ namespace FryzjerManager.ViewModel
                    x =>
                    {
                        clientRecord.AddNew(ClientName, ClientSurname, ClientPhone);
-                       ClientName = "";
-                       ClientSurname = "";
-                       ClientPhone = "";
+                       //ClientName = "";
+                       //ClientSurname = "";
+                       //ClientPhone = "";
+                       ClientDataClear();
                        OnPropertyChanged(nameof(ClientName));
                        OnPropertyChanged(nameof(ClientSurname));
                        OnPropertyChanged(nameof(ClientPhone));
@@ -141,7 +149,10 @@ namespace FryzjerManager.ViewModel
         private List<SingleUseProduct> usedSingleUseProducts = new List<SingleUseProduct>();
         private List<Product> usedProducts = new List<Product>();
         private List<SingleUseProduct> _allProductsRecord;
-
+        private void InventoryDataVlear()
+        {
+            ProductName = "";
+        }
         public ObservableCollection<SingleUseProduct> AllProductsRecord
         {
             get
@@ -433,9 +444,7 @@ namespace FryzjerManager.ViewModel
         }
         private void GotoViewCustomerSearch()
         {
-            ClientName = "";
-            ClientSurname = "";
-            ClientPhone = "";
+            ClientDataClear();
             _previousView = CurrentView;
             CurrentView = _viewCustomerSearch;
         }
@@ -446,6 +455,7 @@ namespace FryzjerManager.ViewModel
         }
         private void GotoViewCustomerAdd()
         {
+            ClientDataClear();
             _previousView = CurrentView;
             CurrentView = _viewCustomerAdd;
         }
