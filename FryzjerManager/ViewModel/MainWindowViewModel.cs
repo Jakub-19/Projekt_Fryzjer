@@ -149,6 +149,7 @@ namespace FryzjerManager.ViewModel
         private List<SingleUseProduct> usedSingleUseProducts = new List<SingleUseProduct>();
         private List<Product> usedProducts = new List<Product>();
         private bool IsSingleProducts;
+        public SingleUseProduct CurrentProduct { get; set; }
         private void InventoryDataClear()
         {
             ProductName = "";
@@ -245,6 +246,26 @@ namespace FryzjerManager.ViewModel
                        }
                        OnPropertyChanged(nameof(AllProductsRecord));
                    }));
+            }
+        }
+        private ICommand _selectProduct;
+        public ICommand SelectProduct
+        {
+            get
+            {
+                return _selectProduct ?? (_selectProduct = new RelayCommand(
+                   x =>
+                   {
+                       ClientName = CurrentClient.Name;
+                       ClientSurname = CurrentClient.LastName;
+                       ClientPhone = CurrentClient.PhoneNumber;
+                       GotoViewServiceDone();
+                   },
+                   x =>
+                   {
+                       return CurrentClient != null;
+                   }
+                   ));
             }
         }
         #endregion
