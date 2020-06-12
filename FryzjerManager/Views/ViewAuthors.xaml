@@ -21,13 +21,64 @@
             <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
         </Grid>
 
-        <Label Grid.Row="1" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
-               Content="Karolina Prusakowska"/>
-        <Label Grid.Row="2" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
-               Content="Karolina Woźniak"/>
-        <Label Grid.Row="3" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"
-               Content="Jakub Wadas"/>
-        <TextBlock x:Name="_box" FontSize="64" Text="Krzysztof Grzesica" Grid.Row="4">
+        <TextBlock Grid.Row="1" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="410" TextAlignment="Center" HorizontalAlignment="Left"
+                   Text="Karolina Prusakowska">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFB62F47" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+            <TextBlock.RenderTransform>
+                <TranslateTransform x:Name="AnimatedTranslateTransform3" X="0" Y="0" />
+            </TextBlock.RenderTransform>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="AnimatedTranslateTransform3" 
+                                Storyboard.TargetProperty="X"
+                                From="0" To="614" Duration="0:0:2" 
+                                AutoReverse="True" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+        <TextBlock Grid.Row="2" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="330" TextAlignment="Center" HorizontalAlignment="Left"
+                   Text="Karolina Woźniak">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF49992B" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+            <TextBlock.RenderTransform>
+                <TranslateTransform x:Name="AnimatedTranslateTransform4" X="0" Y="0" />
+            </TextBlock.RenderTransform>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="AnimatedTranslateTransform4" 
+                                Storyboard.TargetProperty="X"
+                                From="0" To="694" Duration="0:0:3" 
+                                AutoReverse="True" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+        <TextBlock Grid.Row="3" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="270" TextAlignment="Center" HorizontalAlignment="Left"
+                   Text="Jakub Wadas">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF977575" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
             <TextBlock.RenderTransform>
                 <TranslateTransform x:Name="AnimatedTranslateTransform" X="0" Y="0" />
             </TextBlock.RenderTransform>
@@ -36,10 +87,35 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <DoubleAnimation
-                    Storyboard.TargetName="AnimatedTranslateTransform" 
-                    Storyboard.TargetProperty="X"
-                    From="-300" To="300" Duration="0:0:5" 
-                    AutoReverse="True" RepeatBehavior="Forever" />
+                                Storyboard.TargetName="AnimatedTranslateTransform" 
+                                Storyboard.TargetProperty="X"
+                                From="0" To="754" Duration="0:0:4" 
+                                AutoReverse="True" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+        <TextBlock x:Name="AuthorKrzysztof" Grid.Row="4" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="370" TextAlignment="Center" HorizontalAlignment="Left"
+                   Text="Krzysztof Grzesica">
+            <TextBlock.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF8F71B4" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Foreground>
+            <TextBlock.RenderTransform>
+                <TranslateTransform x:Name="AnimatedTranslateTransform1" X="0" Y="0" />
+            </TextBlock.RenderTransform>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="TextBlock.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="AnimatedTranslateTransform1" 
+                                Storyboard.TargetProperty="X"
+                                From="0" To="654" Duration="0:0:3.4" 
+                                AutoReverse="True" RepeatBehavior="Forever" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
