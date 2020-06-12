@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="FryzjerManager.Views.ViewProductSearch"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FryzjerManager.Views"
+             xmlns:title="clr-namespace:FryzjerManager.UserControls"
+             xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.ColumnSpan="2">
+            <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
+        </Grid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <!--Do zmiany na słownik-->
+            <Label Grid.Row="1" FontSize="30" VerticalAlignment="Center" Margin="10,0,10,0"
+               Content="Nazwa szukanego produktu:"/>
+            <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" >
+                <TextBox Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="400" Height="40"
+                       Text="{Binding Path=ClientName}"/>
+            </Border>
+            <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="20,0,0,0"
+                        Command="{Binding SearchClient}">
+                <Grid Width="150">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <material:PackIcon Kind="DatabaseSearch" VerticalAlignment="Center">
+                        <material:PackIcon.LayoutTransform>
+                            <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
+                        </material:PackIcon.LayoutTransform>
+                    </material:PackIcon>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Szukaj" FontSize="23"/>
+                </Grid>
+            </Button>
+        </StackPanel>
+        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=Clients}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="Nazwa" Width="800" DisplayMemberBinding="{Binding Path=LastName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180">
+            <Grid Width="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <material:PackIcon Kind="Check" VerticalAlignment="Center">
+                    <material:PackIcon.LayoutTransform>
+                        <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
+                    </material:PackIcon.LayoutTransform>
+                </material:PackIcon>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=ViewServiceDoneAcceptButtonText}" FontSize="23"/>
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

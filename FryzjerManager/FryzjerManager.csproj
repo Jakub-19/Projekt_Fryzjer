@@ -145,6 +145,7 @@
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomersViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewMainStockViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewMenuWindowViewModel.cs" />
+    <Compile Include="ViewModel\ViewsViewModels\ViewProductSearchViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewServiceDoneViewModel.cs" />
     <Compile Include="Views\ViewCustomerAdd.xaml.cs">
       <DependentUpon>ViewCustomerAdd.xaml</DependentUpon>
@@ -160,6 +161,9 @@
     </Compile>
     <Compile Include="Views\ViewMenuWindow.xaml.cs">
       <DependentUpon>ViewMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewProductSearch.xaml.cs">
+      <DependentUpon>ViewProductSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewServiceDone.xaml.cs">
       <DependentUpon>ViewServiceDone.xaml</DependentUpon>
@@ -205,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewProductSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

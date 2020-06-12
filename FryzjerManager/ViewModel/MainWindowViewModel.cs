@@ -22,6 +22,7 @@ namespace FryzjerManager.ViewModel
         private ICommand _gotoViewMainStockCommand;
         private ICommand _gotoPreviousViewCommand;
         private ICommand _gotoViewCustomerSearchCommand;
+        private ICommand _gotoViewProductSearchCommand;
         private object _currentView;
         private object _previousView;
         private object _viewMenuWindow;
@@ -30,6 +31,7 @@ namespace FryzjerManager.ViewModel
         private object _viewCustomerSearch;
         private object _viewServiceDone;
         private object _viewMainStock;
+        private object _viewProductSearch;
 
         public MainWindowViewModel()
         {
@@ -39,6 +41,7 @@ namespace FryzjerManager.ViewModel
             _viewServiceDone = new V.ViewServiceDone();
             _viewMainStock = new V.ViewMainStock();
             _viewCustomerSearch = new V.ViewCustomerSearch();
+            _viewProductSearch = new V.ViewProductSearch();
 
             CurrentView = _viewMenuWindow;
         }
@@ -212,7 +215,7 @@ namespace FryzjerManager.ViewModel
         public string ViewServiceDoneAmountLabelContent{
             get { return R.ViewServiceDoneAmountLabelContent; }}
         #endregion
-
+        #region ICommands by Krzysztof
         public ICommand GotoViewMenuWindowCommand
         {
             get
@@ -232,6 +235,17 @@ namespace FryzjerManager.ViewModel
                    x =>
                    {
                        GotoViewCustomerSearch();
+                   }));
+            }
+        }
+        public ICommand GotoViewProductSearchCommand
+        {
+            get
+            {
+                return _gotoViewProductSearchCommand ?? (_gotoViewProductSearchCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewProductSearch();
                    }));
             }
         }
@@ -291,7 +305,7 @@ namespace FryzjerManager.ViewModel
                    }));
             }
         }
-
+        #endregion
         public object CurrentView
         {
             get { return _currentView; }
@@ -325,6 +339,11 @@ namespace FryzjerManager.ViewModel
             ClientPhone = "";
             _previousView = CurrentView;
             CurrentView = _viewCustomerSearch;
+        }
+        private void GotoViewProductSearch()
+        {
+            _previousView = CurrentView;
+            CurrentView = _viewProductSearch;
         }
         private void GotoViewCustomerAdd()
         {

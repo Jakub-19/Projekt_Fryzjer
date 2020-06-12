@@ -30,7 +30,12 @@
             <localview:ViewMainStock/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type local:ViewCustomerSearchViewModel}">
+            <localview:ViewMainStock/>
+        </DataTemplate>
         
+
+
     </Window.Resources>
 
 
