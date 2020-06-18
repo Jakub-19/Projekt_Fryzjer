@@ -10,14 +10,12 @@ namespace FryzjerManager.Model
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public int Time { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
 
-        public Service(int id, string name, int time, int price)
+        public Service(int id, string name, double price)
         {
             ID = id;
             Name = name;
-            Time = time;
             Price = price;
         }
 

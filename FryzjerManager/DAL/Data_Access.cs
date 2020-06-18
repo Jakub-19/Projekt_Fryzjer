@@ -8,6 +8,10 @@ using MySql.Data.MySqlClient;
 namespace FryzjerManager.DAL
 {
     using Model;
+    using Renci.SshNet.Security.Cryptography;
+    using System.Drawing.Design;
+    using System.Runtime.InteropServices;
+
     class Data_Access
     {
         private static Data_Access instance;
@@ -374,7 +378,7 @@ namespace FryzjerManager.DAL
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                Service service = new Service(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3));
+                Service service = new Service(rdr.GetInt32(0), rdr.GetString(1),  rdr.GetInt32(2));
                 services.Add(service);
                 Console.WriteLine(service.ToString());
             }
@@ -385,53 +389,72 @@ namespace FryzjerManager.DAL
         #region Visits
         public void AddVisit(Visit visit)
         {
-            int? id_c = visit.Person.ID;
-            int id_s = visit.TypeOfService.ID;
-            var date = visit.Date;
-            var price = visit.FullPrice;
-            try
+            var id_c = visit.Person.ID;
+            var id_v = visit.ID;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = con;
+
+            cmd.CommandText = "INSERT INTO visits (id_c,date,price) VALUES ("+id_c+","+visit.Date+","+visit.FullPrice+")";
+            cmd.ExecuteNonQuery();
+            foreach(var s in visit.TypeOfService)
             {
-                con.Open();
+                cmd.CommandText = "INSERT INTO servicevisit (id_s,id_v) VALUES (" + s.ID + "," + visit.ID + ")";
+                cmd.ExecuteNonQuery();
             }
-            catch { }
-            string command = "INSERT INTO visits(id_c, id_s, date, price) VALUES(" + id_c + "," + id_s + "," + date + "," + price + ")";
-            MySqlCommand cmd = new MySqlCommand(command, con);
-            MySqlDataReader rdr = cmd.ExecuteReader();
             con.Close();
+            // Co z tymi produktami?
         }
         public List<Visit> ShowVisitsForClient(Client client)
         {
             List<Visit> visits = new List<Visit>();
-            int? id_c = client.ID;
+            List<Service> services = new List<Service>();
+            con.Open();
+            string command = "SELECT id_v, price,date " +
+                "FROM visits " +
+                "WHERE " +
+                "id_c=" + client.ID;
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Visit visit = new Visit(rdr.GetInt32(0), rdr.GetDouble(1), client, services, rdr.GetDateTime(2));
+                visits.Add(visit);
+            }
+            foreach (var v in visits)
+            {
+                v.TypeOfService = GetServicesFromOneVisit(v.ID);
+            }
+
+            return visits;
+        }
+        public List<Service> GetServicesFromOneVisit(int id_v)
+        {
+            List<Service> services = new List<Service>();
             try
             {
                 con.Open();
             }
             catch { }
-            string command = "select v.id_v, v.id_s, s.name, s.price, s.time, v.date, v.price " +
-                "from visits v  left join services s " +
-                "on v.id_s=s.id_s " +
-                "where id_c like \"" + id_c + "\"";
-            int id_v, id_s, price, time, fullprice;
-            string name;
-            DateTime date;
+            string command = "SELECT s.id_s,s.name, s.price" +
+                "FROM visits v,services s, servicevisit sv " +
+                "WHERE " +
+                "s.id_s=sv.id_s " +
+                "AND " +
+                "v.id_v=sv.id_v " +
+                "AND " +
+                "v.id_v="+id_v;
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                id_v = rdr.GetInt32(0);
-                id_s = rdr.GetInt32(1);
-                name = rdr.GetString(2);
-                price = rdr.GetInt32(3);
-                time = rdr.GetInt32(4);
-                date = rdr.GetDateTime(5);
-                fullprice = rdr.GetInt32(6);
-                Service service = new Service(id_s, name, time, price);
-                Visit visit = new Visit(id_v, name, fullprice, client, service, date);
-                visits.Add(visit);
-
+                Service service = new Service(rdr.GetInt32(0), rdr.GetString(1), rdr.GetDouble(2));
+                services.Add(service);
             }
-            return visits;
+
+            rdr.Close();
+            con.Close();
+            return services;
         }
         #endregion
     }

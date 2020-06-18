@@ -15,16 +15,16 @@ namespace FryzjerManager.Model
         //public int ID_u { get; set; }
         //Z id uslugi zrobilbym podobnie jak z klientem
         //Nie powinno byc z tym problemu przy komunikacji z baza danych
-        public Service TypeOfService { get; set; }
-        public string NameOfService { get; set; }
+        public List<Service> TypeOfService { get; set; }
+        //public string NameOfService { get; set; }
         public DateTime Date { get; set; }
-        public int FullPrice { get; set; }
-        public Visit(int id,  string nameOfService, int fullPrice, Client client, Service service, DateTime date)
+        public double FullPrice { get; set; }
+        public Visit(int id,  double fullPrice, Client client, List<Service> service, DateTime date)
         {
             ID = id;
             //ID_k = id_k;
             //ID_u = id_u;
-            NameOfService = nameOfService;
+            //NameOfService = nameOfService;
             FullPrice = fullPrice;
             Person = client;
             TypeOfService = service;
