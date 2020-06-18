@@ -18,6 +18,8 @@ namespace FryzjerManager.ViewModel
         private ICommand _gotoViewMenuWindowCommand;
         private ICommand _gotoViewCustomersCommand;
         private ICommand _gotoViewCustomerAddCommand;
+        private ICommand _gotoViewDeliveryAddCommand;
+        private ICommand _gotoViewNewProductAddCommand;
         private ICommand _gotoViewServiceDoneCommand;
         private ICommand _gotoViewMainStockCommand;
         private ICommand _gotoPreviousViewCommand;
@@ -31,6 +33,7 @@ namespace FryzjerManager.ViewModel
         private object _viewMenuWindow;
         private object _viewCustomers;
         private object _viewCustomerAdd;
+        private object _viewNewProductAdd;
         private object _viewCustomerSearch;
         private object _viewServiceDone;
         private object _viewMainStock;
@@ -38,6 +41,7 @@ namespace FryzjerManager.ViewModel
         private object _viewServicesHistory;
         private object _viewActualStock;
         private object _viewAuthors;
+        private object _viewDeliveryAdd;
 
         public MainWindowViewModel()
         {
@@ -51,6 +55,8 @@ namespace FryzjerManager.ViewModel
             _viewServicesHistory = new V.ViewServicesHistory();
             _viewActualStock = new V.ViewActualStock();
             _viewAuthors = new V.ViewAuthors();
+            _viewDeliveryAdd = new V.ViewDeliveryAdd();
+            _viewNewProductAdd = new V.ViewNewProductAdd();
 
             CurrentView = _viewMenuWindow;
         }
@@ -421,6 +427,28 @@ namespace FryzjerManager.ViewModel
                    }));
             }
         }
+        public ICommand GotoViewNewProductAddCommand
+        {
+            get
+            {
+                return _gotoViewNewProductAddCommand ?? (_gotoViewNewProductAddCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewNewProductAdd();
+                   }));
+            }
+        }
+        public ICommand GotoViewDeliveryAddCommand
+        {
+            get
+            {
+                return _gotoViewDeliveryAddCommand ?? (_gotoViewDeliveryAddCommand = new RelayCommand(
+                   x =>
+                   {
+                       GotoViewDeliveryAdd();
+                   }));
+            }
+        }
         public ICommand GotoViewCustomersCommand
         {
             get
@@ -487,6 +515,11 @@ namespace FryzjerManager.ViewModel
             _previousView = CurrentView;
             CurrentView = _viewCustomerSearch;
         }
+        private void GotoViewDeliveryAdd()
+        {
+            _previousView = CurrentView;
+            CurrentView = _viewDeliveryAdd;
+        }
         private void GotoViewProductSearch()
         {
             _previousView = CurrentView;
@@ -497,6 +530,11 @@ namespace FryzjerManager.ViewModel
             ClientDataClear();
             _previousView = CurrentView;
             CurrentView = _viewCustomerAdd;
+        }
+        private void GotoViewNewProductAdd()
+        {
+            _previousView = CurrentView;
+            CurrentView = _viewNewProductAdd;
         }
         private void GotoViewServiceDone()
         {
