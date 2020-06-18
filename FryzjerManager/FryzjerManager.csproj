@@ -142,8 +142,10 @@
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomerAddViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomerSearchViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewCustomersViewModel.cs" />
+    <Compile Include="ViewModel\ViewsViewModels\ViewDeliveryAddViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewMainStockViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewMenuWindowViewModel.cs" />
+    <Compile Include="ViewModel\ViewsViewModels\ViewNewProductAddViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewProductSearchViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewServiceDoneViewModel.cs" />
     <Compile Include="ViewModel\ViewsViewModels\ViewServicesHistoryViewModel.cs" />
@@ -162,11 +164,17 @@
     <Compile Include="Views\ViewCustomerSearch.xaml.cs">
       <DependentUpon>ViewCustomerSearch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewDeliveryAdd.xaml.cs">
+      <DependentUpon>ViewDeliveryAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewMainStock.xaml.cs">
       <DependentUpon>ViewMainStock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewMenuWindow.xaml.cs">
       <DependentUpon>ViewMenuWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewNewProductAdd.xaml.cs">
+      <DependentUpon>ViewNewProductAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewProductSearch.xaml.cs">
       <DependentUpon>ViewProductSearch.xaml</DependentUpon>
@@ -217,11 +225,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ViewDeliveryAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ViewMainStock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewMenuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewNewProductAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -58,15 +58,24 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=Clients}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Data" Width="200" DisplayMemberBinding="{Binding Path=Name}" />
-                    <GridViewColumn Header="Nazwa" Width="450" DisplayMemberBinding="{Binding Path=LastName}"/>
-                    <GridViewColumn Header="Cena" Width="100" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListView FontSize="25" ItemsSource="{Binding Path=Clients}"  SelectedItem="{Binding Path=CurrentClient, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Data" Width="200" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Header="Cena" Width="100" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <ListBox Grid.Column="1" ItemsSource="{Binding Path=CurrentClient.ListaUslug}">
+                
+            </ListBox>
+        </Grid>
+        
         
     </Grid>
 </UserControl>
