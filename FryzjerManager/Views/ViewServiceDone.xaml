@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
@@ -60,6 +61,15 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label FontSize="25" VerticalAlignment="Center" Margin="10,0,0,0"
+               Content="Data wizyty: "/>
+            <DatePicker Grid.Column="1" HorizontalAlignment="Left" Width="140" FontSize="20"/>
+        </Grid>
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -182,7 +192,7 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="4">
             <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180">
                 <Grid Width="150">
                     <Grid.ColumnDefinitions>

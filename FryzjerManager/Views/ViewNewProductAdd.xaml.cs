@@ -24,5 +24,17 @@ namespace FryzjerManager.Views
         {
             InitializeComponent();
         }
+        private void SingleUseCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            MultiUseCheckbox.IsChecked = false;
+            CapacityTextBox.IsEnabled = false;
+            CapacityTextBox.Text = "";
+        }
+
+        private void MultiUseCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            SingleUseCheckbox.IsChecked = false;
+            CapacityTextBox.IsEnabled = true;
+        }
     }
 }

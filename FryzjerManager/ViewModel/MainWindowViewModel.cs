@@ -43,6 +43,7 @@ namespace FryzjerManager.ViewModel
         private object _viewAuthors;
         private object _viewDeliveryAdd;
 
+
         public MainWindowViewModel()
         {
             _viewMenuWindow = new V.ViewMenuWindow();
