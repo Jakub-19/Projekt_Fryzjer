@@ -48,7 +48,7 @@
 
         <vm:ViewServicesHistoryViewModel x:Key="vm12"/>
         <v:ViewServicesHistory x:Key="view12" ViewModel="{StaticResource vm12}"/>
-        
+
 
         <ObjectDataProvider ObjectType="{x:Type vmwwm:MainWindowViewModel}"  x:Key="mainVM">
             <ObjectDataProvider.ConstructorParameters>
@@ -81,11 +81,6 @@
         </ObjectDataProvider >
 
     </Window.Resources>
-
-
-    <Window.DataContext>
-        <mainview:MainWindowViewModel />
-    </Window.DataContext>
 
     <Grid Background="#FFCFCFCF" DataContext="{StaticResource mainVM}">
 

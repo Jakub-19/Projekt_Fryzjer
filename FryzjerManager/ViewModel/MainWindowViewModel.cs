@@ -314,24 +314,63 @@ namespace FryzjerManager.ViewModel
             }
         }
         #endregion
-
-        public MainWindowViewModel()
+        #region konstruktor
+        public MainWindowViewModel(V.ViewActualStock viewActualStock, VM.ViewActualStockViewModel viewActualStockViewModel,
+            V.ViewAuthors viewAuthors, VM.ViewAuthorsViewModel viewAuthorsViewModel,
+            V.ViewCustomerAdd viewCustomerAdd, VM.ViewCustomerAddViewModel viewCustomerAddViewModel,
+            V.ViewCustomerSearch viewCustomerSearch, VM.ViewCustomerSearchViewModel viewCustomerSearchViewModel,
+            V.ViewCustomers viewCustomers, VM.ViewCustomersViewModel viewCustomersViewModel,
+            V.ViewDeliveryAdd viewDeliveryAdd, VM.ViewDeliveryAddViewModel viewDeliveryAddViewModel,
+            V.ViewMainStock viewMainStock, VM.ViewMainStockViewModel viewMainStockViewModel,
+            V.ViewMenuWindow viewMenuWindow, VM.ViewMenuWindowViewModel viewMenuWindowViewModel,
+            V.ViewNewProductAdd viewNewProductAdd, VM.ViewNewProductAddViewModel viewNewProductAddViewModel,
+            V.ViewProductSearch viewProductSearch, VM.ViewProductSearchViewModel viewProductSearchViewModel,
+            V.ViewServiceDone viewServiceDone, VM.ViewServiceDoneViewModel viewServiceDoneViewModel,
+            V.ViewServicesHistory viewServicesHistory, VM.ViewServicesHistoryViewModel viewServicesHistoryViewModel)
         {
-            _viewMenuWindow = new V.ViewMenuWindow();
-            _viewCustomers = new V.ViewCustomers();
-            _viewCustomerAdd = new V.ViewCustomerAdd();
-            _viewServiceDone = new V.ViewServiceDone();
-            _viewMainStock = new V.ViewMainStock();
-            _viewCustomerSearch = new V.ViewCustomerSearch();
-            _viewProductSearch = new V.ViewProductSearch();
-            _viewServicesHistory = new V.ViewServicesHistory();
-            _viewActualStock = new V.ViewActualStock();
-            _viewAuthors = new V.ViewAuthors();
-            _viewDeliveryAdd = new V.ViewDeliveryAdd();
-            _viewNewProductAdd = new V.ViewNewProductAdd();
+            CurrentView = viewMenuWindow;
 
-            CurrentView = _viewMenuWindow;
+            ViewActualStock = viewActualStock;
+            ViewActualStockViewModel = viewActualStockViewModel;
+
+            ViewAuthors = viewAuthors;
+            ViewAuthorsViewModel = viewAuthorsViewModel;
+
+            ViewCustomerAdd = viewCustomerAdd;
+            ViewCustomerAddViewModel = viewCustomerAddViewModel;
+
+            ViewCustomerSearch = viewCustomerSearch;
+            ViewCustomerSearchViewModel = viewCustomerSearchViewModel;
+
+            ViewCustomers = viewCustomers;
+            ViewCustomersViewModel = viewCustomersViewModel;
+
+            ViewDeliveryAdd = viewDeliveryAdd;
+            ViewDeliveryAddViewModel = viewDeliveryAddViewModel;
+
+            ViewMainStock = viewMainStock;
+            ViewMainStockViewModel = viewMainStockViewModel;
+
+            ViewMenuWindow = viewMenuWindow;
+            ViewMenuWindowViewModel = viewMenuWindowViewModel;
+
+            ViewNewProductAdd = viewNewProductAdd;
+            ViewNewProductAddViewModel = viewNewProductAddViewModel;
+
+            ViewProductSearch = viewProductSearch;
+            ViewProductSearchViewModel = viewProductSearchViewModel;
+
+            ViewServiceDone = viewServiceDone;
+            ViewServiceDoneViewModel = viewServiceDoneViewModel;
+
+            ViewServicesHistory = viewServicesHistory;
+            ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
+
+            
+
+            PreviousView = CurrentView;
         }
+        #endregion
         #region ClientRecord
         private ClientRecord clientRecord = new ClientRecord();
         public ObservableCollection<Client> Clients
@@ -382,9 +421,9 @@ namespace FryzjerManager.ViewModel
                        ClientName = CurrentClient.Name;
                        ClientSurname = CurrentClient.LastName;
                        ClientPhone = CurrentClient.PhoneNumber;
-                       GotoViewServiceDone();
+                       //GotoViewServiceDone();
                    },
-                   x=>
+                   x =>
                    {
                        return CurrentClient != null;
                    }
@@ -411,7 +450,7 @@ namespace FryzjerManager.ViewModel
                        OnPropertyChanged(nameof(ClientSurname));
                        OnPropertyChanged(nameof(ClientPhone));
                        //Informacja zwrotna przydalaby sie
-                       GotoPreviousView();
+                       //GotoPreviousView();
                    },
                    x =>
                    {
@@ -437,7 +476,7 @@ namespace FryzjerManager.ViewModel
             get
             {
                 ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
-                if(IsSingleProducts)
+                if (IsSingleProducts)
                 {
                     foreach (var v in inventory.SingleUseProducts)
                         list.Add(v);
@@ -450,8 +489,8 @@ namespace FryzjerManager.ViewModel
 
                 return list;
             }
-            set 
-            {}
+            set
+            { }
         }
         public ObservableCollection<SingleUseProduct> UsedSingleUseProducts
         {
@@ -487,7 +526,7 @@ namespace FryzjerManager.ViewModel
                    {
                        ProductName = "";
                        IsSingleProducts = true;
-                       GotoViewProductSearch();
+                       //GotoViewProductSearch();
                    }));
             }
         }
@@ -501,11 +540,11 @@ namespace FryzjerManager.ViewModel
                    {
                        ProductName = "";
                        IsSingleProducts = false;
-                       GotoViewProductSearch();
+                       //GotoViewProductSearch();
                    }));
             }
         }
-        public string ProductName{get;set;}
+        public string ProductName { get; set; }
         private ICommand _selectProduct;
         public ICommand SelectProduct
         {
@@ -522,7 +561,7 @@ namespace FryzjerManager.ViewModel
                        {
                            _usedProducts.Add(CurrentProduct as Product);
                        }
-                       GotoViewServiceDone();
+                       //GotoViewServiceDone();
                    },
                     x =>
                     {
@@ -531,7 +570,7 @@ namespace FryzjerManager.ViewModel
             }
         }
         private ICommand _searchProduct;
-        public ICommand  SearchProduct
+        public ICommand SearchProduct
         {
             get
             {
@@ -563,7 +602,7 @@ namespace FryzjerManager.ViewModel
 
                 return list;
             }
-            set {}
+            set { }
         }
         #endregion
         #region ResourcesTextNames
