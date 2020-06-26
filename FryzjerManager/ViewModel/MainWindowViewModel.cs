@@ -6,43 +6,227 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using FryzjerManager.Model;
+using System.Windows.Controls;
 
 namespace FryzjerManager.ViewModel
 {
     using RelayCommand = ViewModelBase.RelayCommand;
     using V = Views;
+    using VM = ViewsViewModels;
     using R = Properties.Resources;
 
     public class MainWindowViewModel : ViewModelBase.ViewModelBase
     {
-        private ICommand _gotoViewMenuWindowCommand;
-        private ICommand _gotoViewCustomersCommand;
-        private ICommand _gotoViewCustomerAddCommand;
-        private ICommand _gotoViewDeliveryAddCommand;
-        private ICommand _gotoViewNewProductAddCommand;
-        private ICommand _gotoViewServiceDoneCommand;
-        private ICommand _gotoViewMainStockCommand;
-        private ICommand _gotoPreviousViewCommand;
-        private ICommand _gotoViewCustomerSearchCommand;
-        private ICommand _gotoViewServicesHistoryCommand;
-        private ICommand _gotoViewActualStockCommand;
-        private ICommand _gotoViewAuthorsCommand;
-        private ICommand _gotoViewProductSearchCommand;
-        private object _currentView;
-        private object _previousView;
-        private object _viewMenuWindow;
-        private object _viewCustomers;
-        private object _viewCustomerAdd;
-        private object _viewNewProductAdd;
-        private object _viewCustomerSearch;
-        private object _viewServiceDone;
-        private object _viewMainStock;
-        private object _viewProductSearch;
-        private object _viewServicesHistory;
-        private object _viewActualStock;
-        private object _viewAuthors;
-        private object _viewDeliveryAdd;
+        private UserControl _currentView = null;
+        public UserControl CurrentView
+        {
+            get { return _currentView; }
+            set 
+            {   _currentView = value;
+                OnPropertyChanged(nameof(CurrentView));
+            }
+        }
 
+
+        private UserControl _previousView = null;
+        public UserControl PreviousView
+        {
+            get { return _previousView; }
+            set
+            {
+                _previousView = value;
+                OnPropertyChanged(nameof(PreviousView));
+            }
+        }
+
+
+        #region Widoki i ich VM'y
+        private V.ViewActualStock _viewActualStock = null;
+        public V.ViewActualStock ViewActualStock
+        {
+            get { return _viewActualStock; }
+            set
+            {
+                _viewActualStock = value;
+                OnPropertyChanged(nameof(ViewActualStock));
+            }
+        }
+        private VM.ViewActualStockViewModel _vievActualStockViewModel;
+        public VM.ViewActualStockViewModel ViewActualStockViewModel
+        {
+            get { return _vievActualStockViewModel; }
+            set 
+            { 
+                _vievActualStockViewModel = value; 
+                OnPropertyChanged(nameof(ViewActualStockViewModel)); 
+            }
+        }
+
+
+
+        private V.ViewAuthors _viewAuthors = null;
+        public V.ViewAuthors ViewAuthors
+        {
+            get { return _viewAuthors; }
+            set
+            {
+                _viewAuthors = value;
+                OnPropertyChanged(nameof(ViewAuthors));
+            }
+        }
+        private VM.ViewAuthorsViewModel _viewAuthorsViewModel;
+        public VM.ViewAuthorsViewModel ViewAuthorsViewModel
+        {
+            get { return _viewAuthorsViewModel; }
+            set
+            {
+                _viewAuthorsViewModel = value;
+                OnPropertyChanged(nameof(ViewAuthorsViewModel));
+            }
+        }
+
+
+
+        private V.ViewCustomerAdd _viewCustomerAdd = null;
+        public V.ViewCustomerAdd ViewCustomerAdd
+        {
+            get { return _viewCustomerAdd; }
+            set
+            {
+                _viewCustomerAdd = value;
+                OnPropertyChanged(nameof(ViewCustomerAdd));
+            }
+        }
+        private VM.ViewCustomerAddViewModel _viewCustomerAddViewModel;
+        public VM.ViewCustomerAddViewModel ViewCustomerAddViewModel
+        {
+            get { return _viewCustomerAddViewModel; }
+            set
+            {
+                _viewCustomerAddViewModel = value;
+                OnPropertyChanged(nameof(ViewCustomerAddViewModel));
+            }
+        }
+
+
+
+        private V.ViewCustomerSearch _viewCustomerSearch = null;
+        public V.ViewCustomerSearch ViewCustomerSearch
+        {
+            get { return _viewCustomerSearch; }
+            set
+            {
+                _viewCustomerSearch = value;
+                OnPropertyChanged(nameof(ViewCustomerSearch));
+            }
+        }
+        private VM.ViewCustomerSearchViewModel _viewCustomerSearchViewModel;
+        public VM.ViewCustomerSearchViewModel ViewCustomerSearchViewModel
+        {
+            get { return _viewCustomerSearchViewModel; }
+            set
+            {
+                _viewCustomerSearchViewModel = value;
+                OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
+            }
+        }
+
+
+
+
+        private V.ViewCustomers _viewCustomers = null;
+        public V.ViewCustomers ViewCustomers
+        {
+            get { return _viewCustomers; }
+            set
+            {
+                _viewCustomers = value;
+                OnPropertyChanged(nameof(ViewCustomers));
+            }
+        }
+        private VM.ViewCustomersViewModel _viewCustomersViewModel;
+        public VM.ViewCustomersViewModel ViewCustomersViewModel
+        {
+            get { return _viewCustomersViewModel; }
+            set
+            {
+                _viewCustomersViewModel = value;
+                OnPropertyChanged(nameof(ViewCustomersViewModel));
+            }
+        }
+
+
+
+
+        private V.ViewDeliveryAdd _viewDeliveryAdd = null;
+        public V.ViewDeliveryAdd ViewDeliveryAdd
+        {
+            get { return _viewDeliveryAdd; }
+            set
+            {
+                _viewDeliveryAdd = value;
+                OnPropertyChanged(nameof(ViewDeliveryAdd));
+            }
+        }
+        private VM.ViewDeliveryAddViewModel _viewDeliveryAddViewModel;
+        public VM.ViewDeliveryAddViewModel ViewDeliveryAddViewModel
+        {
+            get { return _viewDeliveryAddViewModel; }
+            set
+            {
+                _viewDeliveryAddViewModel = value;
+                OnPropertyChanged(nameof(ViewDeliveryAddViewModel));
+            }
+        }
+
+
+
+        private V.ViewMainStock _viewMainStock = null;
+        public V.ViewMainStock ViewMainStock
+        {
+            get { return _viewMainStock; }
+            set
+            {
+                _viewMainStock = value;
+                OnPropertyChanged(nameof(ViewMainStock));
+            }
+        }
+        private VM.ViewMainStockViewModel _viewMainStockViewModel;
+        public VM.ViewMainStockViewModel ViewMainStockViewModel
+        {
+            get { return _viewMainStockViewModel; }
+            set
+            {
+                _viewMainStockViewModel = value;
+                OnPropertyChanged(nameof(ViewMainStockViewModel));
+            }
+        }
+
+
+
+
+        private V.ViewMenuWindow _viewMenuWindow = null;
+        public V.ViewMenuWindow ViewMenuWindow
+        {
+            get { return _viewMenuWindow; }
+            set
+            {
+                _viewMenuWindow = value;
+                OnPropertyChanged(nameof(ViewMenuWindow));
+            }
+        }
+        private VM.ViewMenuWindowViewModel _viewMenuWindowViewModel;
+        public VM.ViewMenuWindowViewModel ViewMenuWindowViewModel
+        {
+            get { return _viewMenuWindowViewModel; }
+            set
+            {
+                _viewMenuWindowViewModel = value;
+                OnPropertyChanged(nameof(ViewMenuWindowViewModel));
+            }
+        }
+        
+        #endregion
 
         public MainWindowViewModel()
         {
@@ -349,219 +533,6 @@ namespace FryzjerManager.ViewModel
         public string ViewServiceDoneAmountLabelContent{
             get { return R.ViewServiceDoneAmountLabelContent; }}
         #endregion
-        #region ICommands by Krzysztof
-        public ICommand GotoViewMenuWindowCommand
-        {
-            get
-            {
-                return _gotoViewMenuWindowCommand ?? (_gotoViewMenuWindowCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewMenuWindow();
-                   }));
-            }
-        }
-        public ICommand GotoViewServicesHistoryCommand
-        {
-            get
-            {
-                return _gotoViewServicesHistoryCommand ?? (_gotoViewServicesHistoryCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewServicesHistory();
-                   }));
-            }
-        }
-        public ICommand GotoViewActualStockCommand
-        {
-            get
-            {
-                return _gotoViewActualStockCommand ?? (_gotoViewActualStockCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewActualStock();
-                   }));
-            }
-        }
-        public ICommand GotoViewAuthorsCommand
-        {
-            get
-            {
-                return _gotoViewAuthorsCommand ?? (_gotoViewAuthorsCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewAuthors();
-                   }));
-            }
-        }
-        public ICommand GotoViewCustomerSearchCommand
-        {
-            get
-            {
-                return _gotoViewCustomerSearchCommand ?? (_gotoViewCustomerSearchCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewCustomerSearch();
-                   }));
-            }
-        }
-        public ICommand GoBackCommand
-        {
-            get
-            {
-                return _gotoPreviousViewCommand ?? (_gotoPreviousViewCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoPreviousView();
-                   }));
-            }
-        }
-
-        public ICommand GotoViewCustomerAddCommand
-        {
-            get
-            {
-                return _gotoViewCustomerAddCommand ?? (_gotoViewCustomerAddCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewCustomerAdd();
-                   }));
-            }
-        }
-        public ICommand GotoViewNewProductAddCommand
-        {
-            get
-            {
-                return _gotoViewNewProductAddCommand ?? (_gotoViewNewProductAddCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewNewProductAdd();
-                   }));
-            }
-        }
-        public ICommand GotoViewDeliveryAddCommand
-        {
-            get
-            {
-                return _gotoViewDeliveryAddCommand ?? (_gotoViewDeliveryAddCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewDeliveryAdd();
-                   }));
-            }
-        }
-        public ICommand GotoViewCustomersCommand
-        {
-            get
-            {
-                return _gotoViewCustomersCommand ?? (_gotoViewCustomersCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewCustomers();
-                   }));
-            }
-        }
-        public ICommand GotoViewServiceDoneCommand
-        {
-            get
-            {
-                return _gotoViewServiceDoneCommand ?? (_gotoViewServiceDoneCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewServiceDone();
-                   }));
-            }
-        }
-        public ICommand GotoViewMainStockCommand
-        {
-            get
-            {
-                return _gotoViewMainStockCommand ?? (_gotoViewMainStockCommand = new RelayCommand(
-                   x =>
-                   {
-                       GotoViewMainStock();
-                   }));
-            }
-        }
-        #endregion
-        public object CurrentView
-        {
-            get { return _currentView; }
-            set
-            {
-                _currentView = value;
-                OnPropertyChanged(nameof(CurrentView));
-            }
-        }
-
-        #region GotoView Methods
-        private void GotoPreviousView()
-        {
-            CurrentView = _previousView;
-            _previousView = _viewMenuWindow;
-        }
-        private void GotoViewMenuWindow()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewMenuWindow;
-        }
-        private void GotoViewCustomers()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewCustomers;
-        }
-        private void GotoViewCustomerSearch()
-        {
-            ClientDataClear();
-            _previousView = CurrentView;
-            CurrentView = _viewCustomerSearch;
-        }
-        private void GotoViewDeliveryAdd()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewDeliveryAdd;
-        }
-        private void GotoViewProductSearch()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewProductSearch;
-        }
-        private void GotoViewCustomerAdd()
-        {
-            ClientDataClear();
-            _previousView = CurrentView;
-            CurrentView = _viewCustomerAdd;
-        }
-        private void GotoViewNewProductAdd()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewNewProductAdd;
-        }
-        private void GotoViewServiceDone()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewServiceDone;
-        }
-        private void GotoViewMainStock()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewMainStock;
-        }
-        private void GotoViewServicesHistory()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewServicesHistory;
-        }
-        private void GotoViewActualStock()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewActualStock;
-        }
-        private void GotoViewAuthors()
-        {
-            _previousView = CurrentView;
-            CurrentView = _viewAuthors;
-        }
-        #endregion
+        
     }
 }
