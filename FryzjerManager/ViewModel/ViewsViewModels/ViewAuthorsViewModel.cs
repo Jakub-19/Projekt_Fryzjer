@@ -9,4 +9,5 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
     public class ViewAuthorsViewModel : ViewModelBase.ViewModelBase
     {
     }
+    
 }

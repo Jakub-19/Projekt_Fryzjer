@@ -22,11 +22,11 @@
         <vm:ViewCustomerAddViewModel x:Key="vm3"/>
         <v:ViewCustomerAdd x:Key="view3" ViewModel="{StaticResource vm3}"/>
 
-        <vm:ViewCustomersViewModel x:Key="vm4"/>
-        <v:ViewCustomers x:Key="view4" ViewModel="{StaticResource vm4}"/>
-
-        <vm:ViewCustomerSearchViewModel x:Key="vm5"/>
-        <v:ViewCustomerSearch x:Key="view5" ViewModel="{StaticResource vm5}"/>
+        <vm:ViewCustomerSearchViewModel x:Key="vm4"/>
+        <v:ViewCustomerSearch x:Key="view4" ViewModel="{StaticResource vm4}"/>
+        
+        <vm:ViewCustomersViewModel x:Key="vm5"/>
+        <v:ViewCustomers x:Key="view5" ViewModel="{StaticResource vm5}"/>
 
         <vm:ViewDeliveryAddViewModel x:Key="vm6"/>
         <v:ViewDeliveryAdd x:Key="view6" ViewModel="{StaticResource vm6}"/>
@@ -83,8 +83,8 @@
     </Window.Resources>
 
     <Grid Background="#FFCFCFCF" DataContext="{StaticResource mainVM}">
-
-        <ContentControl Content="{Binding Path=CurrentView, Mode=TwoWay}"/>
+        
+        <ContentControl Content="{Binding Path=CurrentView, Mode=OneWay}"/>
 
     </Grid>
 </Window>

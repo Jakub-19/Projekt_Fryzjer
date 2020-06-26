@@ -25,7 +25,10 @@
         </Grid>
         <StackPanel Grid.Row="1" Margin="0,5,0,0">
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100" 
-                    Command="{Binding GotoViewCustomersCommand}">
+                    Command="{Binding Path=ViewModel.GotoCustomers,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="400">
                     <material:PackIcon Kind="AccountMultiple" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
@@ -51,8 +54,7 @@
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
                     Command="{Binding GotoViewMainStockCommand}">
                 <Grid Width="400">
-                    <!--Kind="ContentPaste"-->
-                        <material:PackIcon Kind="PackageVariant" VerticalAlignment="Center">
+                    <material:PackIcon Kind="PackageVariant" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>

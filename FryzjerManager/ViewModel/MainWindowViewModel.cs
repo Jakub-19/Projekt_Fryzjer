@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using FryzjerManager.Model;
 using System.Windows.Controls;
+using System.Diagnostics;
 
 namespace FryzjerManager.ViewModel
 {
@@ -328,8 +329,6 @@ namespace FryzjerManager.ViewModel
             V.ViewServiceDone viewServiceDone, VM.ViewServiceDoneViewModel viewServiceDoneViewModel,
             V.ViewServicesHistory viewServicesHistory, VM.ViewServicesHistoryViewModel viewServicesHistoryViewModel)
         {
-            CurrentView = viewMenuWindow;
-
             ViewActualStock = viewActualStock;
             ViewActualStockViewModel = viewActualStockViewModel;
 
@@ -353,6 +352,7 @@ namespace FryzjerManager.ViewModel
 
             ViewMenuWindow = viewMenuWindow;
             ViewMenuWindowViewModel = viewMenuWindowViewModel;
+            viewMenuWindowViewModel.ChangeView += ChangeViewTo;
 
             ViewNewProductAdd = viewNewProductAdd;
             ViewNewProductAddViewModel = viewNewProductAddViewModel;
@@ -366,11 +366,59 @@ namespace FryzjerManager.ViewModel
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
 
-            
+            CurrentView = viewMenuWindow;
 
             PreviousView = CurrentView;
         }
         #endregion
+
+        private void ChangeViewTo(string view) //Metoda do zmiany widoków
+        {
+            switch (view)
+            {
+                case "ViewActualStock":
+                    CurrentView = ViewActualStock;
+                    break;
+                case "ViewAuthors":
+                    CurrentView = ViewAuthors;
+                    break;
+                case "ViewCustomerAdd":
+                    CurrentView = ViewCustomerAdd;
+                    break;
+                case "ViewCustomerSearch":
+                    CurrentView = ViewCustomerSearch;
+                    break;
+                case "ViewCustomers":
+                    CurrentView = ViewCustomers;
+                    break;
+                case "ViewDeliveryAdd":
+                    CurrentView = ViewDeliveryAdd;
+                    break;
+                case "ViewMainStock":
+                    CurrentView = ViewMainStock;
+                    break;
+                case "ViewMenuWindow":
+                    CurrentView = ViewMenuWindow;
+                    break;
+                case "ViewNewProductAdd":
+                    CurrentView = ViewNewProductAdd;
+                    break;
+                case "ViewProductSearch":
+                    CurrentView = ViewProductSearch;
+                    break;
+                case "ViewServiceDone":
+                    CurrentView = ViewServiceDone;
+                    break;
+                case "ViewServicesHistory":
+                    CurrentView = ViewServicesHistory;
+                    break;
+                default:
+                    Debug.WriteLine("Coś poszło nie tak! w funkcji ChangeViewTo");
+                    break;
+            }
+
+        }
+
         #region ClientRecord
         private ClientRecord clientRecord = new ClientRecord();
         public ObservableCollection<Client> Clients

@@ -7,13 +7,14 @@ namespace FryzjerManager.ViewModel.ViewModelBase
     public class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        protected void OnPropertyChanged(params string[] namesOfProperties)
         {
-
-            var handler = PropertyChanged;
-            if (handler != null)
+            if (PropertyChanged != null)
             {
-                handler(this, new PropertyChangedEventArgs(propertyName));
+                foreach (var prop in namesOfProperties)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(prop));
+                }
             }
         }
     }
