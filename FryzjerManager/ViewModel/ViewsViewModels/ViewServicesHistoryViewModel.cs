@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
-    class ViewServicesHistoryViewModel
+    public class ViewServicesHistoryViewModel : ViewModelBase.ViewModelBase
     {
     }
 }

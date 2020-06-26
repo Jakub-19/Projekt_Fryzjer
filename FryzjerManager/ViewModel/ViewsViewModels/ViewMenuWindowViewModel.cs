@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
-    class ViewMenuWindowViewModel
+    public class ViewMenuWindowViewModel : ViewModelBase.ViewModelBase
     {
 
     }

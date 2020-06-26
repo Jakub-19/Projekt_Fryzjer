@@ -20,6 +20,18 @@ namespace FryzjerManager.Views
     /// </summary>
     public partial class ViewMenuWindow : UserControl
     {
+        public static readonly DependencyProperty vm = DependencyProperty.Register(
+
+          "ViewModel",
+          typeof(ViewModel.ViewsViewModels.ViewMenuWindowViewModel),
+          typeof(ViewMenuWindow),
+          null);
+
+        public ViewModel.ViewsViewModels.ViewMenuWindowViewModel ViewModel
+        {
+            get { return (ViewModel.ViewsViewModels.ViewMenuWindowViewModel)GetValue(vm); }
+            set { SetValue(vm, value); }
+        }
         public ViewMenuWindow()
         {
             InitializeComponent();

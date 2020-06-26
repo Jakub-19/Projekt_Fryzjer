@@ -20,6 +20,18 @@ namespace FryzjerManager.Views
     /// </summary>
     public partial class ViewAuthors : UserControl
     {
+        public static readonly DependencyProperty vm = DependencyProperty.Register(
+
+          "ViewModel",
+          typeof(ViewModel.ViewsViewModels.ViewAuthorsViewModel),
+          typeof(ViewAuthors),
+          null);
+
+        public ViewModel.ViewsViewModels.ViewAuthorsViewModel ViewModel
+        {
+            get { return (ViewModel.ViewsViewModels.ViewAuthorsViewModel)GetValue(vm); }
+            set { SetValue(vm, value); }
+        }
         public ViewAuthors()
         {
             InitializeComponent();

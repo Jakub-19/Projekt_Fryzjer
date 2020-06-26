@@ -20,6 +20,18 @@ namespace FryzjerManager.Views
     /// </summary>
     public partial class ViewMainStock : UserControl
     {
+        public static readonly DependencyProperty vm = DependencyProperty.Register(
+
+          "ViewModel",
+          typeof(ViewModel.ViewsViewModels.ViewMainStockViewModel),
+          typeof(ViewMainStock),
+          null);
+
+        public ViewModel.ViewsViewModels.ViewMainStockViewModel ViewModel
+        {
+            get { return (ViewModel.ViewsViewModels.ViewMainStockViewModel)GetValue(vm); }
+            set { SetValue(vm, value); }
+        }
         public ViewMainStock()
         {
             InitializeComponent();

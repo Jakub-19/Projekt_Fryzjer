@@ -20,6 +20,18 @@ namespace FryzjerManager.Views
     /// </summary>
     public partial class ViewProductSearch : UserControl
     {
+        public static readonly DependencyProperty vm = DependencyProperty.Register(
+
+          "ViewModel",
+          typeof(ViewModel.ViewsViewModels.ViewProductSearchViewModel),
+          typeof(ViewProductSearch),
+          null);
+
+        public ViewModel.ViewsViewModels.ViewProductSearchViewModel ViewModel
+        {
+            get { return (ViewModel.ViewsViewModels.ViewProductSearchViewModel)GetValue(vm); }
+            set { SetValue(vm, value); }
+        }
         public ViewProductSearch()
         {
             InitializeComponent();

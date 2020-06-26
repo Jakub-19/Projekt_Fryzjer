@@ -4,37 +4,81 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FryzjerManager.ViewModel.ViewsViewModels"
-        xmlns:localview="clr-namespace:FryzjerManager.Views"
+        xmlns:v="clr-namespace:FryzjerManager.Views"
         xmlns:mainview="clr-namespace:FryzjerManager.ViewModel"
+        xmlns:vm="clr-namespace:FryzjerManager.ViewModel.ViewsViewModels"
+        xmlns:vmwwm="clr-namespace:FryzjerManager.ViewModel"
         xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="600" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="app.ico" WindowStyle="None">
 
     <Window.Resources>
-        <DataTemplate DataType="{x:Type local:ViewMenuWindowViewModel}">
-            <localview:ViewMenuWindow/>
-        </DataTemplate>
 
-        <DataTemplate DataType="{x:Type local:ViewCustomersViewModel}">
-            <localview:ViewCustomers/>
-        </DataTemplate>
+        <vm:ViewActualStockViewModel x:Key="vm1" />
+        <v:ViewActualStock x:Key="view1" ViewModel="{StaticResource vm1}" />
+
+        <vm:ViewAuthorsViewModel x:Key="vm2"/>
+        <v:ViewAuthors x:Key="view2" ViewModel="{StaticResource vm2}"/>
+
+        <vm:ViewCustomerAddViewModel x:Key="vm3"/>
+        <v:ViewCustomerAdd x:Key="view3" ViewModel="{StaticResource vm3}"/>
+
+        <vm:ViewCustomersViewModel x:Key="vm4"/>
+        <v:ViewCustomers x:Key="view4" ViewModel="{StaticResource vm4}"/>
+
+        <vm:ViewCustomerSearchViewModel x:Key="vm5"/>
+        <v:ViewCustomerSearch x:Key="view5" ViewModel="{StaticResource vm5}"/>
+
+        <vm:ViewDeliveryAddViewModel x:Key="vm6"/>
+        <v:ViewDeliveryAdd x:Key="view6" ViewModel="{StaticResource vm6}"/>
+
+        <vm:ViewMainStockViewModel x:Key="vm7"/>
+        <v:ViewMainStock x:Key="view7" ViewModel="{StaticResource vm7}"/>
+
+        <vm:ViewMenuWindowViewModel x:Key="vm8"/>
+        <v:ViewMenuWindow x:Key="view8" ViewModel="{StaticResource vm8}"/>
+
+        <vm:ViewNewProductAddViewModel x:Key="vm9"/>
+        <v:ViewNewProductAdd x:Key="view9" ViewModel="{StaticResource vm9}"/>
+
+        <vm:ViewProductSearchViewModel x:Key="vm10"/>
+        <v:ViewProductSearch x:Key="view10" ViewModel="{StaticResource vm10}"/>
+
+        <vm:ViewServiceDoneViewModel x:Key="vm11"/>
+        <v:ViewServiceDone x:Key="view11" ViewModel="{StaticResource vm11}"/>
+
+        <vm:ViewServicesHistoryViewModel x:Key="vm12"/>
+        <v:ViewServicesHistory x:Key="view12" ViewModel="{StaticResource vm12}"/>
         
-        <DataTemplate DataType="{x:Type local:ViewCustomerAddViewModel}">
-            <localview:ViewCustomerAdd/>
-        </DataTemplate>
 
-        <DataTemplate DataType="{x:Type local:ViewServiceDoneViewModel}">
-            <localview:ViewServiceDone/>
-        </DataTemplate>
+        <ObjectDataProvider ObjectType="{x:Type vmwwm:MainWindowViewModel}"  x:Key="mainVM">
+            <ObjectDataProvider.ConstructorParameters>
+                <StaticResource ResourceKey="view1"/>
+                <StaticResource ResourceKey="vm1"/>
+                <StaticResource ResourceKey="view2"/>
+                <StaticResource ResourceKey="vm2"/>
+                <StaticResource ResourceKey="view3"/>
+                <StaticResource ResourceKey="vm3"/>
+                <StaticResource ResourceKey="view4"/>
+                <StaticResource ResourceKey="vm4"/>
+                <StaticResource ResourceKey="view5"/>
+                <StaticResource ResourceKey="vm5"/>
+                <StaticResource ResourceKey="view6"/>
+                <StaticResource ResourceKey="vm6"/>
+                <StaticResource ResourceKey="view7"/>
+                <StaticResource ResourceKey="vm7"/>
+                <StaticResource ResourceKey="view8"/>
+                <StaticResource ResourceKey="vm8"/>
+                <StaticResource ResourceKey="view9"/>
+                <StaticResource ResourceKey="vm9"/>
+                <StaticResource ResourceKey="view10"/>
+                <StaticResource ResourceKey="vm10"/>
+                <StaticResource ResourceKey="view11"/>
+                <StaticResource ResourceKey="vm11"/>
+                <StaticResource ResourceKey="view12"/>
+                <StaticResource ResourceKey="vm12"/>
+            </ObjectDataProvider.ConstructorParameters>
 
-        <DataTemplate DataType="{x:Type local:ViewMainStockViewModel}">
-            <localview:ViewMainStock/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type local:ViewCustomerSearchViewModel}">
-            <localview:ViewMainStock/>
-        </DataTemplate>
-        
-
+        </ObjectDataProvider >
 
     </Window.Resources>
 
@@ -43,8 +87,9 @@
         <mainview:MainWindowViewModel />
     </Window.DataContext>
 
-    <Grid Background="#FFCFCFCF">
-        <!--Background="#FF7A7373"-->
-        <ContentControl Content="{Binding CurrentView}"/>
+    <Grid Background="#FFCFCFCF" DataContext="{StaticResource mainVM}">
+
+        <ContentControl Content="{Binding Path=CurrentView, Mode=TwoWay}"/>
+
     </Grid>
 </Window>
