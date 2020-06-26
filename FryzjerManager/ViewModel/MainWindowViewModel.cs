@@ -225,7 +225,94 @@ namespace FryzjerManager.ViewModel
                 OnPropertyChanged(nameof(ViewMenuWindowViewModel));
             }
         }
-        
+
+
+        private V.ViewNewProductAdd _viewNewProductAdd = null;
+        public V.ViewNewProductAdd ViewNewProductAdd
+        {
+            get { return _viewNewProductAdd; }
+            set
+            {
+                _viewNewProductAdd = value;
+                OnPropertyChanged(nameof(ViewNewProductAdd));
+            }
+        }
+        private VM.ViewNewProductAddViewModel _viewNewProductAddViewModel;
+        public VM.ViewNewProductAddViewModel ViewNewProductAddViewModel
+        {
+            get { return _viewNewProductAddViewModel; }
+            set
+            {
+                _viewNewProductAddViewModel = value;
+                OnPropertyChanged(nameof(ViewNewProductAddViewModel));
+            }
+        }
+
+
+        private V.ViewProductSearch _viewProductSearch = null;
+        public V.ViewProductSearch ViewProductSearch
+        {
+            get { return _viewProductSearch; }
+            set
+            {
+                _viewProductSearch = value;
+                OnPropertyChanged(nameof(ViewProductSearch));
+            }
+        }
+        private VM.ViewProductSearchViewModel _viewProductSearchViewModel;
+        public VM.ViewProductSearchViewModel ViewProductSearchViewModel
+        {
+            get { return _viewProductSearchViewModel; }
+            set
+            {
+                _viewProductSearchViewModel = value;
+                OnPropertyChanged(nameof(ViewProductSearchViewModel));
+            }
+        }
+
+
+        private V.ViewServiceDone _viewServiceDone = null;
+        public V.ViewServiceDone ViewServiceDone
+        {
+            get { return _viewServiceDone; }
+            set
+            {
+                _viewServiceDone = value;
+                OnPropertyChanged(nameof(ViewServiceDone));
+            }
+        }
+        private VM.ViewServiceDoneViewModel _viewServiceDoneViewModel;
+        public VM.ViewServiceDoneViewModel ViewServiceDoneViewModel
+        {
+            get { return _viewServiceDoneViewModel; }
+            set
+            {
+                _viewServiceDoneViewModel = value;
+                OnPropertyChanged(nameof(ViewServiceDoneViewModel));
+            }
+        }
+
+
+        private V.ViewServicesHistory _viewServicesHistory = null;
+        public V.ViewServicesHistory ViewServicesHistory
+        {
+            get { return _viewServicesHistory; }
+            set
+            {
+                _viewServicesHistory = value;
+                OnPropertyChanged(nameof(ViewServicesHistory));
+            }
+        }
+        private VM.ViewServicesHistoryViewModel _viewServicesHistoryViewModel;
+        public VM.ViewServicesHistoryViewModel ViewServicesHistoryViewModel
+        {
+            get { return _viewServicesHistoryViewModel; }
+            set
+            {
+                _viewServicesHistoryViewModel = value;
+                OnPropertyChanged(nameof(ViewServicesHistoryViewModel));
+            }
+        }
         #endregion
 
         public MainWindowViewModel()
