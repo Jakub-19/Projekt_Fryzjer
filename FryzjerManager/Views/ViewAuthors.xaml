@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
+            <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
 
         <TextBlock Grid.Row="1" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="410" TextAlignment="Center" HorizontalAlignment="Left"

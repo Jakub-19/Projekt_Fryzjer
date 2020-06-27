@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=CustomerAddViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
+            <title:TitleBar Title="{Binding Path=CustomerAddViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
         <CheckBox x:Name="SingleUseCheckbox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Content="Produkt Jednorazowy" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,0" IsEnabled="True" Checked="SingleUseCheckbox_Checked" Foreground="#FF3D3D3D"/>
         <CheckBox x:Name="MultiUseCheckbox" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Content="Produkt Wielorazowy" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,0,0,0" IsEnabled="True" Checked="MultiUseCheckbox_Checked" Foreground="#FF3D3D3D"/>

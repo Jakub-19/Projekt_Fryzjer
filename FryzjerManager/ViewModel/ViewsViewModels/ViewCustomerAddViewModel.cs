@@ -12,31 +12,9 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
     public class ViewCustomerAddViewModel : ViewModelBase.ViewModelBase
     {
         public event Action<string> ChangeView;
+
         #region Komendy przyciskow
-        private ICommand _gotoMainMenu = null;
-        public ICommand GotoMainMenu
-        {
-            get
-            {
-                if (_gotoMainMenu == null)
-                    _gotoMainMenu = new ViewModelBase.RelayCommand(
-                        arg => { Clear(); ChangeView?.Invoke("ViewMenuWindow"); },
-                        arg => true);
-                return _gotoMainMenu;
-            }
-        }
-        private ICommand _goBack = null;
-        //public ICommand GoBack
-        //{
-        //    get
-        //    {
-        //        if (_goBack == null)
-        //            _goBack = new ViewModelBase.RelayCommand(
-        //                arg => { ChangeView?.Invoke("ViewMenuWindow"); },
-        //                arg => true);
-        //        return _goBack;
-        //    }
-        //}
+
         private ICommand _addCustomer = null;
         public ICommand AddCustomer
         {
@@ -64,6 +42,9 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             ClientName = "";
             ClientSurname = "";
             ClientPhone = "";
+            OnPropertyChanged(nameof(ClientName));
+            OnPropertyChanged(nameof(ClientSurname));
+            OnPropertyChanged(nameof(ClientPhone));
         }
     }
 }

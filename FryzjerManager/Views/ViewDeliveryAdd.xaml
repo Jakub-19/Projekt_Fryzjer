@@ -19,7 +19,7 @@
 
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=ServiceDoneViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
+            <title:TitleBar Title="{Binding Path=ServiceDoneViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

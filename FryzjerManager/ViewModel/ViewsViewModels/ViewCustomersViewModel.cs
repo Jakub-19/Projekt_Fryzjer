@@ -10,30 +10,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
     public class ViewCustomersViewModel : ViewModelBase.ViewModelBase
     {
         public event Action<string> ChangeView;
-        private ICommand _gotoMainMenu = null;
-        public ICommand GotoMainMenu
-        {
-            get
-            {
-                if (_gotoMainMenu == null)
-                    _gotoMainMenu = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewMenuWindow"); },
-                        arg => true);
-                return _gotoMainMenu;
-            }
-        }
-        private ICommand _goBack = null;
-        //public ICommand GoBack
-        //{
-        //    get
-        //    {
-        //        if (_goBack == null)
-        //            _goBack = new ViewModelBase.RelayCommand(
-        //                arg => { ChangeView?.Invoke("ViewMenuWindow"); },
-        //                arg => true);
-        //        return _goBack;
-        //    }
-        //}
+
         private ICommand _gotoCustomerAdd = null;
         public ICommand GotoCustomerAdd
         {

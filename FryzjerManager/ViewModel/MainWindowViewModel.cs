@@ -341,6 +341,7 @@ namespace FryzjerManager.ViewModel
 
             ViewCustomerSearch = viewCustomerSearch;
             ViewCustomerSearchViewModel = viewCustomerSearchViewModel;
+            viewCustomerSearchViewModel.ChangeView += ChangeViewTo;
 
             ViewCustomers = viewCustomers;
             ViewCustomersViewModel = viewCustomersViewModel;
@@ -367,6 +368,7 @@ namespace FryzjerManager.ViewModel
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
+            viewServicesHistoryViewModel.ChangeView += ChangeViewTo;
 
             CurrentView = viewMenuWindow;
 
@@ -421,6 +423,33 @@ namespace FryzjerManager.ViewModel
 
         }
 
+        private ICommand _gotoMainMenu = null;
+        public ICommand GotoMainMenu
+        {
+            get
+            {
+                if (_gotoMainMenu == null)
+                    _gotoMainMenu = new ViewModelBase.RelayCommand(
+                        arg => { ChangeViewTo("ViewMenuWindow"); },
+                        arg => true);
+                return _gotoMainMenu;
+            }
+        }
+        private ICommand _goBack = null;
+        public ICommand GoBack
+        {
+            get
+            {
+                if (_goBack == null)
+                    _goBack = new ViewModelBase.RelayCommand(
+                        arg => { ChangeViewTo("ViewMenuWindow"); },
+                        arg => true);
+                return _goBack;
+            }
+        }
+
+
+        //Do kasacji
         #region ClientRecord
         private ClientRecord clientRecord = new ClientRecord();
         public ObservableCollection<Client> Clients
