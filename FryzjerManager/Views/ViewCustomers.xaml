@@ -16,11 +16,19 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoViewMenuWindowCommand}" goBack="{Binding GoBackCommand}"/>
+            <title:TitleBar Title="{Binding Path=CustomersViewName}"
+                            goHome="{Binding Path=ViewModel.GotoMainMenu,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}" 
+                            goBack="{Binding GoBackCommand}"/>
         </Grid>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="80,0,80,80">
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
-                    Command="{Binding GotoViewCustomerAddCommand}">
+                                        Command="{Binding Path=ViewModel.GotoCustomerAdd,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="700">
                     <material:PackIcon Kind="AccountPlus" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
@@ -31,7 +39,10 @@
                 </Grid>
             </Button>
             <Button Margin="15,40,15,15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
-                    Command="{Binding GotoViewServicesHistoryCommand}">
+                                        Command="{Binding Path=ViewModel.GotoServicesHistory,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="700">
                     <material:PackIcon Kind="History" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>

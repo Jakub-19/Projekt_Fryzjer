@@ -337,12 +337,14 @@ namespace FryzjerManager.ViewModel
 
             ViewCustomerAdd = viewCustomerAdd;
             ViewCustomerAddViewModel = viewCustomerAddViewModel;
+            viewCustomerAddViewModel.ChangeView += ChangeViewTo;
 
             ViewCustomerSearch = viewCustomerSearch;
             ViewCustomerSearchViewModel = viewCustomerSearchViewModel;
 
             ViewCustomers = viewCustomers;
             ViewCustomersViewModel = viewCustomersViewModel;
+            viewCustomersViewModel.ChangeView += ChangeViewTo;
 
             ViewDeliveryAdd = viewDeliveryAdd;
             ViewDeliveryAddViewModel = viewDeliveryAddViewModel;

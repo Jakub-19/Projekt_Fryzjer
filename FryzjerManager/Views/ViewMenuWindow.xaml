@@ -40,7 +40,10 @@
             </Button>
 
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
-                    Command="{Binding GotoViewServiceDoneCommand}">
+                                        Command="{Binding Path=ViewModel.GotoServiceDone,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="400">
                     <material:PackIcon Kind="ContentCut" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
@@ -52,7 +55,10 @@
             </Button>
 
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
-                    Command="{Binding GotoViewMainStockCommand}">
+                                        Command="{Binding Path=ViewModel.GotoMainStock,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="400">
                     <material:PackIcon Kind="PackageVariant" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
@@ -64,7 +70,10 @@
             </Button>
 
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
-                    Command="{Binding GotoViewAuthorsCommand}">
+                                        Command="{Binding Path=ViewModel.GotoAuthors,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="400">
                     <material:PackIcon Kind="Feather" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
