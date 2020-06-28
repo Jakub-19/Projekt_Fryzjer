@@ -29,17 +29,22 @@ namespace FryzjerManager.ViewModel
         }
 
 
-        private UserControl _previousView = null;
-        public UserControl PreviousView
-        {
-            get { return _previousView; }
-            set
-            {
-                _previousView = value;
-                OnPropertyChanged(nameof(PreviousView));
-            }
-        }
+        //private UserControl _previousView = null;
+        //public UserControl PreviousView
+        //{
+        //    get { return _previousView; }
+        //    set
+        //    {
+        //        _previousView = value;
+        //        OnPropertyChanged(nameof(PreviousView));
+        //    }
+        //}
 
+        public Stack<UserControl> _previousViews;
+        public Stack<UserControl> PreviousViews
+        {
+            get =>_previousViews;
+        }
 
         #region Widoki i ich VM'y
         private V.ViewActualStock _viewActualStock = null;
@@ -370,14 +375,14 @@ namespace FryzjerManager.ViewModel
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;
 
+            _previousViews = new Stack<UserControl>();
             CurrentView = viewMenuWindow;
-
-            PreviousView = CurrentView;
         }
         #endregion
 
         private void ChangeViewTo(string view) //Metoda do zmiany widoków
         {
+            PreviousViews.Push(CurrentView);
             switch (view)
             {
                 case "ViewActualStock":
@@ -442,8 +447,12 @@ namespace FryzjerManager.ViewModel
             {
                 if (_goBack == null)
                     _goBack = new ViewModelBase.RelayCommand(
-                        arg => { ChangeViewTo("ViewMenuWindow"); },
-                        arg => true);
+                        arg => { 
+                            if(PreviousViews != null && PreviousViews.Count > 0)
+                                CurrentView = PreviousViews.Pop();
+                            if (CurrentView.Equals(ViewMenuWindow))
+                                PreviousViews.Clear();
+                        }, arg => true);
                 return _goBack;
             }
         }
