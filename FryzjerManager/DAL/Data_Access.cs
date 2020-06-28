@@ -216,7 +216,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM disposable_products where name like \"" + name + "%\"";
+            string command = "SELECT * FROM disposable_products WHERE name like \"" + name + "%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -237,7 +237,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM products where name like \"" + name + "%\"";
+            string command = "SELECT * FROM products WHERE name like \"" + name + "%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -260,7 +260,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM products where quantity_item <>0 and ml<>0";
+            string command = "SELECT * FROM products WHERE quantity_item <>0ANDml<>0";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -280,7 +280,53 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM disposable_products where quantity<>0";
+            string command = "SELECT * FROM disposable_products WHERE quantity<>0";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                SingleUseProduct product = new SingleUseProduct(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3));
+                products.Add(product);
+            }
+
+            rdr.Close();
+            con.Close();
+
+            return products;
+        }
+        public List<Product> SearchAvailableProducts(string name)
+        {
+            List<Product> products = new List<Product>();
+
+
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "SELECT * FROM products WHERE (quantity_item <>0 AND ml<>0) " +
+                "AND name LIKE \""+name+"%\"";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                Product product = new Product(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetInt32(3), rdr.GetInt32(4), rdr.GetInt32(5));
+                products.Add(product);
+            }
+            rdr.Close();
+            con.Close();
+            return products;
+        }
+        public List<SingleUseProduct> SearchAvailableSingleUseProducts(string name)
+        {
+            List<SingleUseProduct> products = new List<SingleUseProduct>();
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "SELECT * FROM disposable_products WHERE quantity<>0 " +
+                "AND name like\" "+name+"%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -336,7 +382,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT EXISTS(SELECT * FROM disposable_products where name like \"" + name + "\")";
+            string command = "SELECT EXISTS(SELECT * FROM disposable_products WHERE name like \"" + name + "\")";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -344,7 +390,7 @@ namespace FryzjerManager.DAL
                 l += rdr.GetInt32(0);
             }
             rdr.Close();
-            command = "SELECT EXISTS(Select *from products where name like \"" + name + "\")";
+            command = "SELECT EXISTS(Select *from products WHERE name like \"" + name + "\")";
             cmd = new MySqlCommand(command, con);
             rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -418,7 +464,7 @@ namespace FryzjerManager.DAL
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                Visit visit = new Visit(rdr.GetInt32(0), rdr.GetDouble(1), client, services, rdr.GetDateTime(2));
+                Visit visit = new Visit( rdr.GetDouble(1), client, services, rdr.GetDateTime(2), rdr.GetInt32(0));
                 visits.Add(visit);
             }
             foreach (var v in visits)
@@ -428,7 +474,7 @@ namespace FryzjerManager.DAL
 
             return visits;
         }
-        public List<Service> GetServicesFromOneVisit(int id_v)
+        public List<Service> GetServicesFromOneVisit(int? id_v)
         {
             List<Service> services = new List<Service>();
             try

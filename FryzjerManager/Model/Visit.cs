@@ -8,7 +8,7 @@ namespace FryzjerManager.Model
 {
     class Visit
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
         //public int ID_k { get; set; }
         //Odczytalbym od razu jaka osoba jest pod tym id i trzymal tutaj obiekt Client
         public Client Person { get; set; }
@@ -19,9 +19,9 @@ namespace FryzjerManager.Model
         //public string NameOfService { get; set; }
         public DateTime Date { get; set; }
         public double FullPrice { get; set; }
-        public Visit(int id,  double fullPrice, Client client, List<Service> service, DateTime date)
+        public Visit(  double fullPrice, Client client, List<Service> service, DateTime date, int? id=null)
         {
-            ID = id;
+            
             //ID_k = id_k;
             //ID_u = id_u;
             //NameOfService = nameOfService;
@@ -29,6 +29,7 @@ namespace FryzjerManager.Model
             Person = client;
             TypeOfService = service;
             Date = date;
+            ID = id;
         }
     }
 }
