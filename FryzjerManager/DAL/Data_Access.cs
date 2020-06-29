@@ -436,16 +436,23 @@ namespace FryzjerManager.DAL
         public void AddVisit(Visit visit)
         {
             var id_c = visit.Person.ID;
-            var id_v = visit.ID;
+            int id_v=0;
             con.Open();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = con;
 
             cmd.CommandText = "INSERT INTO visits (id_c,date,price) VALUES ("+id_c+","+visit.Date+","+visit.FullPrice+")";
             cmd.ExecuteNonQuery();
-            foreach(var s in visit.TypeOfService)
+
+            cmd.CommandText = "SELECT MAX (id_v) FROM visits";
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
             {
-                cmd.CommandText = "INSERT INTO servicevisit (id_s,id_v) VALUES (" + s.ID + "," + visit.ID + ")";
+                 id_v = rdr.GetInt32(0);
+            }
+            foreach (var s in visit.TypeOfService)
+            {
+                cmd.CommandText = "INSERT INTO servicevisit (id_s,id_v) VALUES (" + s.ID + "," + id_v + ")";
                 cmd.ExecuteNonQuery();
             }
             con.Close();
