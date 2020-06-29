@@ -20,7 +20,10 @@
         </Grid>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="80,0,80,80">
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
-                    Command="{Binding GotoViewDeliveryAddCommand}">
+                                        Command="{Binding Path=ViewModel.GotoDeliveryAdd,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="700">
                     <material:PackIcon Kind="TruckDelivery" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>
@@ -31,7 +34,10 @@
                 </Grid>
             </Button>
             <Button Margin="15,40,15,15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
-                    Command="{Binding GotoViewActualStockCommand}">
+                                        Command="{Binding Path=ViewModel.GotoActualStock,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="700">
                     <material:PackIcon Kind="TextBoxSearch" VerticalAlignment="Center">
                         <material:PackIcon.LayoutTransform>

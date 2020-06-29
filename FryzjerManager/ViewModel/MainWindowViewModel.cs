@@ -28,18 +28,6 @@ namespace FryzjerManager.ViewModel
             }
         }
 
-
-        //private UserControl _previousView = null;
-        //public UserControl PreviousView
-        //{
-        //    get { return _previousView; }
-        //    set
-        //    {
-        //        _previousView = value;
-        //        OnPropertyChanged(nameof(PreviousView));
-        //    }
-        //}
-
         public Stack<UserControl> _previousViews;
         public Stack<UserControl> PreviousViews
         {
@@ -357,6 +345,7 @@ namespace FryzjerManager.ViewModel
 
             ViewMainStock = viewMainStock;
             ViewMainStockViewModel = viewMainStockViewModel;
+            viewMainStockViewModel.ChangeView += ChangeViewTo;
 
             ViewMenuWindow = viewMenuWindow;
             ViewMenuWindowViewModel = viewMenuWindowViewModel;
@@ -456,7 +445,6 @@ namespace FryzjerManager.ViewModel
                 return _goBack;
             }
         }
-
 
         //Do kasacji
         #region ClientRecord

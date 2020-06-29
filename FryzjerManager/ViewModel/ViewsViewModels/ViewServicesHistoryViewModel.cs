@@ -9,8 +9,34 @@ using FryzjerManager.Model;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    using V = Views;
+    using VM = ViewsViewModels;
     public class ViewServicesHistoryViewModel : ViewModelBase.ViewModelBase
     {
+        //private V.ViewCustomerSearch _viewCustomerSearch = null;
+        //public V.ViewCustomerSearch ViewCustomerSearch
+        //{
+        //    get { return _viewCustomerSearch; }
+        //    set
+        //    {
+        //        _viewCustomerSearch = value;
+        //        OnPropertyChanged(nameof(ViewCustomerSearch));
+        //    }
+        //}
+        //private VM.ViewCustomerSearchViewModel _viewCustomerSearchViewModel;
+        //public VM.ViewCustomerSearchViewModel ViewCustomerSearchViewModel
+        //{
+        //    get { return _viewCustomerSearchViewModel; }
+        //    set
+        //    {
+        //        _viewCustomerSearchViewModel = value;
+        //        OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
+        //    }
+        //}
+
+
+
+
         public event Action<string> ChangeView;
 
         private ICommand _selectCustomer = null;
@@ -25,5 +51,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectCustomer;
             }
         }
+        public Client CurrentClient { get; set; }
+
     }
 }
