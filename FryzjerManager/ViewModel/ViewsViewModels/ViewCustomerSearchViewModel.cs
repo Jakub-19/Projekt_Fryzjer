@@ -29,19 +29,21 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _searchClient;
             }
         }
+        public event Action<Client> TransferData;
+
         private ICommand _selectClient = null;
         public ICommand SelectClient
         {
             get
             {
-                if (_searchClient == null)
-                    _searchClient = new ViewModelBase.RelayCommand(
+                if (_selectClient == null)
+                    _selectClient = new ViewModelBase.RelayCommand(
                         arg => {
-                            clientRecord.GetClients(ClientName, ClientSurname);
-                            OnPropertyChanged(nameof(Clients));
+                            TransferData?.Invoke(CurrentClient);
+                            ChangeView?.Invoke("ViewServicesHistory");
                         },
-                        arg => CurrentClient != null && false);
-                return _searchClient;
+                        arg => CurrentClient != null);
+                return _selectClient;
             }
         }
 

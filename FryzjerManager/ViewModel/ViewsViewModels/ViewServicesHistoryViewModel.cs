@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Diagnostics;
 using FryzjerManager.Model;
-//using System.Xaml;
+using System.Collections.ObjectModel;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
@@ -14,6 +14,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
     using VM = ViewsViewModels;
     public class ViewServicesHistoryViewModel : ViewModelBase.ViewModelBase
     {
+        #region Formularz wyszukiwania klienta
         private V.ViewCustomerSearch _viewCustomerSearch = null;
         public V.ViewCustomerSearch ViewCustomerSearch
         {
@@ -31,10 +32,11 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             set
             {
                 _viewCustomerSearchViewModel = value;
+                ViewCustomerSearchViewModel.TransferData += GetClient;
                 OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
             }
         }
-
+        #endregion
         public event Action<object> ChangeView;
 
         private ICommand _selectCustomer = null;
@@ -49,7 +51,25 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectCustomer;
             }
         }
-        public Client CurrentClient { get; set; }
 
+        private void GetClient(Client client)
+        {
+            CurrentClient = client;
+            OnPropertyChanged(nameof(CurrentClient));
+
+        }
+        public Client CurrentClient { get; set; }
+        
+        private VisitRecord visitRecord = new VisitRecord();
+
+        public ObservableCollection<Visit> Visits {
+            get
+            {
+                ObservableCollection<Visit> list = new ObservableCollection<Visit>();
+                foreach (var v in visitRecord.Visits)
+                    list.Add(v);
+
+                return list;
+            } }
     }
 }

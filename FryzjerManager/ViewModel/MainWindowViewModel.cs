@@ -364,6 +364,7 @@ namespace FryzjerManager.ViewModel
 
             ViewServiceDone = viewServiceDone;
             ViewServiceDoneViewModel = viewServiceDoneViewModel;
+            vcsdViewModel.ChangeView += ChangeViewTo;
             ViewServiceDoneViewModel.ViewCustomerSearch = vcsd;
             ViewServiceDoneViewModel.ViewCustomerSearchViewModel = vcsdViewModel;
             ViewServiceDoneViewModel.ViewProductSearch = vpsa;
@@ -372,6 +373,7 @@ namespace FryzjerManager.ViewModel
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
+            vcshViewModel.ChangeView += ChangeViewTo;
             ViewServicesHistoryViewModel.ViewCustomerSearch = vcsh;
             ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = vcshViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;

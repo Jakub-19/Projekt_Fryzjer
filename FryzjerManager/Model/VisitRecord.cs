@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
-    class VisitRecord
+    public class VisitRecord
     {
         public List<Visit> Visits { get; private set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
-    class Service
+    public class Service
     {
         public int ID { get; set; }
         public string Name { get; set; }
