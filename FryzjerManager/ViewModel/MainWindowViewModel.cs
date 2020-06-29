@@ -312,7 +312,8 @@ namespace FryzjerManager.ViewModel
         public MainWindowViewModel(V.ViewActualStock viewActualStock, VM.ViewActualStockViewModel viewActualStockViewModel,
             V.ViewAuthors viewAuthors, VM.ViewAuthorsViewModel viewAuthorsViewModel,
             V.ViewCustomerAdd viewCustomerAdd, VM.ViewCustomerAddViewModel viewCustomerAddViewModel,
-            V.ViewCustomerSearch viewCustomerSearch, VM.ViewCustomerSearchViewModel viewCustomerSearchViewModel,
+            V.ViewCustomerSearch vcsd, VM.ViewCustomerSearchViewModel vcsdViewModel,
+            V.ViewCustomerSearch vcsh, VM.ViewCustomerSearchViewModel vcshViewModel,
             V.ViewCustomers viewCustomers, VM.ViewCustomersViewModel viewCustomersViewModel,
             V.ViewDeliveryAdd viewDeliveryAdd, VM.ViewDeliveryAddViewModel viewDeliveryAddViewModel,
             V.ViewMainStock viewMainStock, VM.ViewMainStockViewModel viewMainStockViewModel,
@@ -359,11 +360,14 @@ namespace FryzjerManager.ViewModel
 
             ViewServiceDone = viewServiceDone;
             ViewServiceDoneViewModel = viewServiceDoneViewModel;
+            ViewServiceDoneViewModel.ViewCustomerSearch = vcsd;
+            ViewServiceDoneViewModel.ViewCustomerSearchViewModel = vcsdViewModel;
+            viewServiceDoneViewModel.ChangeView += ChangeViewTo;
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
-            ViewServicesHistoryViewModel.ViewCustomerSearch = viewCustomerSearch;
-            ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = viewCustomerSearchViewModel;
+            ViewServicesHistoryViewModel.ViewCustomerSearch = vcsh;
+            ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = vcshViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;
 
             _previousViews = new Stack<UserControl>();

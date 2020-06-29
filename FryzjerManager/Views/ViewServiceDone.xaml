@@ -44,7 +44,10 @@
                        Text="{Binding Path=ClientPhone}"/>
                 </Border>
                 <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="15,0,0,0"
-                        Command="{Binding GotoViewCustomerSearchCommand}">
+                        Command="{Binding Path=ViewModel.SelectCustomer,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                     <Grid Width="150">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>

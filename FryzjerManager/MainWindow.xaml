@@ -22,9 +22,12 @@
         <vm:ViewCustomerAddViewModel x:Key="vm3"/>
         <v:ViewCustomerAdd x:Key="view3" ViewModel="{StaticResource vm3}"/>
 
-        
-        <vm:ViewCustomerSearchViewModel x:Key="vm4"/>
-        <v:ViewCustomerSearch x:Key="view4" ViewModel="{StaticResource vm4}"/>
+
+        <vm:ViewCustomerSearchViewModel x:Key="vcsdVM"/>
+        <v:ViewCustomerSearch x:Key="vcsd" ViewModel="{StaticResource vcsdVM}"/>
+
+        <vm:ViewCustomerSearchViewModel x:Key="vcshVM"/>
+        <v:ViewCustomerSearch x:Key="vcsh" ViewModel="{StaticResource vcshVM}"/>
         
         
         <vm:ViewCustomersViewModel x:Key="vm5"/>
@@ -60,8 +63,10 @@
                 <StaticResource ResourceKey="vm2"/>
                 <StaticResource ResourceKey="view3"/>
                 <StaticResource ResourceKey="vm3"/>
-                <StaticResource ResourceKey="view4"/>
-                <StaticResource ResourceKey="vm4"/>
+                <StaticResource ResourceKey="vcsd"/>
+                <StaticResource ResourceKey="vcsdVM"/>
+                <StaticResource ResourceKey="vcsh"/>
+                <StaticResource ResourceKey="vcshVM"/>
                 <StaticResource ResourceKey="view5"/>
                 <StaticResource ResourceKey="vm5"/>
                 <StaticResource ResourceKey="view6"/>
