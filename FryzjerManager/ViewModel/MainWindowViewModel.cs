@@ -104,26 +104,26 @@ namespace FryzjerManager.ViewModel
 
 
 
-        private V.ViewCustomerSearch _viewCustomerSearch = null;
-        public V.ViewCustomerSearch ViewCustomerSearch
-        {
-            get { return _viewCustomerSearch; }
-            set
-            {
-                _viewCustomerSearch = value;
-                OnPropertyChanged(nameof(ViewCustomerSearch));
-            }
-        }
-        private VM.ViewCustomerSearchViewModel _viewCustomerSearchViewModel;
-        public VM.ViewCustomerSearchViewModel ViewCustomerSearchViewModel
-        {
-            get { return _viewCustomerSearchViewModel; }
-            set
-            {
-                _viewCustomerSearchViewModel = value;
-                OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
-            }
-        }
+        //private V.ViewCustomerSearch _viewCustomerSearch = null;
+        //public V.ViewCustomerSearch ViewCustomerSearch
+        //{
+        //    get { return _viewCustomerSearch; }
+        //    set
+        //    {
+        //        _viewCustomerSearch = value;
+        //        OnPropertyChanged(nameof(ViewCustomerSearch));
+        //    }
+        //}
+        //private VM.ViewCustomerSearchViewModel _viewCustomerSearchViewModel;
+        //public VM.ViewCustomerSearchViewModel ViewCustomerSearchViewModel
+        //{
+        //    get { return _viewCustomerSearchViewModel; }
+        //    set
+        //    {
+        //        _viewCustomerSearchViewModel = value;
+        //        OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
+        //    }
+        //}
 
 
 
@@ -332,9 +332,9 @@ namespace FryzjerManager.ViewModel
             ViewCustomerAddViewModel = viewCustomerAddViewModel;
             viewCustomerAddViewModel.ChangeView += ChangeViewTo;
 
-            ViewCustomerSearch = viewCustomerSearch;
-            ViewCustomerSearchViewModel = viewCustomerSearchViewModel;
-            viewCustomerSearchViewModel.ChangeView += ChangeViewTo;
+            //ViewCustomerSearch = viewCustomerSearch;
+            //ViewCustomerSearchViewModel = viewCustomerSearchViewModel;
+            //viewCustomerSearchViewModel.ChangeView += ChangeViewTo;
 
             ViewCustomers = viewCustomers;
             ViewCustomersViewModel = viewCustomersViewModel;
@@ -362,6 +362,8 @@ namespace FryzjerManager.ViewModel
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
+            ViewServicesHistoryViewModel.ViewCustomerSearch = viewCustomerSearch;
+            ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = viewCustomerSearchViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;
 
             _previousViews = new Stack<UserControl>();
@@ -384,7 +386,7 @@ namespace FryzjerManager.ViewModel
                     CurrentView = ViewCustomerAdd;
                     break;
                 case "ViewCustomerSearch":
-                    CurrentView = ViewCustomerSearch;
+                    //CurrentView = ViewCustomerSearch;
                     break;
                 case "ViewCustomers":
                     CurrentView = ViewCustomers;
@@ -414,7 +416,11 @@ namespace FryzjerManager.ViewModel
                     Debug.WriteLine("Coś poszło nie tak! w funkcji ChangeViewTo");
                     break;
             }
-
+        }
+        private void ChangeViewTo(object view)
+        {
+            PreviousViews.Push(CurrentView);
+            CurrentView = view as UserControl;
         }
 
         private ICommand _gotoMainMenu = null;

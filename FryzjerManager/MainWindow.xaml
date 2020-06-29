@@ -22,8 +22,10 @@
         <vm:ViewCustomerAddViewModel x:Key="vm3"/>
         <v:ViewCustomerAdd x:Key="view3" ViewModel="{StaticResource vm3}"/>
 
+        
         <vm:ViewCustomerSearchViewModel x:Key="vm4"/>
         <v:ViewCustomerSearch x:Key="view4" ViewModel="{StaticResource vm4}"/>
+        
         
         <vm:ViewCustomersViewModel x:Key="vm5"/>
         <v:ViewCustomers x:Key="view5" ViewModel="{StaticResource vm5}"/>
