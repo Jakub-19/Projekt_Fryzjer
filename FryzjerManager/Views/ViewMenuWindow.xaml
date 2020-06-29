@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:FryzjerManager.Views"
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             xmlns:R="clr-namespace:FryzjerManager.Properties"
              d:DesignHeight="600" d:DesignWidth="1024">
     
     <Grid>
@@ -35,7 +36,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowCustomersButtonText, Mode=OneTime}" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewMenuWindowCustomersButtonText}" FontSize="50"/>
                 </Grid>
             </Button>
 
