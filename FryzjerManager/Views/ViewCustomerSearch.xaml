@@ -61,7 +61,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Command="{Binding SelectClient}">
+        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180"                     
+                Command="{Binding Path=ViewModel.SelectClient,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
             <Grid Width="150">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"/>

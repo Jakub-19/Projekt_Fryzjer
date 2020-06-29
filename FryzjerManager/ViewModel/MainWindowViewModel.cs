@@ -360,12 +360,14 @@ namespace FryzjerManager.ViewModel
 
             ViewServiceDone = viewServiceDone;
             ViewServiceDoneViewModel = viewServiceDoneViewModel;
+            vcsdViewModel.ChangeView += ChangeViewTo;
             ViewServiceDoneViewModel.ViewCustomerSearch = vcsd;
             ViewServiceDoneViewModel.ViewCustomerSearchViewModel = vcsdViewModel;
             viewServiceDoneViewModel.ChangeView += ChangeViewTo;
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
+            vcshViewModel.ChangeView += ChangeViewTo;
             ViewServicesHistoryViewModel.ViewCustomerSearch = vcsh;
             ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = vcshViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;

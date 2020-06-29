@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
-    class Visit
+    public class Visit
     {
         public int? ID { get; set; }
         //public int ID_k { get; set; }
