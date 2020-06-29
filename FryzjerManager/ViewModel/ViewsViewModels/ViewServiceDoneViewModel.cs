@@ -33,6 +33,29 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
             }
         }
+
+        private V.ViewProductSearch _viewProductSearch = null;
+        public V.ViewProductSearch ViewProductSearch
+        {
+            get { return _viewProductSearch; }
+            set
+            {
+                _viewProductSearch = value;
+                OnPropertyChanged(nameof(ViewProductSearch));
+            }
+        }
+        private VM.ViewProductSearchViewModel _viewProductSearchViewModel;
+        public VM.ViewProductSearchViewModel ViewProductSearchViewModel
+        {
+            get { return _viewProductSearchViewModel; }
+            set
+            {
+                _viewProductSearchViewModel = value;
+                OnPropertyChanged(nameof(ViewProductSearchViewModel));
+            }
+        }
+
+
         public event Action<object> ChangeView;
 
         private ICommand _selectCustomer = null;

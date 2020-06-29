@@ -45,8 +45,11 @@
         <vm:ViewNewProductAddViewModel x:Key="vm9"/>
         <v:ViewNewProductAdd x:Key="view9" ViewModel="{StaticResource vm9}"/>
 
-        <vm:ViewProductSearchViewModel x:Key="vm10"/>
-        <v:ViewProductSearch x:Key="view10" ViewModel="{StaticResource vm10}"/>
+        <vm:ViewProductSearchViewModel x:Key="vpsaVM"/>
+        <v:ViewProductSearch x:Key="vpsa" ViewModel="{StaticResource vpsaVM}"/>
+
+        <vm:ViewProductSearchViewModel x:Key="vpsdVM"/>
+        <v:ViewProductSearch x:Key="vpsd" ViewModel="{StaticResource vpsdVM}"/>
 
         <vm:ViewServiceDoneViewModel x:Key="vm11"/>
         <v:ViewServiceDone x:Key="view11" ViewModel="{StaticResource vm11}"/>
@@ -77,8 +80,10 @@
                 <StaticResource ResourceKey="vm8"/>
                 <StaticResource ResourceKey="view9"/>
                 <StaticResource ResourceKey="vm9"/>
-                <StaticResource ResourceKey="view10"/>
-                <StaticResource ResourceKey="vm10"/>
+                <StaticResource ResourceKey="vpsa"/>
+                <StaticResource ResourceKey="vpsaVM"/>
+                <StaticResource ResourceKey="vpsd"/>
+                <StaticResource ResourceKey="vpsdVM"/>
                 <StaticResource ResourceKey="view11"/>
                 <StaticResource ResourceKey="vm11"/>
                 <StaticResource ResourceKey="view12"/>

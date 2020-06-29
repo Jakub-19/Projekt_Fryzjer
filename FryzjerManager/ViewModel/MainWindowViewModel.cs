@@ -243,26 +243,26 @@ namespace FryzjerManager.ViewModel
         }
 
 
-        private V.ViewProductSearch _viewProductSearch = null;
-        public V.ViewProductSearch ViewProductSearch
-        {
-            get { return _viewProductSearch; }
-            set
-            {
-                _viewProductSearch = value;
-                OnPropertyChanged(nameof(ViewProductSearch));
-            }
-        }
-        private VM.ViewProductSearchViewModel _viewProductSearchViewModel;
-        public VM.ViewProductSearchViewModel ViewProductSearchViewModel
-        {
-            get { return _viewProductSearchViewModel; }
-            set
-            {
-                _viewProductSearchViewModel = value;
-                OnPropertyChanged(nameof(ViewProductSearchViewModel));
-            }
-        }
+        //private V.ViewProductSearch _viewProductSearch = null;
+        //public V.ViewProductSearch ViewProductSearch
+        //{
+        //    get { return _viewProductSearch; }
+        //    set
+        //    {
+        //        _viewProductSearch = value;
+        //        OnPropertyChanged(nameof(ViewProductSearch));
+        //    }
+        //}
+        //private VM.ViewProductSearchViewModel _viewProductSearchViewModel;
+        //public VM.ViewProductSearchViewModel ViewProductSearchViewModel
+        //{
+        //    get { return _viewProductSearchViewModel; }
+        //    set
+        //    {
+        //        _viewProductSearchViewModel = value;
+        //        OnPropertyChanged(nameof(ViewProductSearchViewModel));
+        //    }
+        //}
 
 
         private V.ViewServiceDone _viewServiceDone = null;
@@ -319,7 +319,8 @@ namespace FryzjerManager.ViewModel
             V.ViewMainStock viewMainStock, VM.ViewMainStockViewModel viewMainStockViewModel,
             V.ViewMenuWindow viewMenuWindow, VM.ViewMenuWindowViewModel viewMenuWindowViewModel,
             V.ViewNewProductAdd viewNewProductAdd, VM.ViewNewProductAddViewModel viewNewProductAddViewModel,
-            V.ViewProductSearch viewProductSearch, VM.ViewProductSearchViewModel viewProductSearchViewModel,
+            V.ViewProductSearch vpsa, VM.ViewProductSearchViewModel vpsaViewModel,
+            V.ViewProductSearch vpsd, VM.ViewProductSearchViewModel vpsdViewModel,
             V.ViewServiceDone viewServiceDone, VM.ViewServiceDoneViewModel viewServiceDoneViewModel,
             V.ViewServicesHistory viewServicesHistory, VM.ViewServicesHistoryViewModel viewServicesHistoryViewModel)
         {
@@ -343,6 +344,9 @@ namespace FryzjerManager.ViewModel
 
             ViewDeliveryAdd = viewDeliveryAdd;
             ViewDeliveryAddViewModel = viewDeliveryAddViewModel;
+            ViewDeliveryAddViewModel.ViewProductSearch = vpsa;
+            ViewDeliveryAddViewModel.ViewProductSearchViewModel = vpsaViewModel;
+            viewDeliveryAddViewModel.ChangeView += ChangeViewTo;
 
             ViewMainStock = viewMainStock;
             ViewMainStockViewModel = viewMainStockViewModel;
@@ -355,13 +359,15 @@ namespace FryzjerManager.ViewModel
             ViewNewProductAdd = viewNewProductAdd;
             ViewNewProductAddViewModel = viewNewProductAddViewModel;
 
-            ViewProductSearch = viewProductSearch;
-            ViewProductSearchViewModel = viewProductSearchViewModel;
+            //ViewProductSearch = viewProductSearch;
+            //ViewProductSearchViewModel = viewProductSearchViewModel;
 
             ViewServiceDone = viewServiceDone;
             ViewServiceDoneViewModel = viewServiceDoneViewModel;
             ViewServiceDoneViewModel.ViewCustomerSearch = vcsd;
             ViewServiceDoneViewModel.ViewCustomerSearchViewModel = vcsdViewModel;
+            ViewServiceDoneViewModel.ViewProductSearch = vpsa;
+            ViewServiceDoneViewModel.ViewProductSearchViewModel = vpsaViewModel;
             viewServiceDoneViewModel.ChangeView += ChangeViewTo;
 
             ViewServicesHistory = viewServicesHistory;
@@ -408,7 +414,7 @@ namespace FryzjerManager.ViewModel
                     CurrentView = ViewNewProductAdd;
                     break;
                 case "ViewProductSearch":
-                    CurrentView = ViewProductSearch;
+                    //CurrentView = ViewProductSearch;
                     break;
                 case "ViewServiceDone":
                     CurrentView = ViewServiceDone;
