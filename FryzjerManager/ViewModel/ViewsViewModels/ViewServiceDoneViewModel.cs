@@ -70,6 +70,30 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectCustomer;
             }
         }
+        private ICommand _selectProduct = null;
+        public ICommand SelectProduct
+        {
+            get
+            {
+                if (_selectProduct == null)
+                    _selectProduct = new ViewModelBase.RelayCommand(
+                        arg => { ChangeView?.Invoke(ViewProductSearch); },
+                        arg => true);
+                return _selectProduct;
+            }
+        }
+        //private ICommand _selectSingleUseProduct = null;
+        //public ICommand SelectSingleUseProduct
+        //{
+        //    get
+        //    {
+        //        if (_selectSingleUseProduct == null)
+        //            _selectSingleUseProduct = new ViewModelBase.RelayCommand(
+        //                arg => { ChangeView?.Invoke(ViewProductSearch); },
+        //                arg => true);
+        //        return _selectSingleUseProduct;
+        //    }
+        //}
         public Client CurrentClient { get; set; }
     }
 }

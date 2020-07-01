@@ -367,8 +367,8 @@ namespace FryzjerManager.ViewModel
             vcsdViewModel.ChangeView += ChangeViewTo;
             ViewServiceDoneViewModel.ViewCustomerSearch = vcsd;
             ViewServiceDoneViewModel.ViewCustomerSearchViewModel = vcsdViewModel;
-            ViewServiceDoneViewModel.ViewProductSearch = vpsa;
-            ViewServiceDoneViewModel.ViewProductSearchViewModel = vpsaViewModel;
+            ViewServiceDoneViewModel.ViewProductSearch = vpsd;
+            ViewServiceDoneViewModel.ViewProductSearchViewModel = vpsdViewModel;
             viewServiceDoneViewModel.ChangeView += ChangeViewTo;
 
             ViewServicesHistory = viewServicesHistory;
@@ -466,238 +466,235 @@ namespace FryzjerManager.ViewModel
 
         //Do kasacji
         #region ClientRecord
-        private ClientRecord clientRecord = new ClientRecord();
-        public ObservableCollection<Client> Clients
-        {
-            get
-            {
-                ObservableCollection<Client> list = new ObservableCollection<Client>();
-                foreach (var v in clientRecord.Clients)
-                    list.Add(v);
+        //private ClientRecord clientRecord = new ClientRecord();
+        //public ObservableCollection<Client> Clients
+        //{
+        //    get
+        //    {
+        //        ObservableCollection<Client> list = new ObservableCollection<Client>();
+        //        foreach (var v in clientRecord.Clients)
+        //            list.Add(v);
 
-                return list;
-            }
-            set { }
-        }
-        public string ClientName { get; set; }
-        public string ClientSurname { get; set; }
-        public string ClientPhone { get; set; }
-        public Client CurrentClient { get; set; }
-        private void ClientDataClear()
-        {
-            ClientName = "";
-            ClientSurname = "";
-            ClientPhone = "";
-            CurrentClient = null;
-        }
-        #region Search
-        private ICommand _searchClient;
-        public ICommand SearchClient
-        {
-            get
-            {
-                return _searchClient ?? (_searchClient = new RelayCommand(
-                   x =>
-                   {
-                       clientRecord.GetClients(ClientName, ClientSurname);
-                       OnPropertyChanged(nameof(Clients));
-                   }));
-            }
-        }
-        private ICommand _selectClient;
-        public ICommand SelectClient
-        {
-            get
-            {
-                return _selectClient ?? (_selectClient = new RelayCommand(
-                   x =>
-                   {
-                       ClientName = CurrentClient.Name;
-                       ClientSurname = CurrentClient.LastName;
-                       ClientPhone = CurrentClient.PhoneNumber;
-                       //GotoViewServiceDone();
-                   },
-                   x =>
-                   {
-                       return CurrentClient != null;
-                   }
-                   ));
-            }
-        }
+        //        return list;
+        //    }
+        //    set { }
+        //}
+        //public string ClientName { get; set; }
+        //public string ClientSurname { get; set; }
+        //public string ClientPhone { get; set; }
+        //public Client CurrentClient { get; set; }
+        //private void ClientDataClear()
+        //{
+        //    ClientName = "";
+        //    ClientSurname = "";
+        //    ClientPhone = "";
+        //    CurrentClient = null;
+        //}
+        //#region Search
+        //private ICommand _searchClient;
+        //public ICommand SearchClient
+        //{
+        //    get
+        //    {
+        //        return _searchClient ?? (_searchClient = new RelayCommand(
+        //           x =>
+        //           {
+        //               clientRecord.GetClients(ClientName, ClientSurname);
+        //               OnPropertyChanged(nameof(Clients));
+        //           }));
+        //    }
+        //}
+        //private ICommand _selectClient;
+        //public ICommand SelectClient
+        //{
+        //    get
+        //    {
+        //        return _selectClient ?? (_selectClient = new RelayCommand(
+        //           x =>
+        //           {
+        //               ClientName = CurrentClient.Name;
+        //               ClientSurname = CurrentClient.LastName;
+        //               ClientPhone = CurrentClient.PhoneNumber;
+        //               //GotoViewServiceDone();
+        //           },
+        //           x =>
+        //           {
+        //               return CurrentClient != null;
+        //           }
+        //           ));
+        //    }
+        //}
         #endregion
-
         #region AddNew
-        private ICommand _addNewClient;
-        public ICommand AddNewClient
-        {
-            get
-            {
-                return _addNewClient ?? (_addNewClient = new RelayCommand(
-                   x =>
-                   {
-                       clientRecord.AddNew(ClientName, ClientSurname, ClientPhone);
-                       //ClientName = "";
-                       //ClientSurname = "";
-                       //ClientPhone = "";
-                       ClientDataClear();
-                       OnPropertyChanged(nameof(ClientName));
-                       OnPropertyChanged(nameof(ClientSurname));
-                       OnPropertyChanged(nameof(ClientPhone));
-                       //Informacja zwrotna przydalaby sie
-                       //GotoPreviousView();
-                   },
-                   x =>
-                   {
-                       return !string.IsNullOrEmpty(ClientName) && !string.IsNullOrEmpty(ClientSurname) && !string.IsNullOrEmpty(ClientPhone);
-                   }));
-            }
-        }
-        #endregion
-
+        //private ICommand _addNewClient;
+        //public ICommand AddNewClient
+        //{
+        //    get
+        //    {
+        //        return _addNewClient ?? (_addNewClient = new RelayCommand(
+        //           x =>
+        //           {
+        //               clientRecord.AddNew(ClientName, ClientSurname, ClientPhone);
+        //               //ClientName = "";
+        //               //ClientSurname = "";
+        //               //ClientPhone = "";
+        //               ClientDataClear();
+        //               OnPropertyChanged(nameof(ClientName));
+        //               OnPropertyChanged(nameof(ClientSurname));
+        //               OnPropertyChanged(nameof(ClientPhone));
+        //               //Informacja zwrotna przydalaby sie
+        //               //GotoPreviousView();
+        //           },
+        //           x =>
+        //           {
+        //               return !string.IsNullOrEmpty(ClientName) && !string.IsNullOrEmpty(ClientSurname) && !string.IsNullOrEmpty(ClientPhone);
+        //           }));
+        //    }
+        //}
         #endregion
         #region Inventory
-        Inventory inventory = new Inventory();
-        private List<SingleUseProduct> _usedSingleUseProducts = new List<SingleUseProduct>();
-        private List<Product> _usedProducts = new List<Product>();
-        private bool IsSingleProducts;
-        public SingleUseProduct CurrentProduct { get; set; }
-        private void InventoryDataClear()
-        {
-            ProductName = "";
-        }
-        public ObservableCollection<SingleUseProduct> AllProductsRecord
-        {
-            get
-            {
-                ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
-                if (IsSingleProducts)
-                {
-                    foreach (var v in inventory.SingleUseProducts)
-                        list.Add(v);
-                }
-                else
-                {
-                    foreach (var v in inventory.Products)
-                        list.Add(v);
-                }
+        //Inventory inventory = new Inventory();
+        //private List<SingleUseProduct> _usedSingleUseProducts = new List<SingleUseProduct>();
+        //private List<Product> _usedProducts = new List<Product>();
+        //private bool IsSingleProducts;
+        //public SingleUseProduct CurrentProduct { get; set; }
+        //private void InventoryDataClear()
+        //{
+        //    ProductName = "";
+        //}
+        //public ObservableCollection<SingleUseProduct> AllProductsRecord
+        //{
+        //    get
+        //    {
+        //        ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
+        //        if (IsSingleProducts)
+        //        {
+        //            foreach (var v in inventory.SingleUseProducts)
+        //                list.Add(v);
+        //        }
+        //        else
+        //        {
+        //            foreach (var v in inventory.Products)
+        //                list.Add(v);
+        //        }
 
-                return list;
-            }
-            set
-            { }
-        }
-        public ObservableCollection<SingleUseProduct> UsedSingleUseProducts
-        {
-            get
-            {
-                ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
-                foreach (var v in _usedSingleUseProducts)
-                    list.Add(v);
+        //        return list;
+        //    }
+        //    set
+        //    { }
+        //}
+        //public ObservableCollection<SingleUseProduct> UsedSingleUseProducts
+        //{
+        //    get
+        //    {
+        //        ObservableCollection<SingleUseProduct> list = new ObservableCollection<SingleUseProduct>();
+        //        foreach (var v in _usedSingleUseProducts)
+        //            list.Add(v);
 
-                return list;
-            }
-            set { }
-        }
-        public ObservableCollection<Product> UsedProducts
-        {
-            get
-            {
-                ObservableCollection<Product> list = new ObservableCollection<Product>();
-                foreach (var v in _usedProducts)
-                    list.Add(v);
+        //        return list;
+        //    }
+        //    set { }
+        //}
+        //public ObservableCollection<Product> UsedProducts
+        //{
+        //    get
+        //    {
+        //        ObservableCollection<Product> list = new ObservableCollection<Product>();
+        //        foreach (var v in _usedProducts)
+        //            list.Add(v);
 
-                return list;
-            }
-            set { }
-        }
-        private ICommand _singleUseProductPlusButton;
-        public ICommand SingleUseProductPlusButton
-        {
-            get
-            {
-                return _singleUseProductPlusButton ?? (_singleUseProductPlusButton = new RelayCommand(
-                   x =>
-                   {
-                       ProductName = "";
-                       IsSingleProducts = true;
-                       //GotoViewProductSearch();
-                   }));
-            }
-        }
-        private ICommand _productPlusButton;
-        public ICommand ProductPlusButton
-        {
-            get
-            {
-                return _productPlusButton ?? (_productPlusButton = new RelayCommand(
-                   x =>
-                   {
-                       ProductName = "";
-                       IsSingleProducts = false;
-                       //GotoViewProductSearch();
-                   }));
-            }
-        }
-        public string ProductName { get; set; }
-        private ICommand _selectProduct;
-        public ICommand SelectProduct
-        {
-            get
-            {
-                return _selectProduct ?? (_selectProduct = new RelayCommand(
-                   x =>
-                   {
-                       if (IsSingleProducts)
-                       {
-                           _usedSingleUseProducts.Add(CurrentProduct);
-                       }
-                       else
-                       {
-                           _usedProducts.Add(CurrentProduct as Product);
-                       }
-                       //GotoViewServiceDone();
-                   },
-                    x =>
-                    {
-                        return CurrentProduct != null;
-                    }));
-            }
-        }
-        private ICommand _searchProduct;
-        public ICommand SearchProduct
-        {
-            get
-            {
-                return _searchProduct ?? (_searchProduct = new RelayCommand(
-                   x =>
-                   {
-                       if (IsSingleProducts)
-                       {
-                           inventory.GetSingleUseProducts(ProductName);
-                       }
-                       else
-                       {
-                           inventory.GetProducts(ProductName);
-                       }
-                       OnPropertyChanged(nameof(AllProductsRecord));
-                   }));
-            }
-        }
+        //        return list;
+        //    }
+        //    set { }
+        //}
+        //private ICommand _singleUseProductPlusButton;
+        //public ICommand SingleUseProductPlusButton
+        //{
+        //    get
+        //    {
+        //        return _singleUseProductPlusButton ?? (_singleUseProductPlusButton = new RelayCommand(
+        //           x =>
+        //           {
+        //               ProductName = "";
+        //               IsSingleProducts = true;
+        //               //GotoViewProductSearch();
+        //           }));
+        //    }
+        //}
+        //private ICommand _productPlusButton;
+        //public ICommand ProductPlusButton
+        //{
+        //    get
+        //    {
+        //        return _productPlusButton ?? (_productPlusButton = new RelayCommand(
+        //           x =>
+        //           {
+        //               ProductName = "";
+        //               IsSingleProducts = false;
+        //               //GotoViewProductSearch();
+        //           }));
+        //    }
+        //}
+        //public string ProductName { get; set; }
+        //private ICommand _selectProduct;
+        //public ICommand SelectProduct
+        //{
+        //    get
+        //    {
+        //        return _selectProduct ?? (_selectProduct = new RelayCommand(
+        //           x =>
+        //           {
+        //               if (IsSingleProducts)
+        //               {
+        //                   _usedSingleUseProducts.Add(CurrentProduct);
+        //               }
+        //               else
+        //               {
+        //                   _usedProducts.Add(CurrentProduct as Product);
+        //               }
+        //               //GotoViewServiceDone();
+        //           },
+        //            x =>
+        //            {
+        //                return CurrentProduct != null;
+        //            }));
+        //    }
+        //}
+        //private ICommand _searchProduct;
+        //public ICommand SearchProduct
+        //{
+        //    get
+        //    {
+        //        return _searchProduct ?? (_searchProduct = new RelayCommand(
+        //           x =>
+        //           {
+        //               if (IsSingleProducts)
+        //               {
+        //                   inventory.GetSingleUseProducts(ProductName);
+        //               }
+        //               else
+        //               {
+        //                   inventory.GetProducts(ProductName);
+        //               }
+        //               OnPropertyChanged(nameof(AllProductsRecord));
+        //           }));
+        //    }
+        //}
         #endregion
         #region VisitRecord
-        private ServiceRecord serviceRecord = new ServiceRecord();
-        public ObservableCollection<string> Services
-        {
-            get
-            {
-                ObservableCollection<string> list = new ObservableCollection<string>();
-                foreach (var v in serviceRecord.Services)
-                    list.Add(v.Name);
+        //private ServiceRecord serviceRecord = new ServiceRecord();
+        //public ObservableCollection<string> Services
+        //{
+        //    get
+        //    {
+        //        ObservableCollection<string> list = new ObservableCollection<string>();
+        //        foreach (var v in serviceRecord.Services)
+        //            list.Add(v.Name);
 
-                return list;
-            }
-            set { }
-        }
+        //        return list;
+        //    }
+        //    set { }
+        //}
         #endregion
         #region ResourcesTextNames
         public string ViewMenuWindowCustomersButtonText{
