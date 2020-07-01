@@ -123,6 +123,12 @@
   <data name="CustomerAddViewName" xml:space="preserve">
     <value>Dodawanie Klienta</value>
   </data>
+  <data name="CustomerAddViewNameTitle" xml:space="preserve">
+    <value>Dodaj klienta</value>
+  </data>
+  <data name="CustomersViewAuthorsTitle" xml:space="preserve">
+    <value>Autorzy</value>
+  </data>
   <data name="CustomersViewName" xml:space="preserve">
     <value>Klienci</value>
   </data>
@@ -134,6 +140,27 @@
   </data>
   <data name="ServiceDoneViewName" xml:space="preserve">
     <value>Dodawanie Wykonanej Usługi</value>
+  </data>
+  <data name="ViewActualStockButtonSearch" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="ViewActualStockNameOfSearchedProduct" xml:space="preserve">
+    <value>Nazwa szukanego produktu:</value>
+  </data>
+  <data name="ViewActualStockTitle" xml:space="preserve">
+    <value>Aktualny stan</value>
+  </data>
+  <data name="ViewAuthorsGrzesica" xml:space="preserve">
+    <value>Krzysztof Grzesica</value>
+  </data>
+  <data name="ViewAuthorsPrusakowska" xml:space="preserve">
+    <value>Karolina Prusakowska</value>
+  </data>
+  <data name="ViewAuthorsWadas" xml:space="preserve">
+    <value>Jakub Wadas</value>
+  </data>
+  <data name="ViewAuthorsWozniak" xml:space="preserve">
+    <value>Karolina Woźniak</value>
   </data>
   <data name="ViewCustomerAddConfirmButtonText" xml:space="preserve">
     <value>DODAJ</value>
@@ -150,8 +177,32 @@
   <data name="ViewCustomersAddCustomerButtonText" xml:space="preserve">
     <value>DODAJ KLIENTA</value>
   </data>
+  <data name="ViewCustomerSearchButtonSearch" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="ViewCustomerSearchLabelImie" xml:space="preserve">
+    <value>Imię:</value>
+  </data>
+  <data name="ViewCustomerSearchLabelNazwisko" xml:space="preserve">
+    <value>Nazwisko</value>
+  </data>
+  <data name="ViewCustomerSearchTitle" xml:space="preserve">
+    <value>Znajdź klienta</value>
+  </data>
   <data name="ViewCustomersServicesHistoryButtonText" xml:space="preserve">
     <value>HISTORIA WIZYT</value>
+  </data>
+  <data name="ViewCustomersTitle" xml:space="preserve">
+    <value>Klienci</value>
+  </data>
+  <data name="ViewDeliveryAddCount" xml:space="preserve">
+    <value>szt.</value>
+  </data>
+  <data name="ViewDeliveryAddTextNewDelivery" xml:space="preserve">
+    <value>Nowa dostawa</value>
+  </data>
+  <data name="ViewDeliveryAddTitle" xml:space="preserve">
+    <value>Wprowadź dostawę</value>
   </data>
   <data name="ViewMainStockActualStockButtonText" xml:space="preserve">
     <value>AKTUALNY STAN</value>

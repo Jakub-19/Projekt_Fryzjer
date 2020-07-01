@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:FryzjerManager.Views"
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:R="clr-namespace:FryzjerManager.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
     <Grid>
@@ -16,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{x:Static R:Resources.ViewCustomersTitle}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Margin="80,0,80,80">
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"

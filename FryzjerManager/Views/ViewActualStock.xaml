@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:FryzjerManager.Views"
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:R="clr-namespace:FryzjerManager.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
     <Grid>
@@ -16,12 +17,12 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{x:Static R:Resources.ViewActualStockTitle}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <!--Do zmiany na słownik-->
             <Label Grid.Row="1" FontSize="30" VerticalAlignment="Center" Margin="10,0,10,0"
-               Content="Nazwa szukanego produktu:"/>
+               Content="{x:Static R:Resources.ViewActualStockNameOfSearchedProduct}"/>
             <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" >
                 <TextBox Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="400" Height="40"
                        Text="{Binding Path=ClientName}"/>
@@ -38,7 +39,7 @@
                             <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Szukaj" FontSize="23"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewActualStockButtonSearch}" FontSize="23"/>
                 </Grid>
             </Button>
         </StackPanel>
