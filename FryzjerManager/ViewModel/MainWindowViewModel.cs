@@ -221,26 +221,26 @@ namespace FryzjerManager.ViewModel
         }
 
 
-        private V.ViewNewProductAdd _viewNewProductAdd = null;
-        public V.ViewNewProductAdd ViewNewProductAdd
-        {
-            get { return _viewNewProductAdd; }
-            set
-            {
-                _viewNewProductAdd = value;
-                OnPropertyChanged(nameof(ViewNewProductAdd));
-            }
-        }
-        private VM.ViewNewProductAddViewModel _viewNewProductAddViewModel;
-        public VM.ViewNewProductAddViewModel ViewNewProductAddViewModel
-        {
-            get { return _viewNewProductAddViewModel; }
-            set
-            {
-                _viewNewProductAddViewModel = value;
-                OnPropertyChanged(nameof(ViewNewProductAddViewModel));
-            }
-        }
+        //private V.ViewNewProductAdd _viewNewProductAdd = null;
+        //public V.ViewNewProductAdd ViewNewProductAdd
+        //{
+        //    get { return _viewNewProductAdd; }
+        //    set
+        //    {
+        //        _viewNewProductAdd = value;
+        //        OnPropertyChanged(nameof(ViewNewProductAdd));
+        //    }
+        //}
+        //private VM.ViewNewProductAddViewModel _viewNewProductAddViewModel;
+        //public VM.ViewNewProductAddViewModel ViewNewProductAddViewModel
+        //{
+        //    get { return _viewNewProductAddViewModel; }
+        //    set
+        //    {
+        //        _viewNewProductAddViewModel = value;
+        //        OnPropertyChanged(nameof(ViewNewProductAddViewModel));
+        //    }
+        //}
 
 
         //private V.ViewProductSearch _viewProductSearch = null;
@@ -319,8 +319,10 @@ namespace FryzjerManager.ViewModel
             V.ViewMainStock viewMainStock, VM.ViewMainStockViewModel viewMainStockViewModel,
             V.ViewMenuWindow viewMenuWindow, VM.ViewMenuWindowViewModel viewMenuWindowViewModel,
             V.ViewNewProductAdd viewNewProductAdd, VM.ViewNewProductAddViewModel viewNewProductAddViewModel,
-            V.ViewProductSearch vpsa, VM.ViewProductSearchViewModel vpsaViewModel,
-            V.ViewProductSearch vpsd, VM.ViewProductSearchViewModel vpsdViewModel,
+            V.ViewProductSearch vpsa1, VM.ViewProductSearchViewModel vpsa1ViewModel,
+            V.ViewProductSearch vpsa2, VM.ViewProductSearchViewModel vpsa2ViewModel,
+            V.ViewProductSearch vpsd1, VM.ViewProductSearchViewModel vpsd1ViewModel,
+            V.ViewProductSearch vpsd2, VM.ViewProductSearchViewModel vpsd2ViewModel,
             V.ViewServiceDone viewServiceDone, VM.ViewServiceDoneViewModel viewServiceDoneViewModel,
             V.ViewServicesHistory viewServicesHistory, VM.ViewServicesHistoryViewModel viewServicesHistoryViewModel)
         {
@@ -344,9 +346,13 @@ namespace FryzjerManager.ViewModel
 
             ViewDeliveryAdd = viewDeliveryAdd;
             ViewDeliveryAddViewModel = viewDeliveryAddViewModel;
-            ViewDeliveryAddViewModel.ViewProductSearch = vpsa;
-            ViewDeliveryAddViewModel.ViewProductSearchViewModel = vpsaViewModel;
+            ViewDeliveryAddViewModel.ViewProductSearch1 = vpsa1;
+            ViewDeliveryAddViewModel.ViewProductSearchViewModel1 = vpsa1ViewModel;
+            ViewDeliveryAddViewModel.ViewProductSearch2 = vpsa2;
+            ViewDeliveryAddViewModel.ViewProductSearchViewModel2 = vpsa2ViewModel;
             viewDeliveryAddViewModel.ChangeView += ChangeViewTo;
+            ViewDeliveryAddViewModel.ViewNewProductAdd = viewNewProductAdd;
+            ViewDeliveryAddViewModel.ViewNewProductAddViewModel = viewNewProductAddViewModel;
 
             ViewMainStock = viewMainStock;
             ViewMainStockViewModel = viewMainStockViewModel;
@@ -356,8 +362,8 @@ namespace FryzjerManager.ViewModel
             ViewMenuWindowViewModel = viewMenuWindowViewModel;
             viewMenuWindowViewModel.ChangeView += ChangeViewTo;
 
-            ViewNewProductAdd = viewNewProductAdd;
-            ViewNewProductAddViewModel = viewNewProductAddViewModel;
+            //ViewNewProductAdd = viewNewProductAdd;
+            //ViewNewProductAddViewModel = viewNewProductAddViewModel;
 
             //ViewProductSearch = viewProductSearch;
             //ViewProductSearchViewModel = viewProductSearchViewModel;
@@ -367,8 +373,10 @@ namespace FryzjerManager.ViewModel
             vcsdViewModel.ChangeView += ChangeViewTo;
             ViewServiceDoneViewModel.ViewCustomerSearch = vcsd;
             ViewServiceDoneViewModel.ViewCustomerSearchViewModel = vcsdViewModel;
-            ViewServiceDoneViewModel.ViewProductSearch = vpsd;
-            ViewServiceDoneViewModel.ViewProductSearchViewModel = vpsdViewModel;
+            ViewServiceDoneViewModel.ViewProductSearch1 = vpsd1;
+            ViewServiceDoneViewModel.ViewProductSearchViewModel1 = vpsd1ViewModel;
+            ViewServiceDoneViewModel.ViewProductSearch2 = vpsd2;
+            ViewServiceDoneViewModel.ViewProductSearchViewModel2 = vpsd2ViewModel;
             viewServiceDoneViewModel.ChangeView += ChangeViewTo;
 
             ViewServicesHistory = viewServicesHistory;
@@ -413,7 +421,7 @@ namespace FryzjerManager.ViewModel
                     CurrentView = ViewMenuWindow;
                     break;
                 case "ViewNewProductAdd":
-                    CurrentView = ViewNewProductAdd;
+                    //CurrentView = ViewNewProductAdd;
                     break;
                 case "ViewProductSearch":
                     //CurrentView = ViewProductSearch;

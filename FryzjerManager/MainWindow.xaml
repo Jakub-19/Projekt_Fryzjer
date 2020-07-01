@@ -45,12 +45,22 @@
         <vm:ViewNewProductAddViewModel x:Key="vm9"/>
         <v:ViewNewProductAdd x:Key="view9" ViewModel="{StaticResource vm9}"/>
 
-        <vm:ViewProductSearchViewModel x:Key="vpsaVM"/>
-        <v:ViewProductSearch x:Key="vpsa" ViewModel="{StaticResource vpsaVM}"/>
+        
+        
+        <vm:ViewProductSearchViewModel x:Key="vpsa1VM"/>
+        <v:ViewProductSearch x:Key="vpsa1" ViewModel="{StaticResource vpsa1VM}"/>
 
-        <vm:ViewProductSearchViewModel x:Key="vpsdVM"/>
-        <v:ViewProductSearch x:Key="vpsd" ViewModel="{StaticResource vpsdVM}"/>
+        <vm:ViewProductSearchViewModel x:Key="vpsa2VM"/>
+        <v:ViewProductSearch x:Key="vpsa2" ViewModel="{StaticResource vpsa2VM}"/>
 
+        <vm:ViewProductSearchViewModel x:Key="vpsd1VM"/>
+        <v:ViewProductSearch x:Key="vpsd1" ViewModel="{StaticResource vpsd1VM}"/>
+
+        <vm:ViewProductSearchViewModel x:Key="vpsd2VM"/>
+        <v:ViewProductSearch x:Key="vpsd2" ViewModel="{StaticResource vpsd2VM}"/>
+
+        
+        
         <vm:ViewServiceDoneViewModel x:Key="vm11"/>
         <v:ViewServiceDone x:Key="view11" ViewModel="{StaticResource vm11}"/>
 
@@ -80,10 +90,14 @@
                 <StaticResource ResourceKey="vm8"/>
                 <StaticResource ResourceKey="view9"/>
                 <StaticResource ResourceKey="vm9"/>
-                <StaticResource ResourceKey="vpsa"/>
-                <StaticResource ResourceKey="vpsaVM"/>
-                <StaticResource ResourceKey="vpsd"/>
-                <StaticResource ResourceKey="vpsdVM"/>
+                <StaticResource ResourceKey="vpsa1"/>
+                <StaticResource ResourceKey="vpsa1VM"/>
+                <StaticResource ResourceKey="vpsa2"/>
+                <StaticResource ResourceKey="vpsa2VM"/>
+                <StaticResource ResourceKey="vpsd1"/>
+                <StaticResource ResourceKey="vpsd1VM"/>
+                <StaticResource ResourceKey="vpsd2"/>
+                <StaticResource ResourceKey="vpsd2VM"/>
                 <StaticResource ResourceKey="view11"/>
                 <StaticResource ResourceKey="vm11"/>
                 <StaticResource ResourceKey="view12"/>
