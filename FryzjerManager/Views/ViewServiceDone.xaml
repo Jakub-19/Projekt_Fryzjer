@@ -59,7 +59,7 @@
                                 <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                             </material:PackIcon.LayoutTransform>
                         </material:PackIcon>
-                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=ViewServiceDoneChooseButtonText}" FontSize="23"/>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewServiceDoneChooseButtonText}" FontSize="23"/>
                     </Grid>
                 </Button>
             </StackPanel>
@@ -70,7 +70,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label FontSize="25" VerticalAlignment="Center" Margin="10,0,0,0"
-               Content="Data wizyty: "/>
+               Content="{x:Static R:Resources.ViewServiceDoneDateVisitLabelContent}"/>
             <DatePicker Grid.Column="1" HorizontalAlignment="Left" Width="140" FontSize="20"/>
         </Grid>
         <Grid Grid.Row="3">
@@ -81,7 +81,7 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0"  Margin="10" Background="#FFB6B6B6">
                 <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Content="{Binding Path=ViewServiceDoneDoneServicesLabelContent}" Foreground="#FF3D3D3D"/>
+                    Content="{x:Static R:Resources.ViewServiceDoneDoneServicesLabelContent}" Foreground="#FF3D3D3D"/>
                 <title:ListViewWithCheckboxes Margin="20">
 
                 </title:ListViewWithCheckboxes>
@@ -91,7 +91,7 @@
             <StackPanel Grid.Column="1"  Margin="10" Background="#FFB6B6B6">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Width="265" TextAlignment="Center" Foreground="#FF3D3D3D"
-                    Text="{Binding Path=ViewServiceDoneUsedProductsMultiTextBlockText}"/>
+                    Text="{x:Static R:Resources.ViewServiceDoneUsedProductsMultiTextBlockText}"/>
                     <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="35" Width="45" Margin="5,0,0,0"
                             Command="{Binding ProductPlusButton}">
                         <material:PackIcon Kind="Add" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -107,9 +107,9 @@
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" FontSize="20"
-                        Content="{Binding Path=ViewServiceDoneNameLabelContent}"/>
+                        Content="{x:Static R:Resources.ViewServiceDoneNameLabelContent}"/>
                     <Label Grid.Column="1" FontSize="20"
-                        Content="{Binding Path=ViewServiceDoneAmountLabelContent}"/>
+                        Content="{x:Static R:Resources.ViewServiceDoneAmountLabelContent}"/>
                 </Grid>
             </StackPanel>
             <Grid Grid.Column="1">
@@ -144,7 +144,7 @@
             <StackPanel Grid.Column="2" Margin="10" Background="#FFB6B6B6">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Width="265" TextAlignment="Center" Foreground="#FF3D3D3D"
-                    Text="{Binding Path=ViewServiceDoneUsedProductsSingleTextBlockText}"/>
+                    Text="{x:Static R:Resources.ViewServiceDoneUsedProductsSingleTextBlockText}"/>
                     <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="35" Width="45" Margin="5,0,0,0"
                             Command="{Binding SingleUseProductPlusButton}">
                         <material:PackIcon Kind="Add" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -160,9 +160,9 @@
                         <ColumnDefinition Width="5*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" FontSize="20"
-                        Content="{Binding Path=ViewServiceDoneNameLabelContent}"/>
+                        Content="{x:Static R:Resources.ViewServiceDoneNameLabelContent}"/>
                     <Label Grid.Column="1" FontSize="20"
-                        Content="{Binding Path=ViewServiceDoneAmountLabelContent}"/>
+                        Content="{x:Static R:Resources.ViewServiceDoneAmountLabelContent}"/>
                 </Grid>
             </StackPanel>
             <Grid Grid.Column="2">
@@ -208,7 +208,7 @@
                             <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=ViewServiceDoneAcceptButtonText}" FontSize="23"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewServiceDoneAcceptButtonText}" FontSize="23"/>
                 </Grid>
             </Button>
         </Grid>

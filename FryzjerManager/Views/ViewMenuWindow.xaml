@@ -51,7 +51,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowServicesButtonText, Mode=OneTime}" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewMenuWindowServicesButtonText}" FontSize="50"/>
                 </Grid>
             </Button>
 
@@ -66,7 +66,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowStockButtonText, Mode=OneTime}" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewMenuWindowStockButtonText}" FontSize="50"/>
                 </Grid>
             </Button>
 
@@ -81,7 +81,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMenuWindowAuthorsButtonText, Mode=OneTime}" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewMenuWindowAuthorsButtonText}" FontSize="50"/>
                 </Grid>
             </Button>
         </StackPanel>

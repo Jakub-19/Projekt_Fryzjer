@@ -8,6 +8,7 @@
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             xmlns:R="clr-namespace:FryzjerManager.Properties"
              d:DesignHeight="600" d:DesignWidth="1024">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,7 +28,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Grid.Row="1" FontSize="30" VerticalAlignment="Center" Margin="10,0,0,0"
-               Content="{Binding Path=ViewServiceDoneLabelCustomerContent}"/>
+               Content="{x:Static R:Resources.ViewServiceDoneLabelCustomerContent}"/>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                 <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50">
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="220" Height="40"
@@ -56,7 +57,7 @@
                                 <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                             </material:PackIcon.LayoutTransform>
                         </material:PackIcon>
-                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=ViewServiceDoneChooseButtonText}" FontSize="23"/>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewServiceDoneChooseButtonText}" FontSize="23"/>
                     </Grid>
                 </Button>
             </StackPanel>
@@ -69,8 +70,8 @@
             <ListView FontSize="25" ItemsSource="{Binding Path=Clients}"  SelectedItem="{Binding Path=CurrentClient, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Data" Width="200" DisplayMemberBinding="{Binding Path=Name}" />
-                        <GridViewColumn Header="Cena" Width="100" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
+                        <GridViewColumn Header="{x:Static R:Resources.ViewServiceDoneDateHeader}" Width="200" DisplayMemberBinding="{Binding Path=Name}" />
+                        <GridViewColumn Header="{x:Static R:Resources.ViewNewProductAddPriceLabelContent}" Width="100" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
                     </GridView>
                 </ListView.View>
             </ListView>

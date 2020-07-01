@@ -7,6 +7,7 @@
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             xmlns:R="clr-namespace:FryzjerManager.Properties"
              d:DesignHeight="600" d:DesignWidth="1024">
     <Grid>
 
@@ -30,7 +31,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMainStockAddDeliveryButtonText, Mode=OneTime}" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewMainStockAddDeliveryButtonText}" FontSize="50"/>
                 </Grid>
             </Button>
             <Button Margin="15,40,15,15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="100"
@@ -44,7 +45,7 @@
                             <ScaleTransform ScaleX="3" ScaleY="3"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock HorizontalAlignment="Center" Text="{Binding Path=ViewMainStockActualStockButtonText, Mode=OneTime}" FontSize="50"/>
+                    <TextBlock HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewMainStockActualStockButtonText}" FontSize="50"/>
                 </Grid>
             </Button>
         </StackPanel>

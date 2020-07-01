@@ -171,6 +171,24 @@
   <data name="ViewMenuWindowStockButtonText" xml:space="preserve">
     <value>STOCK</value>
   </data>
+  <data name="ViewNewProductAddCapacityLabelContent" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+  <data name="ViewNewProductAddDispProductCheckBoxContent" xml:space="preserve">
+    <value>Disposable product</value>
+  </data>
+  <data name="ViewNewProductAddPriceLabelContent" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="ViewNewProductAddProductCheckBoxContent" xml:space="preserve">
+    <value>Reusable product</value>
+  </data>
+  <data name="ViewProductSearchButtonSearchLabelContent" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ViewProductSearchNameofProductLabelContent" xml:space="preserve">
+    <value>Name of searched product</value>
+  </data>
   <data name="ViewServiceDoneAcceptButtonText" xml:space="preserve">
     <value>Accept</value>
   </data>
@@ -179,6 +197,12 @@
   </data>
   <data name="ViewServiceDoneChooseButtonText" xml:space="preserve">
     <value>Choose</value>
+  </data>
+  <data name="ViewServiceDoneDateHeader" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ViewServiceDoneDateVisitLabelContent" xml:space="preserve">
+    <value>Date of visit:</value>
   </data>
   <data name="ViewServiceDoneDoneServicesLabelContent" xml:space="preserve">
     <value>Services Done</value>

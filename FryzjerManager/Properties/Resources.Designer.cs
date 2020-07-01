@@ -223,6 +223,60 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Capacity.
+        /// </summary>
+        public static string ViewNewProductAddCapacityLabelContent {
+            get {
+                return ResourceManager.GetString("ViewNewProductAddCapacityLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Disposable product.
+        /// </summary>
+        public static string ViewNewProductAddDispProductCheckBoxContent {
+            get {
+                return ResourceManager.GetString("ViewNewProductAddDispProductCheckBoxContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Price.
+        /// </summary>
+        public static string ViewNewProductAddPriceLabelContent {
+            get {
+                return ResourceManager.GetString("ViewNewProductAddPriceLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Reusable product.
+        /// </summary>
+        public static string ViewNewProductAddProductCheckBoxContent {
+            get {
+                return ResourceManager.GetString("ViewNewProductAddProductCheckBoxContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Search.
+        /// </summary>
+        public static string ViewProductSearchButtonSearchLabelContent {
+            get {
+                return ResourceManager.GetString("ViewProductSearchButtonSearchLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Name of searched product.
+        /// </summary>
+        public static string ViewProductSearchNameofProductLabelContent {
+            get {
+                return ResourceManager.GetString("ViewProductSearchNameofProductLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu Accept.
         /// </summary>
         public static string ViewServiceDoneAcceptButtonText {
@@ -246,6 +300,24 @@ namespace FryzjerManager.Properties {
         public static string ViewServiceDoneChooseButtonText {
             get {
                 return ResourceManager.GetString("ViewServiceDoneChooseButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Date.
+        /// </summary>
+        public static string ViewServiceDoneDateHeader {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Date of visit:.
+        /// </summary>
+        public static string ViewServiceDoneDateVisitLabelContent {
+            get {
+                return ResourceManager.GetString("ViewServiceDoneDateVisitLabelContent", resourceCulture);
             }
         }
         

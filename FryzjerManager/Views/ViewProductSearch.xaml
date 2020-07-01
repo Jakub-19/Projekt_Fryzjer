@@ -7,6 +7,7 @@
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
+             xmlns:R="clr-namespace:FryzjerManager.Properties"
              d:DesignHeight="600" d:DesignWidth="1024">
     <Grid>
         <Grid.RowDefinitions>
@@ -22,7 +23,7 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <!--Do zmiany na słownik-->
             <Label Grid.Row="1" FontSize="30" VerticalAlignment="Center" Margin="10,0,10,0"
-               Content="Nazwa szukanego produktu:"/>
+               Content="{x:Static R:Resources.ViewProductSearchNameofProductLabelContent}"/>
             <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" >
                 <TextBox Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="400" Height="40"
                        Text="{Binding Path=ProductName, Mode=TwoWay}"/>
@@ -39,7 +40,7 @@
                             <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                         </material:PackIcon.LayoutTransform>
                     </material:PackIcon>
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="Szukaj" FontSize="23"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewProductSearchButtonSearchLabelContent}" FontSize="23"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -47,7 +48,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding Path=ID}"/>
-                    <GridViewColumn Header="Nazwa" Width="800" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewServiceDoneNameLabelContent}" Width="800" DisplayMemberBinding="{Binding Path=Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -62,7 +63,7 @@
                         <ScaleTransform ScaleX="1.8" ScaleY="1.8"/>
                     </material:PackIcon.LayoutTransform>
                 </material:PackIcon>
-                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{Binding Path=ViewServiceDoneAcceptButtonText}" FontSize="23"/>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" Text="{x:Static R:Resources.ViewServiceDoneAcceptButtonText}" FontSize="23"/>
             </Grid>
         </Button>
     </Grid>
