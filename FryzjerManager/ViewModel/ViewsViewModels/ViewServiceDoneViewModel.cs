@@ -10,10 +10,8 @@ using FryzjerManager.Model;
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     using V = Views;
-    using VM = ViewsViewModels;
     public class ViewServiceDoneViewModel : ViewModelBase.ViewModelBase
     {
-        #region formularze wyszuliwania
         private V.ViewCustomerSearch _viewCustomerSearch = null;
         public V.ViewCustomerSearch ViewCustomerSearch
         {
@@ -24,39 +22,60 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 OnPropertyChanged(nameof(ViewCustomerSearch));
             }
         }
-        private VM.ViewCustomerSearchViewModel _viewCustomerSearchViewModel;
-        public VM.ViewCustomerSearchViewModel ViewCustomerSearchViewModel
+        private ViewCustomerSearchViewModel _viewCustomerSearchViewModel;
+        public ViewCustomerSearchViewModel ViewCustomerSearchViewModel
         {
             get { return _viewCustomerSearchViewModel; }
             set
             {
                 _viewCustomerSearchViewModel = value;
-                ViewCustomerSearchViewModel.TransferData += GetClient;
                 OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
             }
         }
 
-        private V.ViewProductSearch _viewProductSearch = null;
-        public V.ViewProductSearch ViewProductSearch
+
+        //1 to wielorazowe a 2 to jednorazowe
+        private V.ViewProductSearch _viewProductSearch1 = null;
+        public V.ViewProductSearch ViewProductSearch1
         {
-            get { return _viewProductSearch; }
+            get { return _viewProductSearch1; }
             set
             {
-                _viewProductSearch = value;
-                OnPropertyChanged(nameof(ViewProductSearch));
+                _viewProductSearch1 = value;
+                OnPropertyChanged(nameof(ViewProductSearch1));
             }
         }
-        private VM.ViewProductSearchViewModel _viewProductSearchViewModel;
-        public VM.ViewProductSearchViewModel ViewProductSearchViewModel
+        private ViewProductSearchViewModel _viewProductSearchViewModel1;
+        public ViewProductSearchViewModel ViewProductSearchViewModel1
         {
-            get { return _viewProductSearchViewModel; }
+            get { return _viewProductSearchViewModel1; }
             set
             {
-                _viewProductSearchViewModel = value;
-                OnPropertyChanged(nameof(ViewProductSearchViewModel));
+                _viewProductSearchViewModel1 = value;
+                OnPropertyChanged(nameof(ViewProductSearchViewModel1));
             }
         }
-        #endregion
+        private V.ViewProductSearch _viewProductSearch2 = null;
+        public V.ViewProductSearch ViewProductSearch2
+        {
+            get { return _viewProductSearch2; }
+            set
+            {
+                _viewProductSearch2 = value;
+                OnPropertyChanged(nameof(ViewProductSearch2));
+            }
+        }
+        private ViewProductSearchViewModel _viewProductSearchViewModel2;
+        public ViewProductSearchViewModel ViewProductSearchViewModel2
+        {
+            get { return _viewProductSearchViewModel2; }
+            set
+            {
+                _viewProductSearchViewModel2 = value;
+                OnPropertyChanged(nameof(ViewProductSearchViewModel2));
+            }
+        }
+
 
         public event Action<object> ChangeView;
 
@@ -72,37 +91,37 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectCustomer;
             }
         }
-        private ICommand _selectProduct = null;
-        public ICommand SelectProduct
-        {
-            get
-            {
-                if (_selectProduct == null)
-                    _selectProduct = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewProductSearch); },
-                        arg => true);
-                return _selectProduct;
-            }
-        }
-        private ICommand _selectSingleUseProduct = null;
-        public ICommand SelectSingleUseProduct
-        {
-            get
-            {
-                if (_selectSingleUseProduct == null)
-                    _selectSingleUseProduct = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewProductSearch); },
-                        arg => true);
-                return _selectSingleUseProduct;
-            }
-        }
-        private void GetClient(Client client)
-        {
-            CurrentClient = client;
-            OnPropertyChanged(nameof(CurrentClient));
-            ChangeView?.Invoke("ViewServiceDone");
 
-        }
+
+        //Trzeba sobie wybrac o ktore produkty chodzi
+        //private ICommand _selectProduct = null;
+        //public ICommand SelectProduct
+        //{
+        //    get
+        //    {
+        //        if (_selectProduct == null)
+        //            _selectProduct = new ViewModelBase.RelayCommand(
+        //                arg => { ChangeView?.Invoke(ViewProductSearch); },
+        //                arg => true);
+        //        return _selectProduct;
+        //    }
+        //}
+
+
+
+
+        //private ICommand _selectSingleUseProduct = null;
+        //public ICommand SelectSingleUseProduct
+        //{
+        //    get
+        //    {
+        //        if (_selectSingleUseProduct == null)
+        //            _selectSingleUseProduct = new ViewModelBase.RelayCommand(
+        //                arg => { ChangeView?.Invoke(ViewProductSearch); },
+        //                arg => true);
+        //        return _selectSingleUseProduct;
+        //    }
+        //}
         public Client CurrentClient { get; set; }
     }
 }

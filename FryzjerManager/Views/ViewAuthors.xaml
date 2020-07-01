@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:FryzjerManager.Views"
              xmlns:title="clr-namespace:FryzjerManager.UserControls"
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:R="clr-namespace:FryzjerManager.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="1024">
     <Grid>
@@ -18,11 +19,11 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=CustomersViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{x:Static R:Resources.CustomersViewAuthorsTitle}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
 
         <TextBlock Grid.Row="1" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="410" TextAlignment="Center" HorizontalAlignment="Left"
-                   Text="Karolina Prusakowska">
+                   Text="{x:Static R:Resources.ViewAuthorsPrusakowska}">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -47,7 +48,7 @@
             </TextBlock.Triggers>
         </TextBlock>
         <TextBlock Grid.Row="2" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="330" TextAlignment="Center" HorizontalAlignment="Left"
-                   Text="Karolina Woźniak">
+                   Text="{x:Static R:Resources.ViewAuthorsWozniak}">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
@@ -72,7 +73,7 @@
             </TextBlock.Triggers>
         </TextBlock>
         <TextBlock Grid.Row="3" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="270" TextAlignment="Center" HorizontalAlignment="Left"
-                   Text="Jakub Wadas">
+                   Text="{x:Static R:Resources.ViewAuthorsWadas}">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -97,7 +98,7 @@
             </TextBlock.Triggers>
         </TextBlock>
         <TextBlock x:Name="AuthorKrzysztof" Grid.Row="4" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="370" TextAlignment="Center" HorizontalAlignment="Left"
-                   Text="Krzysztof Grzesica">
+                   Text="{x:Static R:Resources.ViewAuthorsGrzesica}">
             <TextBlock.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="0"/>
