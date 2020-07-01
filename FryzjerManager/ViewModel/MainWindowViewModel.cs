@@ -364,7 +364,7 @@ namespace FryzjerManager.ViewModel
 
             ViewServiceDone = viewServiceDone;
             ViewServiceDoneViewModel = viewServiceDoneViewModel;
-            vcsdViewModel.ChangeView += ChangeViewTo;
+            //vcsdViewModel.ChangeView += ChangeViewTo;
             ViewServiceDoneViewModel.ViewCustomerSearch = vcsd;
             ViewServiceDoneViewModel.ViewCustomerSearchViewModel = vcsdViewModel;
             ViewServiceDoneViewModel.ViewProductSearch = vpsd;
@@ -373,7 +373,7 @@ namespace FryzjerManager.ViewModel
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
-            vcshViewModel.ChangeView += ChangeViewTo;
+            //vcshViewModel.ChangeView += ChangeViewTo;
             ViewServicesHistoryViewModel.ViewCustomerSearch = vcsh;
             ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = vcshViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;
@@ -383,56 +383,53 @@ namespace FryzjerManager.ViewModel
         }
         #endregion
 
-        private void ChangeViewTo(string view) //Metoda do zmiany widoków
-        {
-            PreviousViews.Push(CurrentView);
-            switch (view)
-            {
-                case "ViewActualStock":
-                    CurrentView = ViewActualStock;
-                    break;
-                case "ViewAuthors":
-                    CurrentView = ViewAuthors;
-                    break;
-                case "ViewCustomerAdd":
-                    CurrentView = ViewCustomerAdd;
-                    break;
-                case "ViewCustomerSearch":
-                    //CurrentView = ViewCustomerSearch;
-                    break;
-                case "ViewCustomers":
-                    CurrentView = ViewCustomers;
-                    break;
-                case "ViewDeliveryAdd":
-                    CurrentView = ViewDeliveryAdd;
-                    break;
-                case "ViewMainStock":
-                    CurrentView = ViewMainStock;
-                    break;
-                case "ViewMenuWindow":
-                    CurrentView = ViewMenuWindow;
-                    break;
-                case "ViewNewProductAdd":
-                    CurrentView = ViewNewProductAdd;
-                    break;
-                case "ViewProductSearch":
-                    //CurrentView = ViewProductSearch;
-                    break;
-                case "ViewServiceDone":
-                    CurrentView = ViewServiceDone;
-                    break;
-                case "ViewServicesHistory":
-                    CurrentView = ViewServicesHistory;
-                    break;
-                default:
-                    Debug.WriteLine("Coś poszło nie tak! w funkcji ChangeViewTo");
-                    break;
-            }
-        }
+        //Metoda do zmiany widoków
         private void ChangeViewTo(object view)
         {
             PreviousViews.Push(CurrentView);
-            CurrentView = view as UserControl;
+            if (view as string == null)
+            {
+                CurrentView = view as UserControl;
+            }
+            else
+            {
+                switch (view)
+                {
+                    case "ViewActualStock":
+                        CurrentView = ViewActualStock;
+                        break;
+                    case "ViewAuthors":
+                        CurrentView = ViewAuthors;
+                        break;
+                    case "ViewCustomerAdd":
+                        CurrentView = ViewCustomerAdd;
+                        break;
+                    case "ViewCustomers":
+                        CurrentView = ViewCustomers;
+                        break;
+                    case "ViewDeliveryAdd":
+                        CurrentView = ViewDeliveryAdd;
+                        break;
+                    case "ViewMainStock":
+                        CurrentView = ViewMainStock;
+                        break;
+                    case "ViewMenuWindow":
+                        CurrentView = ViewMenuWindow;
+                        break;
+                    case "ViewNewProductAdd":
+                        CurrentView = ViewNewProductAdd;
+                        break;
+                    case "ViewServiceDone":
+                        CurrentView = ViewServiceDone;
+                        break;
+                    case "ViewServicesHistory":
+                        CurrentView = ViewServicesHistory;
+                        break;
+                    default:
+                        Debug.WriteLine("Wybrany widok nie istnieje lub nie jest obsługiwany (ChangeViewTo)");
+                        break;
+                }
+            }
         }
 
         private ICommand _gotoMainMenu = null;

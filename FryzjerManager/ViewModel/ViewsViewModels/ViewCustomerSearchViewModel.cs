@@ -12,8 +12,6 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     public class ViewCustomerSearchViewModel : ViewModelBase.ViewModelBase
     {
-        public event Action<string> ChangeView;
-
         private ICommand _searchClient = null;
         public ICommand SearchClient
         {
@@ -40,7 +38,6 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                     _selectClient = new ViewModelBase.RelayCommand(
                         arg => {
                             TransferData?.Invoke(CurrentClient);
-                            ChangeView?.Invoke("ViewServicesHistory");
                         },
                         arg => CurrentClient != null);
                 return _selectClient;

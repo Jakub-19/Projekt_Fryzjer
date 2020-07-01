@@ -13,6 +13,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
     using VM = ViewsViewModels;
     public class ViewServiceDoneViewModel : ViewModelBase.ViewModelBase
     {
+        #region formularze wyszuliwania
         private V.ViewCustomerSearch _viewCustomerSearch = null;
         public V.ViewCustomerSearch ViewCustomerSearch
         {
@@ -30,6 +31,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             set
             {
                 _viewCustomerSearchViewModel = value;
+                ViewCustomerSearchViewModel.TransferData += GetClient;
                 OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
             }
         }
@@ -54,7 +56,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 OnPropertyChanged(nameof(ViewProductSearchViewModel));
             }
         }
-
+        #endregion
 
         public event Action<object> ChangeView;
 
@@ -82,18 +84,25 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectProduct;
             }
         }
-        //private ICommand _selectSingleUseProduct = null;
-        //public ICommand SelectSingleUseProduct
-        //{
-        //    get
-        //    {
-        //        if (_selectSingleUseProduct == null)
-        //            _selectSingleUseProduct = new ViewModelBase.RelayCommand(
-        //                arg => { ChangeView?.Invoke(ViewProductSearch); },
-        //                arg => true);
-        //        return _selectSingleUseProduct;
-        //    }
-        //}
+        private ICommand _selectSingleUseProduct = null;
+        public ICommand SelectSingleUseProduct
+        {
+            get
+            {
+                if (_selectSingleUseProduct == null)
+                    _selectSingleUseProduct = new ViewModelBase.RelayCommand(
+                        arg => { ChangeView?.Invoke(ViewProductSearch); },
+                        arg => true);
+                return _selectSingleUseProduct;
+            }
+        }
+        private void GetClient(Client client)
+        {
+            CurrentClient = client;
+            OnPropertyChanged(nameof(CurrentClient));
+            ChangeView?.Invoke("ViewServiceDone");
+
+        }
         public Client CurrentClient { get; set; }
     }
 }

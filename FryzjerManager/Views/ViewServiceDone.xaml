@@ -34,15 +34,15 @@
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
                 <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50">
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="220" Height="40"
-                       Text="{Binding Path=ClientName}"/>
+                        Text="{Binding Path=ViewModel.CurrentClient.Name, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
                 </Border>
                 <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" Margin="15">
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="260" Height="40"
-                       Text="{Binding Path=ClientSurname}"/>
+                        Text="{Binding Path=ViewModel.CurrentClient.LastName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
                 </Border>
                 <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50">
                     <TextBlock Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="180" Height="40"
-                       Text="{Binding Path=ClientPhone}"/>
+                        Text="{Binding Path=ViewModel.CurrentClient.PhoneNumber, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
                 </Border>
                 <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="15,0,0,0"
                         Command="{Binding Path=ViewModel.SelectCustomer,
@@ -93,7 +93,10 @@
                     <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Width="265" TextAlignment="Center" Foreground="#FF3D3D3D"
                     Text="{x:Static R:Resources.ViewServiceDoneUsedProductsMultiTextBlockText}"/>
                     <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="35" Width="45" Margin="5,0,0,0"
-                            Command="{Binding ProductPlusButton}">
+                        Command="{Binding Path=ViewModel.SelectProduct,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                         <material:PackIcon Kind="Add" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <material:PackIcon.LayoutTransform>
                                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
@@ -146,7 +149,10 @@
                     <TextBlock FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Width="265" TextAlignment="Center" Foreground="#FF3D3D3D"
                     Text="{x:Static R:Resources.ViewServiceDoneUsedProductsSingleTextBlockText}"/>
                     <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="35" Width="45" Margin="5,0,0,0"
-                            Command="{Binding SingleUseProductPlusButton}">
+                        Command="{Binding Path=ViewModel.SelectSingleUseProduct,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                         <material:PackIcon Kind="Add" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <material:PackIcon.LayoutTransform>
                                 <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>

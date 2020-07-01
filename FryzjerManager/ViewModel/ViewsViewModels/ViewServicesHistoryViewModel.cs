@@ -38,7 +38,6 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         }
         #endregion
         public event Action<object> ChangeView;
-
         private ICommand _selectCustomer = null;
         public ICommand SelectCustomer
         {
@@ -56,6 +55,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         {
             CurrentClient = client;
             OnPropertyChanged(nameof(CurrentClient));
+            ChangeView?.Invoke("ViewServicesHistory");
 
         }
         public Client CurrentClient { get; set; }
