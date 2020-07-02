@@ -170,9 +170,6 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 
 
 
-
-
-
         //To komenda, której implementację musisz Kubo wykonać. Jest to przycisk odpowiedzialny za zatwierdzanie wizyty po tym jak ktoś go kliknie to ma się wydarzyć cud narodzin nowej wizyty
         private ICommand _confirmVisit = null;
         public ICommand ConfirmVisit
@@ -181,8 +178,35 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_confirmVisit == null)
                     _confirmVisit = new ViewModelBase.RelayCommand(
-                        arg => { foreach (var a in ServicesChecked) Debug.WriteLine(a.ToString()); },
-                        arg => (ServicesChecked!=null) && (ServicesChecked.Count > 0));
+                        arg => {
+                            double finalPrice = 0;
+                            //aktualizacja zużycia
+                            if (Products != null)
+                            {
+                                foreach (Product v in Products)
+                                {
+                                    inventory.UseUp(v, (uint)v.SuggestedConsumption);
+                                    finalPrice += (v.SuggestedConsumption / v.Capacity) * v.Price;
+                                }
+                            }
+                            if (SingleUseProducts != null)
+                            {
+                                foreach (SingleUseProduct v in SingleUseProducts)
+                                    inventory.UseUp(v, (uint)v.SuggestedConsumption);
+                            }
+
+                            //dodanie wizyty
+                            List<Service> services = new List<Service>();
+                            foreach (Service v in ServicesChecked)
+                            {
+                                services.Add(v);
+                                finalPrice += v.Price;
+                            }
+
+                            VisitRecord visitRecord = new VisitRecord();
+                            visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate));
+                        },
+                        arg => ServicesChecked != null && ServicesChecked.Count > 0 && CurrentClient != null);
                 return _confirmVisit;
             }
         }

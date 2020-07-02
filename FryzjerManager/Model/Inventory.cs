@@ -47,7 +47,7 @@ namespace FryzjerManager.Model
         {
             Data_Access data = Data_Access.getInstance();
             product.Count = (int)((uint)product.Count - quantity);
-            //data.UpdateProductCount(product, product.Count);
+            data.UpdateProductCount(product, product.Count);
         }
         public void UseUp(Product product, uint milliliters)
         {
@@ -59,7 +59,7 @@ namespace FryzjerManager.Model
                     product.Ml = (int)((uint)product.Ml - milliliters);
 
                     data.UpdateProductMl(product, product.Ml);
-                    //data.UpdateProductCount(product, product.Count);
+                    data.UpdateProductCount(product, product.Count);
                     return;
                 }
                 else

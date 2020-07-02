@@ -189,7 +189,7 @@ namespace FryzjerManager.DAL
             }
             else if (product is SingleUseProduct)
             {
-                string command = "UPDATE disposable_products set quantity=" + newCount.ToString() + " Where id_p=" + product.ID.ToString();
+                string command = "UPDATE disposable_products set quantity=" + newCount.ToString() + " Where id_dp=" + product.ID.ToString();
                 MySqlCommand cmd = new MySqlCommand(command, con);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 rdr.Close();

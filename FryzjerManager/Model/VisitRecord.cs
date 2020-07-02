@@ -26,7 +26,7 @@ namespace FryzjerManager.Model
             Data_Access data = Data_Access.getInstance();
             data.AddVisit(visit);
         }
-        public void ClearList()
+        public void Clear()
         {
             Visits = new List<Visit>();
         }

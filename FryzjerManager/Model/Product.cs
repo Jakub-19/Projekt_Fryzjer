@@ -12,6 +12,7 @@ namespace FryzjerManager.Model
         public string Name { get; set; }
         public int Count { get; set; }
         public int Price { get; set; }
+        public int SuggestedConsumption { get; set; }
 
         public SingleUseProduct(int id, string name, int count, int price)
         {
@@ -19,6 +20,7 @@ namespace FryzjerManager.Model
             Name = name;
             Count = count;
             Price = price;
+            SuggestedConsumption = 2;
         }
         public override string ToString()
         {
@@ -33,6 +35,7 @@ namespace FryzjerManager.Model
         {
             Ml = ml;
             Capacity = capacity;
+            SuggestedConsumption = 15;
         }
     }
 }
