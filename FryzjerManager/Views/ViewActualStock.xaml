@@ -47,9 +47,9 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderID}" Width="100" DisplayMemberBinding="{Binding Path=Name}"/>
-                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderName}" Width="370" DisplayMemberBinding="{Binding Path=LastName}"/>
-                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderUnopened}" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
-                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderOpened}" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderName}" Width="450" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderUnopened}" Width="210" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <!--<GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderOpened}" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>-->
                     <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderPrice}" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
                 </GridView>
             </ListView.View>

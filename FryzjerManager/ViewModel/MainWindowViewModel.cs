@@ -11,7 +11,6 @@ using System.Diagnostics;
 
 namespace FryzjerManager.ViewModel
 {
-    using RelayCommand = ViewModelBase.RelayCommand;
     using V = Views;
     using VM = ViewsViewModels;
     using R = Properties.Resources;

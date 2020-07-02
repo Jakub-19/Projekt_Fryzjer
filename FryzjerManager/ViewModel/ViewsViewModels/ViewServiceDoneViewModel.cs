@@ -147,18 +147,43 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         public Client CurrentClient { get; set; }
         private Inventory inventory = new Inventory();
         private ServiceRecord serviceRecord = new ServiceRecord();
-        public ObservableCollection<Service> Services
+        public ObservableCollection<object> Services
         {
             get
             {
-                ObservableCollection<Service> list = new ObservableCollection<Service>();
+                ObservableCollection<object> list = new ObservableCollection<object>();
                 foreach (var v in serviceRecord.Services)
                     list.Add(v);
 
                 return list;
             }
         }
+        public ObservableCollection<object> ServicesChecked
+        {
+            get;
+            set;         
+        }
         public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
         public ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
+
+
+
+
+
+
+
+        //To komenda, której implementację musisz Kubo wykonać. Jest to przycisk odpowiedzialny za zatwierdzanie wizyty po tym jak ktoś go kliknie to ma się wydarzyć cud narodzin nowej wizyty
+        private ICommand _confirmVisit = null;
+        public ICommand ConfirmVisit
+        {
+            get
+            {
+                if (_confirmVisit == null)
+                    _confirmVisit = new ViewModelBase.RelayCommand(
+                        arg => { foreach (var a in ServicesChecked) Debug.WriteLine(a.ToString()); },
+                        arg => (ServicesChecked!=null) && (ServicesChecked.Count > 0));
+                return _confirmVisit;
+            }
+        }
     }
 }

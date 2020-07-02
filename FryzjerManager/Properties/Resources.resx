@@ -157,7 +157,7 @@
     <value>Price</value>
   </data>
   <data name="ViewActualStockHeaderUnopened" xml:space="preserve">
-    <value>Unopened</value>
+    <value>Count</value>
   </data>
   <data name="ViewActualStockNameOfSearchedProduct" xml:space="preserve">
     <value>Name of searched product:</value>
@@ -290,6 +290,9 @@
   </data>
   <data name="ViewServiceDoneNameLabelContent" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="ViewServiceDoneTitle" xml:space="preserve">
+    <value>Visit adding</value>
   </data>
   <data name="ViewServiceDoneUsedProductsMultiTextBlockText" xml:space="preserve">
     <value>Used multi-use products</value>

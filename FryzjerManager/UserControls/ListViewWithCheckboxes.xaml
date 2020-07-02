@@ -39,10 +39,12 @@
         <StackPanel>
         <CheckBox Grid.Row="0" x:Name="selectAll"  Click="OnSelectAllChanged" 
                   Content="{Binding Path=ListViewWithCheckboxesSelectAllCheckboxContent}"/>
-        <ListView Grid.Row="1" Height="240"
+        <ListView Grid.Row="1" Height="240" SelectionChanged="checkedListView_SelectionChanged"
 			x:Name="checkedListView"
 			SelectionMode="Multiple"
-			ItemsSource="{Binding Path=Services}"
+			ItemsSource="{Binding Path=Src, Mode=TwoWay,
+                          UpdateSourceTrigger=PropertyChanged,
+                          RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
 			ItemTemplate="{StaticResource ItemDataTemplate}"
 			CheckBox.Unchecked="OnUncheckItem"/>
     </StackPanel>

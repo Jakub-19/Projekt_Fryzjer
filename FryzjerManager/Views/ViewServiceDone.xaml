@@ -9,8 +9,7 @@
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:R="clr-namespace:FryzjerManager.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1024"
-             DataContext="{Binding RelativeSource={RelativeSource Self}}">
+             d:DesignHeight="600" d:DesignWidth="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -23,7 +22,7 @@
 
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=ServiceDoneViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{x:Static R:Resources.ViewServiceDoneTitle}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -83,7 +82,8 @@
             <StackPanel Grid.Column="0"  Margin="10" Background="#FFB6B6B6">
                 <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Content="{x:Static R:Resources.ViewServiceDoneDoneServicesLabelContent}" Foreground="#FF3D3D3D"/>
-                <title:ListViewWithCheckboxes Margin="20">
+                <title:ListViewWithCheckboxes Margin="20" Src="{Binding Path=ViewModel.Services, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                                              Chk="{Binding Path=ViewModel.ServicesChecked, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                     
                 </title:ListViewWithCheckboxes>
             </StackPanel>
@@ -121,7 +121,7 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
-                <ScrollViewer Grid.Row="1" Margin="10">
+                <ScrollViewer Grid.Row="1" Margin="10,20,10,10">
                     <ItemsControl ItemsSource="{Binding Path=ViewModel.Products, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
@@ -177,7 +177,7 @@
                     <RowDefinition Height="4*"/>
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
-                <ScrollViewer Grid.Row="1" Margin="10">
+                <ScrollViewer Grid.Row="1" Margin="10,20,10,10">
                     <ItemsControl ItemsSource="{Binding Path=ViewModel.SingleUseProducts, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
@@ -204,7 +204,11 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="4">
-            <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180">
+            <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180"
+                    Command="{Binding Path=ViewModel.ConfirmVisit,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="150">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30"/>

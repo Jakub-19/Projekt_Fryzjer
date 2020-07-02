@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+
 
 namespace FryzjerManager.UserControls
 {
@@ -35,6 +37,27 @@ namespace FryzjerManager.UserControls
                 checkedListView.SelectAll();
             else
                 checkedListView.UnselectAll();
+        }
+        public static readonly DependencyProperty src = DependencyProperty.Register("Src", typeof(ObservableCollection<object>), typeof(ListViewWithCheckboxes), new FrameworkPropertyMetadata(null));
+        public ObservableCollection<object> Src
+        {
+            get { return (ObservableCollection<object>)GetValue(src); }
+            set { SetValue(src, value); }
+        }
+        public static readonly DependencyProperty chk = DependencyProperty.Register("Chk", typeof(ObservableCollection<object>), typeof(ListViewWithCheckboxes), new FrameworkPropertyMetadata(null));
+        public ObservableCollection<object> Chk
+        {
+            get { return (ObservableCollection<object>)GetValue(chk); }
+            set { SetValue(chk, value); }
+        }
+
+        private void checkedListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ObservableCollection<object> list = new ObservableCollection<object>();
+            foreach(var a in checkedListView.SelectedItems)
+                list.Add(a);
+            Chk = list;
+            Debug.WriteLine("siema");
         }
     }
 }
