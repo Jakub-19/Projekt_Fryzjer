@@ -192,7 +192,10 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             if (SingleUseProducts != null)
                             {
                                 foreach (SingleUseProduct v in SingleUseProducts)
+                                {
                                     inventory.UseUp(v, (uint)v.SuggestedConsumption);
+                                    finalPrice += v.SuggestedConsumption * v.Price;
+                                }
                             }
 
                             //dodanie wizyty

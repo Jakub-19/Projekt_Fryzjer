@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Diagnostics;
 using FryzjerManager.Model;
+using System.Text.RegularExpressions;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
@@ -28,7 +29,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             Clear();
                             ChangeView?.Invoke("ViewCustomers"); 
                         },
-                        arg => !string.IsNullOrEmpty(ClientName) && !string.IsNullOrEmpty(ClientSurname) && !string.IsNullOrEmpty(ClientPhone));
+                        arg => { Regex reg = new Regex(@"^[0-9]{9}$"); return !string.IsNullOrEmpty(ClientName) && !string.IsNullOrEmpty(ClientSurname) && !string.IsNullOrEmpty(ClientPhone) && reg.IsMatch(ClientPhone); });
                 return _addCustomer;
             }
         }
