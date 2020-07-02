@@ -158,7 +158,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return list;
             }
         }
-        ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
-        ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
+        public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
+        public ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
     }
 }

@@ -9,7 +9,8 @@
              xmlns:material="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:R="clr-namespace:FryzjerManager.Properties"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="1024">
+             d:DesignHeight="600" d:DesignWidth="1024"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
