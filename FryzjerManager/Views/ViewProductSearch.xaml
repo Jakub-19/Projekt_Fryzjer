@@ -26,10 +26,13 @@
                Content="{x:Static R:Resources.ViewProductSearchNameofProductLabelContent}"/>
             <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" >
                 <TextBox Background="#FFF3F3DB" FontSize="25" TextAlignment="Center" VerticalAlignment="Center" Width="400" Height="40"
-                       Text="{Binding Path=ProductName, Mode=TwoWay}"/>
+                       Text="{Binding Path=ViewModel.ProductName, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
             </Border>
             <Button Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Margin="20,0,0,0"
-                        Command="{Binding SearchProduct}">
+                    Command="{Binding Path=ViewModel.SearchProduct,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
                 <Grid Width="150">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="30"/>
@@ -44,7 +47,7 @@
                 </Grid>
             </Button>
         </StackPanel>
-        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=AllProductsRecord}" SelectedItem="{Binding Path=CurrentProduct}">
+        <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=ViewModel.Products, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" SelectedItem="{Binding Path=ViewModel.CurrentProduct, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="ID" Width="150" DisplayMemberBinding="{Binding Path=ID}"/>
@@ -52,7 +55,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" Command="{Binding SelectProduct}">
+        <Button Grid.Row="3" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="50" Width="180" 
+                                Command="{Binding Path=ViewModel.SelectProduct,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}">
             <Grid Width="150">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30"/>

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Diagnostics;
 using FryzjerManager.Model;
+using System.Collections.ObjectModel;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     using V = Views;
     public class ViewServiceDoneViewModel : ViewModelBase.ViewModelBase
     {
+        #region Formularze
         private V.ViewCustomerSearch _viewCustomerSearch = null;
         public V.ViewCustomerSearch ViewCustomerSearch
         {
@@ -29,6 +31,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             set
             {
                 _viewCustomerSearchViewModel = value;
+                ViewCustomerSearchViewModel.TransferData += GetClient;
                 OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
             }
         }
@@ -52,6 +55,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             set
             {
                 _viewProductSearchViewModel1 = value;
+                ViewProductSearchViewModel1.IsSingleUsed = false;
+                ViewProductSearchViewModel1.TransferData += GetProduct;
                 OnPropertyChanged(nameof(ViewProductSearchViewModel1));
             }
         }
@@ -72,10 +77,12 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             set
             {
                 _viewProductSearchViewModel2 = value;
+                ViewProductSearchViewModel2.IsSingleUsed = true;
+                ViewProductSearchViewModel2.TransferData += GetSingleUseProduct;
                 OnPropertyChanged(nameof(ViewProductSearchViewModel2));
             }
         }
-
+        #endregion
 
         public event Action<object> ChangeView;
 
@@ -92,36 +99,66 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
-
         //Trzeba sobie wybrac o ktore produkty chodzi
-        //private ICommand _selectProduct = null;
-        //public ICommand SelectProduct
-        //{
-        //    get
-        //    {
-        //        if (_selectProduct == null)
-        //            _selectProduct = new ViewModelBase.RelayCommand(
-        //                arg => { ChangeView?.Invoke(ViewProductSearch); },
-        //                arg => true);
-        //        return _selectProduct;
-        //    }
-        //}
+        private ICommand _selectProduct = null;
+        public ICommand SelectProduct
+        {
+            get
+            {
+                if (_selectProduct == null)
+                    _selectProduct = new ViewModelBase.RelayCommand(
+                        arg => { ChangeView?.Invoke(ViewProductSearch1); },
+                        arg => true);
+                return _selectProduct;
+            }
+        }
 
+        private ICommand _selectSingleUseProduct = null;
+        public ICommand SelectSingleUseProduct
+        {
+            get
+            {
+                if (_selectSingleUseProduct == null)
+                    _selectSingleUseProduct = new ViewModelBase.RelayCommand(
+                        arg => { ChangeView?.Invoke(ViewProductSearch2); },
+                        arg => true);
+                return _selectSingleUseProduct;
+            }
+        }
+        private void GetClient(Client client)
+        {
+            CurrentClient = client;
+            OnPropertyChanged(nameof(CurrentClient));
+            ChangeView?.Invoke("ViewServiceDone");
 
-
-
-        //private ICommand _selectSingleUseProduct = null;
-        //public ICommand SelectSingleUseProduct
-        //{
-        //    get
-        //    {
-        //        if (_selectSingleUseProduct == null)
-        //            _selectSingleUseProduct = new ViewModelBase.RelayCommand(
-        //                arg => { ChangeView?.Invoke(ViewProductSearch); },
-        //                arg => true);
-        //        return _selectSingleUseProduct;
-        //    }
-        //}
+        }
+        private void GetProduct(SingleUseProduct product)
+        {
+            Products.Add(product as Product);
+            OnPropertyChanged(nameof(Products));
+            ChangeView?.Invoke("ViewServiceDone");
+        }
+        private void GetSingleUseProduct(SingleUseProduct product)
+        {
+            SingleUseProducts.Add(product);
+            OnPropertyChanged(nameof(SingleUseProducts));
+            ChangeView?.Invoke("ViewServiceDone");
+        }
         public Client CurrentClient { get; set; }
+        private Inventory inventory = new Inventory();
+        private ServiceRecord serviceRecord = new ServiceRecord();
+        public ObservableCollection<Service> Services
+        {
+            get
+            {
+                ObservableCollection<Service> list = new ObservableCollection<Service>();
+                foreach (var v in serviceRecord.Services)
+                    list.Add(v);
+
+                return list;
+            }
+        }
+        ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
+        ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
     }
 }

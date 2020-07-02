@@ -83,7 +83,7 @@
                 <Label FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center"
                     Content="{x:Static R:Resources.ViewServiceDoneDoneServicesLabelContent}" Foreground="#FF3D3D3D"/>
                 <title:ListViewWithCheckboxes Margin="20">
-
+                    
                 </title:ListViewWithCheckboxes>
             </StackPanel>
 
@@ -121,7 +121,7 @@
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer Grid.Row="1" Margin="10">
-                    <ItemsControl ItemsSource="{Binding UsedProducts}">
+                    <ItemsControl ItemsSource="{Binding Path=ViewModel.Products, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
                                 <Grid>
@@ -177,7 +177,7 @@
                     <RowDefinition Height="11*"/>
                 </Grid.RowDefinitions>
                 <ScrollViewer Grid.Row="1" Margin="10">
-                    <ItemsControl ItemsSource="{Binding UsedSingleUseProducts}">
+                    <ItemsControl ItemsSource="{Binding Path=ViewModel.SingleUseProducts, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
                                 <Grid>

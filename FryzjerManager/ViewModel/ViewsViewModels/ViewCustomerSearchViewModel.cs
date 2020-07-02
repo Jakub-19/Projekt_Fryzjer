@@ -60,12 +60,5 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return list;
             }
         }
-
-        private void Clear()
-        {
-            ClientName = "";
-            ClientSurname = "";
-            CurrentClient = null; 
-        }
     }
 }
