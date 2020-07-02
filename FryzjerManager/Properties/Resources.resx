@@ -144,6 +144,21 @@
   <data name="ViewActualStockButtonSearch" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="ViewActualStockHeaderID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ViewActualStockHeaderName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ViewActualStockHeaderOpened" xml:space="preserve">
+    <value>Opened (ml)</value>
+  </data>
+  <data name="ViewActualStockHeaderPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="ViewActualStockHeaderUnopened" xml:space="preserve">
+    <value>Unopened</value>
+  </data>
   <data name="ViewActualStockNameOfSearchedProduct" xml:space="preserve">
     <value>Name of searched product:</value>
   </data>
@@ -180,6 +195,15 @@
   <data name="ViewCustomerSearchButtonSearch" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="ViewCustomerSearchHeaderName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ViewCustomerSearchHeaderPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="ViewCustomerSearchHeaderSurname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
   <data name="ViewCustomerSearchLabelImie" xml:space="preserve">
     <value>Name:</value>
   </data>
@@ -197,6 +221,9 @@
   </data>
   <data name="ViewDeliveryAddCount" xml:space="preserve">
     <value>number</value>
+  </data>
+  <data name="VIewDeliveryAddml" xml:space="preserve">
+    <value>ml</value>
   </data>
   <data name="ViewDeliveryAddTextNewDelivery" xml:space="preserve">
     <value>New delivery</value>

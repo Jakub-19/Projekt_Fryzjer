@@ -56,9 +56,9 @@
         <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=ViewModel.Clients, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" SelectedItem="{Binding Path=ViewModel.CurrentClient, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Imię" Width="250" DisplayMemberBinding="{Binding Path=Name}"/>
-                    <GridViewColumn Header="Nazwisko" Width="350" DisplayMemberBinding="{Binding Path=LastName}" />
-                    <GridViewColumn Header="Telefon" Width="150" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
+                    <GridViewColumn Header="{x:Static R:Resources.ViewCustomerSearchHeaderName}" Width="250" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewCustomerSearchHeaderSurname}" Width="350" DisplayMemberBinding="{Binding Path=LastName}" />
+                    <GridViewColumn Header="{x:Static R:Resources.ViewCustomerSearchHeaderPhone}" Width="150" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
                 </GridView>
             </ListView.View>
         </ListView>

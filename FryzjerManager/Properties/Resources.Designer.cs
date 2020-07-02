@@ -142,6 +142,51 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        public static string ViewActualStockHeaderID {
+            get {
+                return ResourceManager.GetString("ViewActualStockHeaderID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string ViewActualStockHeaderName {
+            get {
+                return ResourceManager.GetString("ViewActualStockHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Opened (ml).
+        /// </summary>
+        public static string ViewActualStockHeaderOpened {
+            get {
+                return ResourceManager.GetString("ViewActualStockHeaderOpened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string ViewActualStockHeaderPrice {
+            get {
+                return ResourceManager.GetString("ViewActualStockHeaderPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unopened.
+        /// </summary>
+        public static string ViewActualStockHeaderUnopened {
+            get {
+                return ResourceManager.GetString("ViewActualStockHeaderUnopened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name of searched product:.
         /// </summary>
         public static string ViewActualStockNameOfSearchedProduct {
@@ -250,6 +295,33 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string ViewCustomerSearchHeaderName {
+            get {
+                return ResourceManager.GetString("ViewCustomerSearchHeaderName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone.
+        /// </summary>
+        public static string ViewCustomerSearchHeaderPhone {
+            get {
+                return ResourceManager.GetString("ViewCustomerSearchHeaderPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surname.
+        /// </summary>
+        public static string ViewCustomerSearchHeaderSurname {
+            get {
+                return ResourceManager.GetString("ViewCustomerSearchHeaderSurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name:.
         /// </summary>
         public static string ViewCustomerSearchLabelImie {
@@ -300,6 +372,15 @@ namespace FryzjerManager.Properties {
         public static string ViewDeliveryAddCount {
             get {
                 return ResourceManager.GetString("ViewDeliveryAddCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ml.
+        /// </summary>
+        public static string VIewDeliveryAddml {
+            get {
+                return ResourceManager.GetString("VIewDeliveryAddml", resourceCulture);
             }
         }
         

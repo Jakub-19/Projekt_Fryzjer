@@ -46,11 +46,11 @@
         <ListView Grid.Row="2" FontSize="25" ItemsSource="{Binding Path=Clients}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding Path=Name}"/>
-                    <GridViewColumn Header="Nazwa" Width="370" DisplayMemberBinding="{Binding Path=LastName}"/>
-                    <GridViewColumn Header="Nieotwarte" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
-                    <GridViewColumn Header="Owarte (ml)" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
-                    <GridViewColumn Header="Cena" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderID}" Width="100" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderName}" Width="370" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderUnopened}" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderOpened}" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
+                    <GridViewColumn Header="{x:Static R:Resources.ViewActualStockHeaderPrice}" Width="200" DisplayMemberBinding="{Binding Path=LastName}"/>
                 </GridView>
             </ListView.View>
         </ListView>
