@@ -71,7 +71,11 @@
             </Grid.ColumnDefinitions>
             <Label FontSize="25" VerticalAlignment="Center" Margin="10,0,0,0"
                Content="{x:Static R:Resources.ViewServiceDoneDateVisitLabelContent}"/>
-            <DatePicker Grid.Column="1" HorizontalAlignment="Left" Width="140" FontSize="20"/>
+            <DatePicker Grid.Column="1" HorizontalAlignment="Left" Width="140" FontSize="20" 
+                        SelectedDate="{Binding Path=ViewModel.VisitDate,
+                                      RelativeSource={
+                                      RelativeSource Mode=FindAncestor, 
+                                      AncestorType={x:Type UserControl}}}"/>
         </Grid>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>

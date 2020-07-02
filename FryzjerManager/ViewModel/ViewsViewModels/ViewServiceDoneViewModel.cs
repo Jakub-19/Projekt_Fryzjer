@@ -166,6 +166,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
         public ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
 
+        public DateTime VisitDate { get; set; } = DateTime.Now;
 
 
 
