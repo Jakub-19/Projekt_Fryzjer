@@ -67,7 +67,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM clients WHERE name like\"" + name + "%\" AND surname like \"" + lastName + "%\"";
+            string command = "SELECT * FROM clients WHERE name like\"%" + name + "%\" AND surname like \"%" + lastName + "%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -216,7 +216,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM disposable_products WHERE name like \"" + name + "%\"";
+            string command = "SELECT * FROM disposable_products WHERE name like \"%" + name + "%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -237,7 +237,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT * FROM products WHERE name like \"" + name + "%\"";
+            string command = "SELECT * FROM products WHERE name like \"%" + name + "%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -305,7 +305,7 @@ namespace FryzjerManager.DAL
             }
             catch { }
             string command = "SELECT * FROM products WHERE (quantity_item <>0 AND ml<>0) " +
-                "AND name LIKE \""+name+"%\"";
+                "AND name LIKE \"%"+name+"%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -326,7 +326,7 @@ namespace FryzjerManager.DAL
             }
             catch { }
             string command = "SELECT * FROM disposable_products WHERE quantity<>0 " +
-                "AND name like\" "+name+"%\"";
+                "AND name like\"%"+name+"%\"";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -441,15 +441,16 @@ namespace FryzjerManager.DAL
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = con;
 
-            cmd.CommandText = "INSERT INTO visits (id_c,date,price) VALUES ("+id_c+","+visit.Date+","+visit.FullPrice+")";
+            cmd.CommandText = "INSERT INTO visits (id_c,date,price) VALUES ("+id_c+",'"+visit.Date.ToString("yyyy-MM-dd")+"',"+visit.FullPrice+")";
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = "SELECT MAX (id_v) FROM visits";
+            cmd.CommandText = "SELECT MAX(id_v) FROM visits";
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
                  id_v = rdr.GetInt32(0);
             }
+            rdr.Close();
             foreach (var s in visit.TypeOfService)
             {
                 cmd.CommandText = "INSERT INTO servicevisit (id_s,id_v) VALUES (" + s.ID + "," + id_v + ")";
