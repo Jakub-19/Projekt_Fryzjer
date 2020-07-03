@@ -272,6 +272,44 @@ namespace FryzjerManager.DAL
             con.Close();
             return products;
         }
+        public void UpdateProductConsumption(List<Product> products)
+        {
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            foreach (var product in products)
+            {
+                var id_p = product.ID;
+                string command = "UPDATE products " +
+                    "SET ml=ml-" + product.SuggestedConsumption +
+                    " WHERE id_p=" + id_p;
+                MySqlCommand cmd = new MySqlCommand(command, con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Close();
+            }
+            con.Close();
+        }
+        public void UpdateSingleUseProductConsumption(List<SingleUseProduct> products)
+        {
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            foreach (var product in products)
+            {
+                var id_dp = product.ID;
+                string command = "UPDATE disposable_products " +
+                    "SET quantity=quantity-" + product.SuggestedConsumption +
+                    " WHERE id_dp=" + id_dp;
+                MySqlCommand cmd = new MySqlCommand(command, con);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Close();
+            }
+            con.Close();
+        }
         public List<SingleUseProduct> ShowAvailableSingleUseProducts()
         {
             List<SingleUseProduct> products = new List<SingleUseProduct>();
