@@ -67,15 +67,15 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ListView FontSize="25" ItemsSource="{Binding Path=Clients}"  SelectedItem="{Binding Path=CurrentClient, Mode=TwoWay}">
+            <ListView x:Name="listData" FontSize="25" ItemsSource="{Binding Path=ViewModel.Visits, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" SelectedItem="{Binding Path=ViewModel.CurrentVisit, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="{x:Static R:Resources.ViewServiceDoneDateHeader}" Width="200" DisplayMemberBinding="{Binding Path=Name}" />
-                        <GridViewColumn Header="{x:Static R:Resources.ViewNewProductAddPriceLabelContent}" Width="100" DisplayMemberBinding="{Binding Path=PhoneNumber}" />
+                        <GridViewColumn Header="{x:Static R:Resources.ViewServiceDoneDateHeader}" Width="200" DisplayMemberBinding="{Binding Path=Date}" />
+                        <GridViewColumn Header="{x:Static R:Resources.ViewNewProductAddPriceLabelContent}" Width="100" DisplayMemberBinding="{Binding Path=FullPrice}" />
                     </GridView>
                 </ListView.View>
             </ListView>
-            <ListBox Grid.Column="1" ItemsSource="{Binding Path=CurrentClient.ListaUslug}">
+            <ListBox Grid.Column="1" ItemsSource="{Binding Path=ViewModel.Services, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}">
                 
             </ListBox>
         </Grid>
