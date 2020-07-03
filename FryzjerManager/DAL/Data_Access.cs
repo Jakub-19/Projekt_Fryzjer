@@ -513,6 +513,7 @@ namespace FryzjerManager.DAL
                 Visit visit = new Visit( rdr.GetDouble(1), client, services, rdr.GetDateTime(2), rdr.GetInt32(0));
                 visits.Add(visit);
             }
+            con.Close();
             foreach (var v in visits)
             {
                 v.TypeOfService = GetServicesFromOneVisit(v.ID);

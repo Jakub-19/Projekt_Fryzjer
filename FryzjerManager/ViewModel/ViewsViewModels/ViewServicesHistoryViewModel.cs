@@ -56,7 +56,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             CurrentClient = client;
             OnPropertyChanged(nameof(CurrentClient));
             ChangeView?.Invoke("ViewServicesHistory");
-
+            visitRecord.GetVisits(CurrentClient);
+            OnPropertyChanged(nameof(Visits));
         }
         public Client CurrentClient { get; set; }
         
@@ -71,5 +72,25 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 
                 return list;
             } }
+        private Visit _currentVisit = null;
+        public Visit CurrentVisit {
+            get => _currentVisit;
+            set {
+                _currentVisit = value;
+                OnPropertyChanged(nameof(Services)); 
+            } 
+        }
+        public ObservableCollection<Service> Services
+        {
+            get
+            {
+                ObservableCollection<Service> list = new ObservableCollection<Service>();
+                if(CurrentVisit != null)
+                foreach (var v in CurrentVisit.TypeOfService)
+                    list.Add(v);
+
+                return list;
+            }
+        }
     }
 }
