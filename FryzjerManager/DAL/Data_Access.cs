@@ -15,13 +15,10 @@ namespace FryzjerManager.DAL
     class Data_Access
     {
         private static Data_Access instance;
-        MySqlConnection mySqlConnection;
         MySqlConnection con;
-        string cs = @"server=localhost;userid=root;password=;database=fryzjer;charset=utf8";
         private Data_Access()
         {
-            mySqlConnection = new MySqlConnection(cs);
-            con = mySqlConnection;
+            con = DBConnection.Instance.Connection;
         }
         public static Data_Access getInstance()
         {
@@ -31,6 +28,18 @@ namespace FryzjerManager.DAL
             }
             return instance;
         }
+
+        public void Start()
+        {
+            con.Open();
+
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "use fryzjer";
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         #region Client
         public bool ClientExists(string name, string lastName, string number)
         {
@@ -116,16 +125,7 @@ namespace FryzjerManager.DAL
 
         }
         #endregion
-        public void Start()
-        {
-            con.Open();
-
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "use fryzjer";
-            cmd.ExecuteNonQuery();
-            con.Close();
-        }
+        
         #region Product
         public List<Product> ShowAllProducts()
         {

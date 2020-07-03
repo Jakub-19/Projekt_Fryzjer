@@ -118,6 +118,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\Data_Access.cs" />
+    <Compile Include="DAL\DBConnection.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\ClientRecord.cs" />
     <Compile Include="Model\Inventory.cs" />
