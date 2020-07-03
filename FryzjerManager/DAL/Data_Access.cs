@@ -528,14 +528,12 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "SELECT s.id_s,s.name, s.price" +
-                "FROM visits v,services s, servicevisit sv " +
-                "WHERE " +
-                "s.id_s=sv.id_s " +
-                "AND " +
-                "v.id_v=sv.id_v " +
-                "AND " +
-                "v.id_v="+id_v;
+             string command = "SELECT s.id_s,s.name, s.price "
+                + "FROM visits v left join servicevisit sv on "
+                + "v.id_v = sv.id_v " +
+                "left join services s on " +
+                "sv.id_s = s.id_s " +
+                "where v.id_v = " + id_v;
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
