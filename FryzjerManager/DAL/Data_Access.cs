@@ -406,7 +406,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "INSERT INTO products(name, quantity_item,capacity, price) VALUES('" + name + "','" + count + "','" + ml + "','" + capacity + "','" + price + "')";
+            string command = "INSERT INTO products(name, quantity_item,ml,capacity, price) VALUES('" + name + "','" + count + "','" + ml + "','" + capacity + "','" + price + "')";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             con.Close();

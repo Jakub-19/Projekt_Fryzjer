@@ -391,9 +391,10 @@ namespace FryzjerManager.ViewModel
         private void ChangeViewTo(object view)
         {
             PreviousViews.Push(CurrentView);
-            if(view as string == null)
+            if (view as string == null)
                 CurrentView = view as UserControl;
             else
+            {
                 switch (view)
                 {
                     case "ViewActualStock":
@@ -404,9 +405,6 @@ namespace FryzjerManager.ViewModel
                         break;
                     case "ViewCustomerAdd":
                         CurrentView = ViewCustomerAdd;
-                        break;
-                    case "ViewCustomerSearch":
-                        //CurrentView = ViewCustomerSearch;
                         break;
                     case "ViewCustomers":
                         CurrentView = ViewCustomers;
@@ -420,12 +418,6 @@ namespace FryzjerManager.ViewModel
                     case "ViewMenuWindow":
                         CurrentView = ViewMenuWindow;
                         break;
-                    case "ViewNewProductAdd":
-                        //CurrentView = ViewNewProductAdd;
-                        break;
-                    case "ViewProductSearch":
-                        //CurrentView = ViewProductSearch;
-                        break;
                     case "ViewServiceDone":
                         CurrentView = ViewServiceDone;
                         break;
@@ -433,9 +425,10 @@ namespace FryzjerManager.ViewModel
                         CurrentView = ViewServicesHistory;
                         break;
                     default:
-                        Debug.WriteLine("Coś poszło nie tak! w funkcji ChangeViewTo");
+                        Debug.WriteLine("Widok nie istnieje lub nie jest obsługiwany (ChangeViewTo)");
                         break;
                 }
+            }
         }
 
         private ICommand _gotoMainMenu = null;

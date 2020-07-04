@@ -33,15 +33,15 @@ namespace FryzjerManager.Model
                 data.AddProduct(product);
             }
         }
-        public bool Add(SingleUseProduct product, uint quantity)
+        public void Add(SingleUseProduct product, uint quantity)
         {
-
-            return false;
+            Data_Access data = Data_Access.getInstance();
+            data.UpdateProductCount(product, (int)(quantity));
         }
-        public bool Add(Product product, uint quantity)
+        public void Add(Product product, uint quantity)
         {
-
-            return false;
+            Data_Access data = Data_Access.getInstance();
+            data.UpdateProductCount(product, (int)(quantity));
         }
         public void UseUp(SingleUseProduct product, uint quantity)
         {

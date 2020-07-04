@@ -169,8 +169,6 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         public DateTime VisitDate { get; set; } = DateTime.Now;
 
 
-
-        //To komenda, której implementację musisz Kubo wykonać. Jest to przycisk odpowiedzialny za zatwierdzanie wizyty po tym jak ktoś go kliknie to ma się wydarzyć cud narodzin nowej wizyty
         private ICommand _confirmVisit = null;
         public ICommand ConfirmVisit
         {
@@ -208,6 +206,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 
                             VisitRecord visitRecord = new VisitRecord();
                             visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate));
+                            ChangeView?.Invoke("ViewMenuWindow");
                         },
                         arg => ServicesChecked != null && ServicesChecked.Count > 0 && CurrentClient != null);
                 return _confirmVisit;
