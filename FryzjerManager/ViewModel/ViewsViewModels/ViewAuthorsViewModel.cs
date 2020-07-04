@@ -10,8 +10,10 @@ using System.Collections.ObjectModel;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM widoku z nazwiskami autorów programu
     public class ViewAuthorsViewModel : ViewModelBase.ViewModelBase
     {
+        //Nawigacja
         public event Action<object> ChangeView;
         private ICommand _gotoMainMenu = null;
         public ICommand GotoMainMenu

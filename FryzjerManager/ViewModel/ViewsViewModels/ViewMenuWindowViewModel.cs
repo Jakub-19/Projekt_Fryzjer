@@ -8,8 +8,10 @@ using System.Diagnostics;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    // VM Głównego menu
     public class ViewMenuWindowViewModel : ViewModelBase.ViewModelBase
     {
+        //Nawigacja po aplikacji
         public event Action<string, bool> ChangeView;
         private ICommand _gotoCustomers = null;
         public ICommand GotoCustomers

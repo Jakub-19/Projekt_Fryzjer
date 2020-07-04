@@ -7,8 +7,10 @@ using System.Windows.Input;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM podmenu (magazynu)
     public class ViewMainStockViewModel : ViewModelBase.ViewModelBase
     {
+        //Nawigacja
         public event Action<string, bool> ChangeView;
 
         private ICommand _gotoDeliveryAdd = null;

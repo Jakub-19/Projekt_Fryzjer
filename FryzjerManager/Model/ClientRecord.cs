@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
+    //Klasa obsługująca spis klientów
     class ClientRecord
     {
         public List<Client> Clients { get; private set; }
@@ -27,7 +28,7 @@ namespace FryzjerManager.Model
         {
             Client client = new Client(name, lastname, phone);
             Data_Access data = Data_Access.getInstance();
-            if(!data.ClientExists(client))
+            if(!data.ClientExists(client))// Czy taki klient już istnieje?
             {
                 data.AddClient(client);
             }

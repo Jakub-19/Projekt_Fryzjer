@@ -11,9 +11,12 @@ using System.Collections.ObjectModel;
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     using V = Views;
+
+    //VM dodawania ukończonej wizyty
     public class ViewServiceDoneViewModel : ViewModelBase.ViewModelBase
     {
         #region Formularze
+        //Wybór klienta
         private V.ViewCustomerSearch _viewCustomerSearch = null;
         public V.ViewCustomerSearch ViewCustomerSearch
         {
@@ -37,8 +40,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
-
-        //1 to wielorazowe a 2 to jednorazowe
+        //Wybór produktów wielorazowych
         private V.ViewProductSearch _viewProductSearch1 = null;
         public V.ViewProductSearch ViewProductSearch1
         {
@@ -62,6 +64,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 OnPropertyChanged(nameof(ViewProductSearchViewModel1));
             }
         }
+
+        //Wybór produktów jednorazowych
         private V.ViewProductSearch _viewProductSearch2 = null;
         public V.ViewProductSearch ViewProductSearch2
         {
@@ -89,6 +93,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 
         public event Action<object, bool> ChangeView;
 
+        //Wybór klienta (komenda pokazująca widok)
         private ICommand _selectCustomer = null;
         public ICommand SelectCustomer
         {
@@ -102,7 +107,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
-        //Trzeba sobie wybrac o ktore produkty chodzi
+        //Wybór produktów (komenda pokazująca widok)
         private ICommand _selectProduct = null;
         public ICommand SelectProduct
         {
@@ -116,6 +121,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
+        //Wybór produktów (komenda pokazująca widok)
         private ICommand _selectSingleUseProduct = null;
         public ICommand SelectSingleUseProduct
         {
@@ -128,6 +134,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectSingleUseProduct;
             }
         }
+
+        // Metody umożliwiające przepływ danych pomiędzy podformularzami a głównym formularzem dodawania wizyty
         private void GetClient(Client client)
         {
             CurrentClient = client;
@@ -147,9 +155,10 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             OnPropertyChanged(nameof(SingleUseProducts));
             ChangeView?.Invoke("ViewServiceDone", false);
         }
-        public Client CurrentClient { get; set; }
-        private Inventory inventory = new Inventory();
-        private ServiceRecord serviceRecord = new ServiceRecord();
+
+        public Client CurrentClient { get; set; }//Wybrany klient
+        private Inventory inventory = new Inventory();//Komunikacja z magazynem
+        private ServiceRecord serviceRecord = new ServiceRecord();//Dostępne usługi
         public ObservableCollection<object> Services
         {
             get
@@ -161,17 +170,18 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return list;
             }
         }
-        public ObservableCollection<object> ServicesChecked
+        public ObservableCollection<object> ServicesChecked//Wybrane (zaznaczone) usługi
         {
             get;
             set;         
         }
+        //Użyte produkty
         public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
         public ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
 
         public DateTime VisitDate { get; set; } = DateTime.Now;
 
-
+        //Zatwierdzenie wizyty
         private ICommand _confirmVisit = null;
         public ICommand ConfirmVisit
         {
@@ -180,7 +190,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 if (_confirmVisit == null)
                     _confirmVisit = new ViewModelBase.RelayCommand(
                         arg => {
-                            double finalPrice = 0;
+                            double finalPrice = 0;//Cena końcowa obliczana na podstawie zużycia produktów i cen usług
                             //aktualizacja zużycia
                             if (Products != null)
                             {
@@ -258,7 +268,6 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             OnPropertyChanged(nameof(Products));
             OnPropertyChanged(nameof(CurrentClient)); ;
             OnPropertyChanged(nameof(SingleUseProducts));
-            //ServicesChecked?.Clear();
             ViewCustomerSearchViewModel.Clear();
             ViewProductSearchViewModel1.Clear(); 
             ViewProductSearchViewModel2.Clear();

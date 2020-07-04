@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM podmenu dot. klientów
     public class ViewCustomersViewModel : ViewModelBase.ViewModelBase
     {
+        //Nawigacja
         public event Action<string, bool> ChangeView;
 
         private ICommand _gotoCustomerAdd = null;

@@ -17,6 +17,7 @@ namespace FryzjerManager.ViewModel
 
     public class MainWindowViewModel : ViewModelBase.ViewModelBase
     {
+        //Aktualny widok
         private UserControl _currentView = null;
         public UserControl CurrentView
         {
@@ -27,12 +28,15 @@ namespace FryzjerManager.ViewModel
             }
         }
 
+        //Stos widoków obsługujący przycisk wstecz
         public Stack<UserControl> _previousViews;
         public Stack<UserControl> PreviousViews
         {
             get =>_previousViews;
         }
 
+
+        //Obiekty głównych widoków aplikacji i ich ViewModele
         #region Widoki i ich VM'y
         private V.ViewActualStock _viewActualStock = null;
         public V.ViewActualStock ViewActualStock
@@ -102,31 +106,6 @@ namespace FryzjerManager.ViewModel
         }
 
 
-
-        //private V.ViewCustomerSearch _viewCustomerSearch = null;
-        //public V.ViewCustomerSearch ViewCustomerSearch
-        //{
-        //    get { return _viewCustomerSearch; }
-        //    set
-        //    {
-        //        _viewCustomerSearch = value;
-        //        OnPropertyChanged(nameof(ViewCustomerSearch));
-        //    }
-        //}
-        //private VM.ViewCustomerSearchViewModel _viewCustomerSearchViewModel;
-        //public VM.ViewCustomerSearchViewModel ViewCustomerSearchViewModel
-        //{
-        //    get { return _viewCustomerSearchViewModel; }
-        //    set
-        //    {
-        //        _viewCustomerSearchViewModel = value;
-        //        OnPropertyChanged(nameof(ViewCustomerSearchViewModel));
-        //    }
-        //}
-
-
-
-
         private V.ViewCustomers _viewCustomers = null;
         public V.ViewCustomers ViewCustomers
         {
@@ -147,8 +126,6 @@ namespace FryzjerManager.ViewModel
                 OnPropertyChanged(nameof(ViewCustomersViewModel));
             }
         }
-
-
 
 
         private V.ViewDeliveryAdd _viewDeliveryAdd = null;
@@ -173,7 +150,6 @@ namespace FryzjerManager.ViewModel
         }
 
 
-
         private V.ViewMainStock _viewMainStock = null;
         public V.ViewMainStock ViewMainStock
         {
@@ -196,8 +172,6 @@ namespace FryzjerManager.ViewModel
         }
 
 
-
-
         private V.ViewMenuWindow _viewMenuWindow = null;
         public V.ViewMenuWindow ViewMenuWindow
         {
@@ -218,50 +192,6 @@ namespace FryzjerManager.ViewModel
                 OnPropertyChanged(nameof(ViewMenuWindowViewModel));
             }
         }
-
-
-        //private V.ViewNewProductAdd _viewNewProductAdd = null;
-        //public V.ViewNewProductAdd ViewNewProductAdd
-        //{
-        //    get { return _viewNewProductAdd; }
-        //    set
-        //    {
-        //        _viewNewProductAdd = value;
-        //        OnPropertyChanged(nameof(ViewNewProductAdd));
-        //    }
-        //}
-        //private VM.ViewNewProductAddViewModel _viewNewProductAddViewModel;
-        //public VM.ViewNewProductAddViewModel ViewNewProductAddViewModel
-        //{
-        //    get { return _viewNewProductAddViewModel; }
-        //    set
-        //    {
-        //        _viewNewProductAddViewModel = value;
-        //        OnPropertyChanged(nameof(ViewNewProductAddViewModel));
-        //    }
-        //}
-
-
-        //private V.ViewProductSearch _viewProductSearch = null;
-        //public V.ViewProductSearch ViewProductSearch
-        //{
-        //    get { return _viewProductSearch; }
-        //    set
-        //    {
-        //        _viewProductSearch = value;
-        //        OnPropertyChanged(nameof(ViewProductSearch));
-        //    }
-        //}
-        //private VM.ViewProductSearchViewModel _viewProductSearchViewModel;
-        //public VM.ViewProductSearchViewModel ViewProductSearchViewModel
-        //{
-        //    get { return _viewProductSearchViewModel; }
-        //    set
-        //    {
-        //        _viewProductSearchViewModel = value;
-        //        OnPropertyChanged(nameof(ViewProductSearchViewModel));
-        //    }
-        //}
 
 
         private V.ViewServiceDone _viewServiceDone = null;
@@ -307,6 +237,7 @@ namespace FryzjerManager.ViewModel
             }
         }
         #endregion
+        //Konstruktor głównego VM przyjmuje wszystkie widoki aplikacji i ich ViewModele
         #region konstruktor
         public MainWindowViewModel(V.ViewActualStock viewActualStock, VM.ViewActualStockViewModel viewActualStockViewModel,
             V.ViewAuthors viewAuthors, VM.ViewAuthorsViewModel viewAuthorsViewModel,
@@ -327,8 +258,8 @@ namespace FryzjerManager.ViewModel
         {
             ViewActualStock = viewActualStock;
             ViewActualStockViewModel = viewActualStockViewModel;
-            viewActualStockViewModel.ChangeView += ChangeViewTo;
-            viewActualStockViewModel.GoBackAction += ChangeViewToPrevious;
+            viewActualStockViewModel.ChangeView += ChangeViewTo; //Umożliwia nawigację po aplikacji
+            viewActualStockViewModel.GoBackAction += ChangeViewToPrevious; //Umożliwia nawigację po aplikacji
 
             ViewAuthors = viewAuthors;
             ViewAuthorsViewModel = viewAuthorsViewModel;
@@ -391,10 +322,11 @@ namespace FryzjerManager.ViewModel
             viewServicesHistoryViewModel.ViewCustomerSearchViewModel.GoBackAction += ChangeViewToPrevious;
 
             _previousViews = new Stack<UserControl>();
-            CurrentView = viewMenuWindow;
+            CurrentView = viewMenuWindow; // Ustawienie początkowego widoku
         }
         #endregion
 
+        //Metoda przełączająca widoki po ich nazwie lub obiekcie
         private void ChangeViewTo(object view)
         {
             if (view as string == null)
@@ -437,6 +369,7 @@ namespace FryzjerManager.ViewModel
                 }
             }
         }
+        // Przeciążenie powyższej metody. Dodatkowo zapisuje widok na stosie obsługującym WSTECZ
         private void ChangeViewTo(object view, bool saveOnStack)
         {
             if(saveOnStack)
@@ -444,74 +377,21 @@ namespace FryzjerManager.ViewModel
             ChangeViewTo(view);
         }
 
+        //Metoda obsługująca przycisk WSTECZ
         private void ChangeViewToPrevious()
         {
             if (PreviousViews != null && PreviousViews.Count > 0)
             {
+                //Czasem aby skutecznie zmienić widok trzeba przełączyć go kilka (2) razy
+                // wynika to z mechaniki nawigowania po aplikacji
                 var temp = CurrentView;
                 while (CurrentView.Equals(temp))
-                    CurrentView = PreviousViews.Pop();
+                    CurrentView = PreviousViews.Pop(); 
             }
+            //W menu głównym czyścimy stos
             if (CurrentView.Equals(ViewMenuWindow))
                 PreviousViews.Clear();
         }
-
-
-        //Do kasacji
-        #region ResourcesTextNames
-        public string ViewMenuWindowCustomersButtonText{
-            get{ return R.ViewMenuWindowCustomersButtonText; }}
-        public string ViewMenuWindowServicesButtonText{
-            get{ return R.ViewMenuWindowServicesButtonText; }}
-        public string ViewMenuWindowStockButtonText{
-            get { return R.ViewMenuWindowStockButtonText; }}
-        public string ViewMenuWindowAuthorsButtonText{
-            get { return R.ViewMenuWindowAuthorsButtonText; }}
-        public string ApplicationName{
-            get { return R.ApplicationName; }}
-        public string ViewCustomersAddCustomerButtonText{
-            get { return R.ViewCustomersAddCustomerButtonText; }}
-        public string ViewCustomersServicesHistoryButtonText{
-            get { return R.ViewCustomersServicesHistoryButtonText; }}
-        public string ViewMainStockAddDeliveryButtonText{
-            get { return R.ViewMainStockAddDeliveryButtonText; }}
-        public string ViewMainStockActualStockButtonText{
-            get { return R.ViewMainStockActualStockButtonText; }}
-        public string ViewCustomerAddLabelNameContent{
-            get { return R.ViewCustomerAddLabelNameContent; }}
-        public string ViewCustomerAddLabelSurnameContent{
-            get { return R.ViewCustomerAddLabelSurnameContent; }}
-        public string ViewCustomerAddLabelPhoneNumberContent{
-            get { return R.ViewCustomerAddLabelPhoneNumberContent; }}
-        public string ViewCustomerAddConfirmButtonText{
-            get { return R.ViewCustomerAddConfirmButtonText; }}
-        public string ViewServiceDoneLabelCustomerContent{
-            get { return R.ViewServiceDoneLabelCustomerContent; }}
-        public string ViewServiceDoneChooseButtonText{ 
-            get { return R.ViewServiceDoneChooseButtonText; }}
-        public string ListViewWithCheckboxesSelectAllCheckboxContent{
-            get { return R.ListViewWithCheckboxesSelectAllCheckboxContent; }}
-        public string CustomersViewName{
-            get { return R.CustomersViewName; }}
-        public string CustomerAddViewName{
-            get { return R.CustomerAddViewName; }}
-        public string ServiceDoneViewName{
-            get { return R.ServiceDoneViewName; }}
-        public string MainStockViewName{
-            get { return R.MainStockViewName; }}
-        public string ViewServiceDoneAcceptButtonText{
-            get { return R.ViewServiceDoneAcceptButtonText; }}
-        public string ViewServiceDoneDoneServicesLabelContent{
-            get { return R.ViewServiceDoneDoneServicesLabelContent; }}
-        public string ViewServiceDoneUsedProductsMultiTextBlockText{
-            get { return R.ViewServiceDoneUsedProductsMultiTextBlockText; }}
-        public string ViewServiceDoneUsedProductsSingleTextBlockText{
-            get { return R.ViewServiceDoneUsedProductsSingleTextBlockText; }}
-        public string ViewServiceDoneNameLabelContent{
-            get { return R.ViewServiceDoneNameLabelContent; }}
-        public string ViewServiceDoneAmountLabelContent{
-            get { return R.ViewServiceDoneAmountLabelContent; }}
-        #endregion
         
     }
 }

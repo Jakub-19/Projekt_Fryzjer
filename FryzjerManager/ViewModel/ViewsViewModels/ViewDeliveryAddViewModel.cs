@@ -11,10 +11,11 @@ using System.Collections.ObjectModel;
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     using V = Views;
+    //VM wprowadzania dostawy towaru
     public class ViewDeliveryAddViewModel : ViewModelBase.ViewModelBase
     {
         #region Formularze
-        //1 to wielorazowe a 2 to jednorazowe
+        //Produkty wielorazowe
         private V.ViewProductSearch _viewProductSearch1 = null;
         public V.ViewProductSearch ViewProductSearch1
         {
@@ -38,6 +39,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 OnPropertyChanged(nameof(ViewProductSearchViewModel1));
             }
         }
+        //Produkty jednorazowe
         private V.ViewProductSearch _viewProductSearch2 = null;
         public V.ViewProductSearch ViewProductSearch2
         {
@@ -62,6 +64,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
+        //Nowe (nieistniejące w bazie) produkty
         private V.ViewNewProductAdd _viewNewProductAdd = null;
         public V.ViewNewProductAdd ViewNewProductAdd
         {
@@ -87,7 +90,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         #endregion
 
         public event Action<object, bool> ChangeView;
-
+        //Nawigacja do podformularzy
         private ICommand _selectProduct = null;
         public ICommand SelectProduct
         {
@@ -126,6 +129,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _addNewProduct;
             }
         }
+        //Komunikacja podformularzy z tym formularzem (przekaz danych)
         private void GetProduct(SingleUseProduct product)
         {
             Products.Add(product as Product);
@@ -144,10 +148,12 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             OnPropertyChanged(nameof(NewProducts));
             ChangeView?.Invoke("ViewDeliveryAdd", false);
         }
+        //Obsługa formularza
+        //Dodane produkty
         public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
         public ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
         public ObservableCollection<SingleUseProduct> NewProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
-        private Inventory inventory = new Inventory();
+        private Inventory inventory = new Inventory();//Komunikacja z magazynem
 
         private ICommand _confirmDelivery = null;
         public ICommand ConfirmDelivery
@@ -158,6 +164,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                     _confirmDelivery = new ViewModelBase.RelayCommand(
                         arg =>
                         {
+                            //Przesył danych do BD
                             foreach (var v in Products)
                                 inventory.Add(v, (uint)(v.Count + v.SuggestedConsumption));
                             foreach (var v in SingleUseProducts)
@@ -176,6 +183,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
+        //Nawigacja
         private ICommand _gotoMainMenu = null;
         public ICommand GotoMainMenu
         {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
+    //Klasa obsługuje spis dostępnych usług
     class ServiceRecord
     {
         public List<Service> Services { get; private set; }

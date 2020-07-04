@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
+    //Klasa obsługuje spis wizyt
     public class VisitRecord
     {
         public List<Visit> Visits { get; private set; }
@@ -15,6 +16,7 @@ namespace FryzjerManager.Model
         {
             Visits = new List<Visit>();
         }
+        // Pobranie na listę wizyt konkretnego klienta
         public void GetVisits(Client client)
         {
             Data_Access data = Data_Access.getInstance();

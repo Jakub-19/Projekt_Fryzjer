@@ -10,6 +10,7 @@ using FryzjerManager.Model;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM formularza wyszukiwania klienta
     public class ViewCustomerSearchViewModel : ViewModelBase.ViewModelBase
     {
         private ICommand _searchClient = null;
@@ -43,9 +44,10 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectClient;
             }
         }
-
+        //Dostęp do danych
         private ClientRecord clientRecord = new ClientRecord();
 
+        //Obsługa formularza
         public string ClientName { get; set; }
         public string ClientSurname { get; set; }
         public Client CurrentClient { get; set; }
@@ -61,6 +63,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
+        //Nawigacja
         public event Action GoHomeAction;
         private ICommand _gotoMainMenu = null;
         public ICommand GotoMainMenu

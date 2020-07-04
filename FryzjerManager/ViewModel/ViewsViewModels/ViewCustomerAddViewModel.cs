@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM formularza dodającego nowego klienta do systemu
     public class ViewCustomerAddViewModel : ViewModelBase.ViewModelBase
     {
         public event Action<string> ChangeView;
@@ -29,15 +30,19 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             Clear();
                             ChangeView?.Invoke("ViewCustomers"); 
                         },
+                        //Czy wszystkie pola uzupełniono poprawnie?
                         arg => { Regex reg = new Regex(@"^[0-9]{9}$"); return !string.IsNullOrEmpty(ClientName) && !string.IsNullOrEmpty(ClientSurname) && !string.IsNullOrEmpty(ClientPhone) && reg.IsMatch(ClientPhone); });
                 return _addCustomer;
             }
         }
         #endregion
+        //Obsługa pól formularza
         public string ClientName { get; set; }
         public string ClientSurname { get; set; }
         public string ClientPhone { get; set; }
 
+
+        //Nawigacja
         private void Clear()
         {
             ClientName = "";

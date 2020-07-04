@@ -10,27 +10,30 @@ using System.Collections.ObjectModel;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM listy produktów w magazynie
     public class ViewActualStockViewModel : ViewModelBase.ViewModelBase
     {
         public event Action<object> ChangeView;
-        private ICommand _sarch = null;
+        private ICommand _search = null;
         public ICommand Search
         {
             get
             {
-                if (_sarch == null)
-                    _sarch = new ViewModelBase.RelayCommand(
+                if (_search == null)
+                    _search = new ViewModelBase.RelayCommand(
                         arg => { 
                             inventory.GetAllProducts(ProductName);
                             inventory.GetAllSingleUseProducts(ProductName);
                             OnPropertyChanged(nameof(Products));
                         },
                         arg => true);
-                return _sarch;
+                return _search;
             }
         }
 
+        //Dostęp do listy produktów
         Inventory inventory = new Inventory();
+        //Obsługa pola i listy Formularza
         public string ProductName { get; set; }
         public ObservableCollection<SingleUseProduct> Products
         {
@@ -46,6 +49,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
+        //Nawigacja
         private ICommand _gotoMainMenu = null;
         public ICommand GotoMainMenu
         {

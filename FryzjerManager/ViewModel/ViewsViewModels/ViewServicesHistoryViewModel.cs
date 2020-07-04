@@ -12,6 +12,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     using V = Views;
     using VM = ViewsViewModels;
+
+    //VM historii wizyt
     public class ViewServicesHistoryViewModel : ViewModelBase.ViewModelBase
     {
         #region Formularz wyszukiwania klienta
@@ -39,6 +41,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         }
         #endregion
         public event Action<object, bool> ChangeView;
+
+        // Komenda ukazująca formularz wyboru klienta
         private ICommand _selectCustomer = null;
         public ICommand SelectCustomer
         {
@@ -52,6 +56,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
+        // Metoda umożliwiająca przepływ danych z formularza z klientami
         private void GetClient(Client client)
         {
             CurrentClient = client;
@@ -62,8 +67,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         }
         public Client CurrentClient { get; set; }
         
+        // Spis wizyt klienta
         private VisitRecord visitRecord = new VisitRecord();
-
         public ObservableCollection<Visit> Visits {
             get
             {
@@ -73,6 +78,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 
                 return list;
             } }
+        //Aktualnie wybrana wizyta i usługi pod nią
         private Visit _currentVisit = null;
         public Visit CurrentVisit {
             get => _currentVisit;

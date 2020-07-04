@@ -11,6 +11,7 @@ using System.Windows.Controls;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM formularza wyszukiwania produktu
     public class ViewProductSearchViewModel : ViewModelBase.ViewModelBase
     {
         public bool IsSingleUsed { get; set; }
@@ -37,7 +38,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _searchProduct;
             }
         }
-        public event Action<SingleUseProduct> TransferData;
+        public event Action<SingleUseProduct> TransferData;//Przekazuje dane formularzowi-rodzicowi
 
         private ICommand _selectProduct = null;
         public ICommand SelectProduct
@@ -53,9 +54,10 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _selectProduct;
             }
         }
-
+        //Magazyn
         private Inventory inventory = new Inventory();
 
+        //Obsługa formularza
         public string ProductName { get; set; }
         public SingleUseProduct CurrentProduct { get; set; }
         public ObservableCollection<SingleUseProduct> Products
@@ -78,6 +80,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
 
+        //Nawigacja
         public event Action GoHomeAction;
         private ICommand _gotoMainMenu = null;
         public ICommand GotoMainMenu

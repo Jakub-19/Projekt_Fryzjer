@@ -10,10 +10,11 @@ using System.Security.Policy;
 
 namespace FryzjerManager.ViewModel.ViewsViewModels
 {
+    //VM formularza umożliwiającego dodanie nowego (nieistniejącego w bazie) produktu
     public class ViewNewProductAddViewModel : ViewModelBase.ViewModelBase
     {
         #region Komendy przyciskow
-        public event Action<object> TransferData;
+        public event Action<object> TransferData;//Przekazuje dane formularzowi-rodzicowi
         private ICommand _addProduct = null;
         public ICommand AddProduct
         {
@@ -36,11 +37,13 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         }
         #endregion
 
+        //Obsługa formularza
         public string ProductName { get; set; }
         public string ProductPrice { get; set; }
         public string ProductCapacity { get; set; }
         public bool IsSingleUse { get; set; } = true;
 
+        //Nawigacja
         public event Action GoHomeAction;
         private ICommand _gotoMainMenu = null;
         public ICommand GotoMainMenu
