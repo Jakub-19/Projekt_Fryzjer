@@ -355,6 +355,9 @@ namespace FryzjerManager.ViewModel
             viewDeliveryAddViewModel.GoBackAction += ChangeViewToPrevious;
             ViewDeliveryAddViewModel.ViewNewProductAdd = viewNewProductAdd;
             ViewDeliveryAddViewModel.ViewNewProductAddViewModel = viewNewProductAddViewModel;
+            viewDeliveryAddViewModel.ViewNewProductAddViewModel.GoBackAction += ChangeViewToPrevious;
+            viewDeliveryAddViewModel.ViewProductSearchViewModel1.GoBackAction += ChangeViewToPrevious;
+            viewDeliveryAddViewModel.ViewProductSearchViewModel2.GoBackAction += ChangeViewToPrevious;
 
             ViewMainStock = viewMainStock;
             ViewMainStockViewModel = viewMainStockViewModel;
@@ -375,6 +378,9 @@ namespace FryzjerManager.ViewModel
             ViewServiceDoneViewModel.ViewProductSearchViewModel2 = vpsd2ViewModel;
             viewServiceDoneViewModel.ChangeView += ChangeViewTo;
             viewServiceDoneViewModel.GoBackAction += ChangeViewToPrevious;
+            viewServiceDoneViewModel.ViewProductSearchViewModel2.GoBackAction += ChangeViewToPrevious;
+            viewServiceDoneViewModel.ViewProductSearchViewModel1.GoBackAction += ChangeViewToPrevious;
+            viewServiceDoneViewModel.ViewCustomerSearchViewModel.GoBackAction += ChangeViewToPrevious;
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
@@ -382,6 +388,7 @@ namespace FryzjerManager.ViewModel
             ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = vcshViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;
             viewServicesHistoryViewModel.GoBackAction += ChangeViewToPrevious;
+            viewServicesHistoryViewModel.ViewCustomerSearchViewModel.GoBackAction += ChangeViewToPrevious;
 
             _previousViews = new Stack<UserControl>();
             CurrentView = viewMenuWindow;

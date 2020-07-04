@@ -86,7 +86,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoMainMenu == null)
                     _gotoMainMenu = new ViewModelBase.RelayCommand(
-                        arg => { GoHomeAction.Invoke(); },
+                        arg => { GoHomeAction?.Invoke(); },
                         arg => true);
                 return _gotoMainMenu;
             }
@@ -101,7 +101,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 if (_goBack == null)
                     _goBack = new ViewModelBase.RelayCommand(
                         arg => {
-                            GoBackAction.Invoke();
+                            GoBackAction?.Invoke();
                         }, arg => true);
                 return _goBack;
             }
@@ -112,6 +112,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             inventory.Clear();
             ProductName = "";
             CurrentProduct = null;
+            OnPropertyChanged(nameof(ProductName));
             OnPropertyChanged(nameof(Products));
         }
     }

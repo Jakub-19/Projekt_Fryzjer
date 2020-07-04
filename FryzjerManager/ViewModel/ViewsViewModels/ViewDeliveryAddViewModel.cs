@@ -34,6 +34,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 _viewProductSearchViewModel1 = value;
                 ViewProductSearchViewModel1.IsSingleUsed = false;
                 ViewProductSearchViewModel1.TransferData += GetProduct;
+                ViewProductSearchViewModel1.GoHomeAction += GotoMainMenuFunc;
                 OnPropertyChanged(nameof(ViewProductSearchViewModel1));
             }
         }
@@ -56,6 +57,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 _viewProductSearchViewModel2 = value;
                 ViewProductSearchViewModel2.IsSingleUsed = true;
                 ViewProductSearchViewModel2.TransferData += GetSingleUseProduct;
+                ViewProductSearchViewModel2.GoHomeAction += GotoMainMenuFunc;
                 OnPropertyChanged(nameof(ViewProductSearchViewModel2));
             }
         }
@@ -78,6 +80,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 _viewNewProductAddViewModel = value;
                 ViewNewProductAddViewModel.TransferData += GetNewProduct;
+                ViewNewProductAddViewModel.GoHomeAction += GotoMainMenuFunc;
                 OnPropertyChanged(nameof(ViewNewProductAddViewModel));
             }
         }
@@ -180,10 +183,15 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoMainMenu == null)
                     _gotoMainMenu = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewMenuWindow", false);Clear(); },
+                        arg => { GotoMainMenuFunc(); },
                         arg => true);
                 return _gotoMainMenu;
             }
+        }
+        private void GotoMainMenuFunc()
+        {
+            ChangeView?.Invoke("ViewMenuWindow", false);
+            Clear();
         }
 
         public event Action GoBackAction;

@@ -27,7 +27,9 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=CustomerAddViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{Binding Path=CustomerAddViewName}"                             
+                            goHome="{Binding Path=ViewModel.GotoMainMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                            goBack="{Binding Path=ViewModel.GoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         </Grid>
         <CheckBox x:Name="SingleUseCheckbox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Content="{x:Static R:Resources.ViewNewProductAddDispProductCheckBoxContent}" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,0" IsEnabled="True" Checked="SingleUseCheckbox_Checked" Unchecked="SingleUseCheckbox_Unchecked" Foreground="#FF3D3D3D" IsChecked="{Binding Path=ViewModel.IsSingleUse, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         <CheckBox x:Name="MultiUseCheckbox" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Content="{x:Static R:Resources.ViewNewProductAddProductCheckBoxContent}" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,0,0,0" IsEnabled="True" Checked="MultiUseCheckbox_Checked" Unchecked="MultiUseCheckbox_Unchecked" Foreground="#FF3D3D3D" />
