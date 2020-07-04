@@ -17,14 +17,5 @@ namespace FryzjerManager.Model
             Services = new List<Service>();
             Services = data.ShowAllServices();
         }
-
-        //public List<string> GetServicesNames()
-        //{
-        //    List<string> servicesNames = new List<string>();
-        //    foreach (var v in Services)
-        //        servicesNames.Add(v.ToString());
-
-        //    return servicesNames;
-        //}
     }
 }

@@ -40,5 +40,44 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         public string ProductPrice { get; set; }
         public string ProductCapacity { get; set; }
         public bool IsSingleUse { get; set; } = true;
+
+        public event Action GoHomeAction;
+        private ICommand _gotoMainMenu = null;
+        public ICommand GotoMainMenu
+        {
+            get
+            {
+                if (_gotoMainMenu == null)
+                    _gotoMainMenu = new ViewModelBase.RelayCommand(
+                        arg => { GoHomeAction.Invoke(); },
+                        arg => true);
+                return _gotoMainMenu;
+            }
+        }
+
+        public event Action GoBackAction;
+        private ICommand _goBack = null;
+        public ICommand GoBack
+        {
+            get
+            {
+                if (_goBack == null)
+                    _goBack = new ViewModelBase.RelayCommand(
+                        arg => {
+                            GoBackAction.Invoke();
+                        }, arg => true);
+                return _goBack;
+            }
+        }
+
+        public void Clear()
+        {
+            ProductName = "";
+            ProductPrice = "";
+            ProductCapacity = "";
+            OnPropertyChanged(nameof(ProductName));
+            OnPropertyChanged(nameof(ProductPrice));
+            OnPropertyChanged(nameof(ProductCapacity));
+        }
     }
 }

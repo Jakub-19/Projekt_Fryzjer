@@ -32,7 +32,7 @@ namespace FryzjerManager.Model
                 data.AddClient(client);
             }
         }
-        public void ClearList()
+        public void Clear()
         {
             Clients = new List<Client>();
         }

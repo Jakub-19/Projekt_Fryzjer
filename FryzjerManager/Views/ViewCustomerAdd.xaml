@@ -25,7 +25,9 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{x:Static R:Resources.CustomerAddViewNameTitle}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{x:Static R:Resources.CustomerAddViewNameTitle}"                                                         
+                            goHome="{Binding Path=ViewModel.GotoMainMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                            goBack="{Binding Path=ViewModel.GoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         </Grid>
         <Label Grid.Row="1" Grid.Column="0" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Right"
                Content="{x:Static R:Resources.ViewCustomerAddLabelNameContent}"/>

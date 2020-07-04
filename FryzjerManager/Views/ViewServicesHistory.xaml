@@ -20,7 +20,9 @@
 
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{Binding Path=ServiceDoneViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{Binding Path=ServiceDoneViewName}" 
+                            goHome="{Binding Path=ViewModel.GotoMainMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                            goBack="{Binding Path=ViewModel.GoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>

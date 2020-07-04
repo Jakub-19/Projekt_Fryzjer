@@ -17,7 +17,9 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{x:Static R:Resources.ViewActualStockTitle}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{x:Static R:Resources.ViewActualStockTitle}"                                                         
+                            goHome="{Binding Path=ViewModel.GotoMainMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                            goBack="{Binding Path=ViewModel.GoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <!--Do zmiany na słownik-->

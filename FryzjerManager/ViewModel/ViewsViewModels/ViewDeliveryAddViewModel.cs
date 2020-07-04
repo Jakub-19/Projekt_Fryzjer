@@ -172,5 +172,48 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _confirmDelivery;
             }
         }
+
+        private ICommand _gotoMainMenu = null;
+        public ICommand GotoMainMenu
+        {
+            get
+            {
+                if (_gotoMainMenu == null)
+                    _gotoMainMenu = new ViewModelBase.RelayCommand(
+                        arg => { ChangeView?.Invoke("ViewMenuWindow", false);Clear(); },
+                        arg => true);
+                return _gotoMainMenu;
+            }
+        }
+
+        public event Action GoBackAction;
+        private ICommand _goBack = null;
+        public ICommand GoBack
+        {
+            get
+            {
+                if (_goBack == null)
+                    _goBack = new ViewModelBase.RelayCommand(
+                        arg => {
+                            Clear();
+                            GoBackAction.Invoke();
+                        }, arg => true);
+                return _goBack;
+            }
+        }
+
+        private void Clear()
+        {
+            Products = new ObservableCollection<Product>();
+            SingleUseProducts = new ObservableCollection<SingleUseProduct>();
+            NewProducts = new ObservableCollection<SingleUseProduct>();
+            OnPropertyChanged(nameof(Products));
+            OnPropertyChanged(nameof(SingleUseProducts)); ;
+            OnPropertyChanged(nameof(NewProducts));
+            inventory.Clear();
+            ViewNewProductAddViewModel.Clear();
+            ViewProductSearchViewModel1.Clear();
+            ViewProductSearchViewModel2.Clear();
+        }
     }
 }

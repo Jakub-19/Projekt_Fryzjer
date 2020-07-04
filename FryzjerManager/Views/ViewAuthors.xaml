@@ -19,7 +19,9 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <title:TitleBar Title="{x:Static R:Resources.CustomersViewAuthorsTitle}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
+            <title:TitleBar Title="{x:Static R:Resources.CustomersViewAuthorsTitle}"                                                         
+                            goHome="{Binding Path=ViewModel.GotoMainMenu, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"
+                            goBack="{Binding Path=ViewModel.GoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         </Grid>
 
         <TextBlock Grid.Row="1" FontFamily="Comic Sans MS" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" Width="410" TextAlignment="Center" HorizontalAlignment="Left"

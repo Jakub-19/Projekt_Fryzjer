@@ -327,17 +327,23 @@ namespace FryzjerManager.ViewModel
         {
             ViewActualStock = viewActualStock;
             ViewActualStockViewModel = viewActualStockViewModel;
+            viewActualStockViewModel.ChangeView += ChangeViewTo;
+            viewActualStockViewModel.GoBackAction += ChangeViewToPrevious;
 
             ViewAuthors = viewAuthors;
             ViewAuthorsViewModel = viewAuthorsViewModel;
+            viewAuthorsViewModel.ChangeView += ChangeViewTo;
+            viewAuthorsViewModel.GoBackAction += ChangeViewToPrevious;
 
             ViewCustomerAdd = viewCustomerAdd;
             ViewCustomerAddViewModel = viewCustomerAddViewModel;
             viewCustomerAddViewModel.ChangeView += ChangeViewTo;
+            viewCustomerAddViewModel.GoBackAction += ChangeViewToPrevious;
 
             ViewCustomers = viewCustomers;
             ViewCustomersViewModel = viewCustomersViewModel;
             viewCustomersViewModel.ChangeView += ChangeViewTo;
+            viewCustomersViewModel.GoBackAction += ChangeViewToPrevious;
 
             ViewDeliveryAdd = viewDeliveryAdd;
             ViewDeliveryAddViewModel = viewDeliveryAddViewModel;
@@ -346,12 +352,14 @@ namespace FryzjerManager.ViewModel
             ViewDeliveryAddViewModel.ViewProductSearch2 = vpsa2;
             ViewDeliveryAddViewModel.ViewProductSearchViewModel2 = vpsa2ViewModel;
             viewDeliveryAddViewModel.ChangeView += ChangeViewTo;
+            viewDeliveryAddViewModel.GoBackAction += ChangeViewToPrevious;
             ViewDeliveryAddViewModel.ViewNewProductAdd = viewNewProductAdd;
             ViewDeliveryAddViewModel.ViewNewProductAddViewModel = viewNewProductAddViewModel;
 
             ViewMainStock = viewMainStock;
             ViewMainStockViewModel = viewMainStockViewModel;
             viewMainStockViewModel.ChangeView += ChangeViewTo;
+            viewMainStockViewModel.GoBackAction += ChangeViewToPrevious;
 
             ViewMenuWindow = viewMenuWindow;
             ViewMenuWindowViewModel = viewMenuWindowViewModel;
@@ -366,12 +374,14 @@ namespace FryzjerManager.ViewModel
             ViewServiceDoneViewModel.ViewProductSearch2 = vpsd2;
             ViewServiceDoneViewModel.ViewProductSearchViewModel2 = vpsd2ViewModel;
             viewServiceDoneViewModel.ChangeView += ChangeViewTo;
+            viewServiceDoneViewModel.GoBackAction += ChangeViewToPrevious;
 
             ViewServicesHistory = viewServicesHistory;
             ViewServicesHistoryViewModel = viewServicesHistoryViewModel;
             ViewServicesHistoryViewModel.ViewCustomerSearch = vcsh;
             ViewServicesHistoryViewModel.ViewCustomerSearchViewModel = vcshViewModel;
             viewServicesHistoryViewModel.ChangeView += ChangeViewTo;
+            viewServicesHistoryViewModel.GoBackAction += ChangeViewToPrevious;
 
             _previousViews = new Stack<UserControl>();
             CurrentView = viewMenuWindow;
@@ -406,6 +416,7 @@ namespace FryzjerManager.ViewModel
                         break;
                     case "ViewMenuWindow":
                         CurrentView = ViewMenuWindow;
+                        PreviousViews.Clear();
                         break;
                     case "ViewServiceDone":
                         CurrentView = ViewServiceDone;
@@ -426,38 +437,18 @@ namespace FryzjerManager.ViewModel
             ChangeViewTo(view);
         }
 
-        private ICommand _gotoMainMenu = null;
-        public ICommand GotoMainMenu
+        private void ChangeViewToPrevious()
         {
-            get
+            if (PreviousViews != null && PreviousViews.Count > 0)
             {
-                if (_gotoMainMenu == null)
-                    _gotoMainMenu = new ViewModelBase.RelayCommand(
-                        arg => { ChangeViewTo("ViewMenuWindow"); },
-                        arg => true);
-                return _gotoMainMenu;
+                var temp = CurrentView;
+                while (CurrentView.Equals(temp))
+                    CurrentView = PreviousViews.Pop();
             }
+            if (CurrentView.Equals(ViewMenuWindow))
+                PreviousViews.Clear();
         }
-        private ICommand _goBack = null;
-        public ICommand GoBack
-        {
-            get
-            {
-                if (_goBack == null)
-                    _goBack = new ViewModelBase.RelayCommand(
-                        arg => {
-                            if (PreviousViews != null && PreviousViews.Count > 0)
-                            {
-                                var temp = CurrentView;
-                                while (CurrentView.Equals(temp))
-                                    CurrentView = PreviousViews.Pop();
-                            }
-                            if (CurrentView.Equals(ViewMenuWindow))
-                                PreviousViews.Clear();
-                        }, arg => true);
-                return _goBack;
-            }
-        }
+
 
         //Do kasacji
         #region ResourcesTextNames

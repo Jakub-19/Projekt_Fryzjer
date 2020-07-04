@@ -35,5 +35,32 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 return _gotoActualStock;
             }
         }
+        private ICommand _gotoMainMenu = null;
+        public ICommand GotoMainMenu
+        {
+            get
+            {
+                if (_gotoMainMenu == null)
+                    _gotoMainMenu = new ViewModelBase.RelayCommand(
+                        arg => { ChangeView?.Invoke("ViewMenuWindow", false); },
+                        arg => true);
+                return _gotoMainMenu;
+            }
+        }
+
+        public event Action GoBackAction;
+        private ICommand _goBack = null;
+        public ICommand GoBack
+        {
+            get
+            {
+                if (_goBack == null)
+                    _goBack = new ViewModelBase.RelayCommand(
+                        arg => {
+                            GoBackAction.Invoke();
+                        }, arg => true);
+                return _goBack;
+            }
+        }
     }
 }
