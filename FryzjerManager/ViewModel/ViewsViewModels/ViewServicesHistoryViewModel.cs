@@ -37,7 +37,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             }
         }
         #endregion
-        public event Action<object> ChangeView;
+        public event Action<object, bool> ChangeView;
         private ICommand _selectCustomer = null;
         public ICommand SelectCustomer
         {
@@ -45,7 +45,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_selectCustomer == null)
                     _selectCustomer = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewCustomerSearch); },
+                        arg => { ChangeView?.Invoke(ViewCustomerSearch, true); },
                         arg => true);
                 return _selectCustomer;
             }
@@ -55,7 +55,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         {
             CurrentClient = client;
             OnPropertyChanged(nameof(CurrentClient));
-            ChangeView?.Invoke("ViewServicesHistory");
+            ChangeView?.Invoke("ViewServicesHistory", false);
             visitRecord.GetVisits(CurrentClient);
             OnPropertyChanged(nameof(Visits));
         }

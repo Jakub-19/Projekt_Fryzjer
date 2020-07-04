@@ -9,7 +9,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     public class ViewMainStockViewModel : ViewModelBase.ViewModelBase
     {
-        public event Action<string> ChangeView;
+        public event Action<string, bool> ChangeView;
 
         private ICommand _gotoDeliveryAdd = null;
         public ICommand GotoDeliveryAdd
@@ -18,7 +18,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoDeliveryAdd == null)
                     _gotoDeliveryAdd = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewDeliveryAdd"); },
+                        arg => { ChangeView?.Invoke("ViewDeliveryAdd", true); },
                         arg => true);
                 return _gotoDeliveryAdd;
             }
@@ -30,7 +30,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoActualStock == null)
                     _gotoActualStock = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewActualStock"); },
+                        arg => { ChangeView?.Invoke("ViewActualStock", true); },
                         arg => true);
                 return _gotoActualStock;
             }

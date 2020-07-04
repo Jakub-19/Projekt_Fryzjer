@@ -9,7 +9,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     public class ViewCustomersViewModel : ViewModelBase.ViewModelBase
     {
-        public event Action<string> ChangeView;
+        public event Action<string, bool> ChangeView;
 
         private ICommand _gotoCustomerAdd = null;
         public ICommand GotoCustomerAdd
@@ -18,7 +18,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoCustomerAdd == null)
                     _gotoCustomerAdd = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewCustomerAdd"); },
+                        arg => { ChangeView?.Invoke("ViewCustomerAdd", true); },
                         arg => true);
                 return _gotoCustomerAdd;
             }
@@ -30,7 +30,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoServicesHistory == null)
                     _gotoServicesHistory = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewServicesHistory"); },
+                        arg => { ChangeView?.Invoke("ViewServicesHistory", true); },
                         arg => true);
                 return _gotoServicesHistory;
             }

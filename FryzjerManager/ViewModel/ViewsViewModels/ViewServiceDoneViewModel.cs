@@ -84,7 +84,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         }
         #endregion
 
-        public event Action<object> ChangeView;
+        public event Action<object, bool> ChangeView;
 
         private ICommand _selectCustomer = null;
         public ICommand SelectCustomer
@@ -93,7 +93,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_selectCustomer == null)
                     _selectCustomer = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewCustomerSearch); },
+                        arg => { ChangeView?.Invoke(ViewCustomerSearch, true); },
                         arg => true);
                 return _selectCustomer;
             }
@@ -107,7 +107,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_selectProduct == null)
                     _selectProduct = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewProductSearch1); },
+                        arg => { ChangeView?.Invoke(ViewProductSearch1, true); },
                         arg => true);
                 return _selectProduct;
             }
@@ -120,7 +120,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_selectSingleUseProduct == null)
                     _selectSingleUseProduct = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewProductSearch2); },
+                        arg => { ChangeView?.Invoke(ViewProductSearch2, true); },
                         arg => true);
                 return _selectSingleUseProduct;
             }
@@ -129,20 +129,20 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         {
             CurrentClient = client;
             OnPropertyChanged(nameof(CurrentClient));
-            ChangeView?.Invoke("ViewServiceDone");
+            ChangeView?.Invoke("ViewServiceDone", false);
 
         }
         private void GetProduct(SingleUseProduct product)
         {
             Products.Add(product as Product);
             OnPropertyChanged(nameof(Products));
-            ChangeView?.Invoke("ViewServiceDone");
+            ChangeView?.Invoke("ViewServiceDone", false);
         }
         private void GetSingleUseProduct(SingleUseProduct product)
         {
             SingleUseProducts.Add(product);
             OnPropertyChanged(nameof(SingleUseProducts));
-            ChangeView?.Invoke("ViewServiceDone");
+            ChangeView?.Invoke("ViewServiceDone", false);
         }
         public Client CurrentClient { get; set; }
         private Inventory inventory = new Inventory();
@@ -206,7 +206,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 
                             VisitRecord visitRecord = new VisitRecord();
                             visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate));
-                            ChangeView?.Invoke("ViewMenuWindow");
+                            ChangeView?.Invoke("ViewMenuWindow", false);
                         },
                         arg => ServicesChecked != null && ServicesChecked.Count > 0 && CurrentClient != null);
                 return _confirmVisit;

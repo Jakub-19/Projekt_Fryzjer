@@ -83,7 +83,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         }
         #endregion
 
-        public event Action<object> ChangeView;
+        public event Action<object, bool> ChangeView;
 
         private ICommand _selectProduct = null;
         public ICommand SelectProduct
@@ -92,7 +92,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_selectProduct == null)
                     _selectProduct = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewProductSearch1); },
+                        arg => { ChangeView?.Invoke(ViewProductSearch1, true); },
                         arg => true);
                 return _selectProduct;
             }
@@ -105,7 +105,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_selectSingleUseProduct == null)
                     _selectSingleUseProduct = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewProductSearch2); },
+                        arg => { ChangeView?.Invoke(ViewProductSearch2, true); },
                         arg => true);
                 return _selectSingleUseProduct;
             }
@@ -118,7 +118,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_addNewProduct == null)
                     _addNewProduct = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke(ViewNewProductAdd); },
+                        arg => { ChangeView?.Invoke(ViewNewProductAdd, true); },
                         arg => true);
                 return _addNewProduct;
             }
@@ -127,19 +127,19 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
         {
             Products.Add(product as Product);
             OnPropertyChanged(nameof(Products));
-            ChangeView?.Invoke("ViewDeliveryAdd");
+            ChangeView?.Invoke("ViewDeliveryAdd", false);
         }
         private void GetSingleUseProduct(SingleUseProduct product)
         {
             SingleUseProducts.Add(product);
             OnPropertyChanged(nameof(SingleUseProducts));
-            ChangeView?.Invoke("ViewDeliveryAdd");
+            ChangeView?.Invoke("ViewDeliveryAdd", false);
         }
         private void GetNewProduct(object product)
         {
             NewProducts.Add(product as SingleUseProduct);
             OnPropertyChanged(nameof(NewProducts));
-            ChangeView?.Invoke("ViewDeliveryAdd");
+            ChangeView?.Invoke("ViewDeliveryAdd", false);
         }
         public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
         public ObservableCollection<SingleUseProduct> SingleUseProducts { get; set; } = new ObservableCollection<SingleUseProduct>();
@@ -166,7 +166,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                                 else
                                     inventory.AddNew(v);
                             }
-                            ChangeView?.Invoke("ViewMainStock");
+                            ChangeView?.Invoke("ViewMainStock", false);
                         },
                         arg => Products.Count > 0 || SingleUseProducts.Count > 0 || NewProducts.Count > 0);
                 return _confirmDelivery;

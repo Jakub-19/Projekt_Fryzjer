@@ -10,7 +10,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 {
     public class ViewMenuWindowViewModel : ViewModelBase.ViewModelBase
     {
-        public event Action<string> ChangeView;
+        public event Action<string, bool> ChangeView;
         private ICommand _gotoCustomers = null;
         public ICommand GotoCustomers
         {
@@ -18,7 +18,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoCustomers == null)
                     _gotoCustomers = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewCustomers"); },
+                        arg => { ChangeView?.Invoke("ViewCustomers", true); },
                         arg => true);
                 return _gotoCustomers;
             }
@@ -30,7 +30,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoServiceDone == null)
                     _gotoServiceDone = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewServiceDone"); },
+                        arg => { ChangeView?.Invoke("ViewServiceDone", true); },
                         arg => true);
                 return _gotoServiceDone;
             }
@@ -42,7 +42,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoMainStock == null)
                     _gotoMainStock = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewMainStock"); },
+                        arg => { ChangeView?.Invoke("ViewMainStock", true); },
                         arg => true);
                 return _gotoMainStock;
             }
@@ -54,7 +54,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
             {
                 if (_gotoAuthors == null)
                     _gotoAuthors = new ViewModelBase.RelayCommand(
-                        arg => { ChangeView?.Invoke("ViewAuthors"); },
+                        arg => { ChangeView?.Invoke("ViewAuthors", true); },
                         arg => true);
                 return _gotoAuthors;
             }
