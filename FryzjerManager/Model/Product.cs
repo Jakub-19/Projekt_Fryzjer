@@ -20,7 +20,7 @@ namespace FryzjerManager.Model
             Name = name;
             Count = count;
             Price = price;
-            SuggestedConsumption = 2;
+            SuggestedConsumption = 0;
         }
         public override string ToString()
         {
@@ -35,7 +35,6 @@ namespace FryzjerManager.Model
         {
             Ml = ml;
             Capacity = capacity;
-            SuggestedConsumption = 15;
         }
     }
 }

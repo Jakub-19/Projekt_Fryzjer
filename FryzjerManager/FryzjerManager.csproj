@@ -132,12 +132,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.pl-PL.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\AmountField.xaml.cs">
+      <DependentUpon>AmountField.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ListViewWithCheckboxes.xaml.cs">
       <DependentUpon>ListViewWithCheckboxes.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\TitleBar.xaml.cs">
       <DependentUpon>TitleBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Converter.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase\EventArgs.cs" />
     <Compile Include="ViewModel\ViewModelBase\EventRaiser.cs" />
@@ -203,6 +207,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\AmountField.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ListViewWithCheckboxes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

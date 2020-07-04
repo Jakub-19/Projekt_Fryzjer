@@ -225,8 +225,14 @@
   <data name="VIewDeliveryAddml" xml:space="preserve">
     <value>ml</value>
   </data>
+  <data name="ViewDeliveryAddProductsMultiTextBlockText" xml:space="preserve">
+    <value>Multi-use products</value>
+  </data>
+  <data name="ViewDeliveryAddProductsSingleTextBlockText" xml:space="preserve">
+    <value>Single-use products</value>
+  </data>
   <data name="ViewDeliveryAddTextNewDelivery" xml:space="preserve">
-    <value>New delivery</value>
+    <value>Add new product</value>
   </data>
   <data name="ViewDeliveryAddTitle" xml:space="preserve">
     <value>Insert delivery</value>

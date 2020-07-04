@@ -19,7 +19,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -30,21 +29,18 @@
         <Grid Grid.ColumnSpan="2">
             <title:TitleBar Title="{Binding Path=CustomerAddViewName}" goHome="{Binding GotoMainMenu}" goBack="{Binding GoBack}"/>
         </Grid>
-        <CheckBox x:Name="SingleUseCheckbox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Content="{x:Static R:Resources.ViewNewProductAddDispProductCheckBoxContent}" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,0" IsEnabled="True" Checked="SingleUseCheckbox_Checked" Foreground="#FF3D3D3D" IsChecked="{Binding Path=ViewModel.IsSingleUse, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <CheckBox x:Name="MultiUseCheckbox" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Content="{x:Static R:Resources.ViewNewProductAddProductCheckBoxContent}" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,0,0,0" IsEnabled="True" Checked="MultiUseCheckbox_Checked" Foreground="#FF3D3D3D" />
+        <CheckBox x:Name="SingleUseCheckbox" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Content="{x:Static R:Resources.ViewNewProductAddDispProductCheckBoxContent}" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180,0,0,0" IsEnabled="True" Checked="SingleUseCheckbox_Checked" Unchecked="SingleUseCheckbox_Unchecked" Foreground="#FF3D3D3D" IsChecked="{Binding Path=ViewModel.IsSingleUse, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        <CheckBox x:Name="MultiUseCheckbox" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Content="{x:Static R:Resources.ViewNewProductAddProductCheckBoxContent}" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,0,0,0" IsEnabled="True" Checked="MultiUseCheckbox_Checked" Unchecked="MultiUseCheckbox_Unchecked" Foreground="#FF3D3D3D" />
         <Label Grid.Row="3" Grid.Column="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Right"
                Content="{x:Static R:Resources.ViewServiceDoneNameLabelContent}"/>
         <TextBox x:Name="ViewCustomerAddTextBoxName" Grid.Row="3" Grid.Column="1" FontSize="50" VerticalAlignment="Center" Margin="50,0,50,0" TextAlignment="Center" Text="{Binding Path=ViewModel.ProductName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         <Label Grid.Row="4" Grid.Column="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Right"
-               Content="{x:Static R:Resources.ViewServiceDoneAmountLabelContent}"/>
-        <TextBox x:Name="ViewCustomerAddTextBoxSurname" Grid.Row="4" Grid.Column="1" FontSize="50" VerticalAlignment="Center" Margin="50,0,50,0" TextAlignment="Center" Text="{Binding Path=ViewModel.ProductCount, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <Label Grid.Row="5" Grid.Column="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Right"
                Content="{x:Static R:Resources.ViewNewProductAddPriceLabelContent}"/>
-        <TextBox x:Name="ViewCustomerAddTextBoxPhoneNumber" Grid.Row="5" Grid.Column="1" FontSize="50" VerticalAlignment="Center" Margin="50,0,50,0" TextAlignment="Center" Text="{Binding Path=ViewModel.ProductPrice, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
-        <Label Grid.Row="6" Grid.Column="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Right"
+        <TextBox x:Name="ViewCustomerAddTextBoxPhoneNumber" Grid.Row="4" Grid.Column="1" FontSize="50" VerticalAlignment="Center" Margin="50,0,50,0" TextAlignment="Center" Text="{Binding Path=ViewModel.ProductPrice, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+        <Label Grid.Row="5" Grid.Column="0" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Right"
                Content="{x:Static R:Resources.ViewNewProductAddCapacityLabelContent}"/>
-        <TextBox x:Name="CapacityTextBox" Grid.Row="6" Grid.Column="1" FontSize="50" VerticalAlignment="Center" Margin="50,0,50,0" TextAlignment="Center" Text="{Binding Path=ViewModel.ProductCapacity, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" IsEnabled="False"/>
-        <StackPanel Grid.ColumnSpan="2" Grid.Row="7" VerticalAlignment="Center" Orientation="Vertical" Margin="300,0,300,0">
+        <TextBox x:Name="CapacityTextBox" Grid.Row="5" Grid.Column="1" FontSize="50" VerticalAlignment="Center" Margin="50,0,50,0" TextAlignment="Center" Text="{Binding Path=ViewModel.ProductCapacity, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" IsEnabled="False"/>
+        <StackPanel Grid.ColumnSpan="2" Grid.Row="6" VerticalAlignment="Center" Orientation="Vertical" Margin="300,0,300,0">
             <Button Margin="15" Background="#FF8522BD" BorderBrush="#FF8522BD" Height="70"                    
                     Command="{Binding Path=ViewModel.AddProduct,
                                       RelativeSource={

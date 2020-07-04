@@ -24,20 +24,19 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                         arg => {
                             object product;
                             if (IsSingleUse)
-                                product = new SingleUseProduct(0, ProductName, int.Parse(ProductCount), int.Parse(ProductPrice));
+                                product = new SingleUseProduct(0, ProductName, 0, int.Parse(ProductPrice));
                             else
-                                product = new Product(0, ProductName, int.Parse(ProductCount), 0, int.Parse(ProductCapacity), int.Parse(ProductPrice));
+                                product = new Product(0, ProductName, 0, 0, int.Parse(ProductCapacity), int.Parse(ProductPrice));
                             TransferData?.Invoke(product);
                         },
-                        arg => (!string.IsNullOrEmpty(ProductName) && !string.IsNullOrEmpty(ProductCount) && !string.IsNullOrEmpty(ProductPrice)) && 
-                            (IsSingleUse || (!string.IsNullOrEmpty(ProductCapacity) && int.TryParse(ProductCapacity, out int x))) && int.TryParse(ProductCount, out int y) && double.TryParse(ProductPrice, out double z));
+                        arg => (!string.IsNullOrEmpty(ProductName) && !string.IsNullOrEmpty(ProductPrice)) && 
+                            (IsSingleUse || (!string.IsNullOrEmpty(ProductCapacity) && int.TryParse(ProductCapacity, out int x))) && int.TryParse(ProductPrice, out int z));
                 return _addProduct;
             }
         }
         #endregion
 
         public string ProductName { get; set; }
-        public string ProductCount { get; set; }
         public string ProductPrice { get; set; }
         public string ProductCapacity { get; set; }
         public bool IsSingleUse { get; set; } = true;

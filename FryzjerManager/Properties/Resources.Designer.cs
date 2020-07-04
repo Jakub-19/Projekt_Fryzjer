@@ -385,7 +385,25 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu New delivery.
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Multi-use products.
+        /// </summary>
+        public static string ViewDeliveryAddProductsMultiTextBlockText {
+            get {
+                return ResourceManager.GetString("ViewDeliveryAddProductsMultiTextBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Single-use products.
+        /// </summary>
+        public static string ViewDeliveryAddProductsSingleTextBlockText {
+            get {
+                return ResourceManager.GetString("ViewDeliveryAddProductsSingleTextBlockText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Add new product.
         /// </summary>
         public static string ViewDeliveryAddTextNewDelivery {
             get {

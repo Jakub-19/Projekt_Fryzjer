@@ -48,5 +48,18 @@ namespace FryzjerManager.Views
             SingleUseCheckbox.IsChecked = false;
             CapacityTextBox.IsEnabled = true;
         }
+        private void SingleUseCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            MultiUseCheckbox.IsChecked = true;
+            CapacityTextBox.IsEnabled = true;
+        }
+        private void MultiUseCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            SingleUseCheckbox.IsChecked = true;
+            CapacityTextBox.IsEnabled = false;
+            CapacityTextBox.Text = "";
+        }
+
+        
     }
 }
