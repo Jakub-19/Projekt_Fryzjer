@@ -190,6 +190,8 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 if (_confirmVisit == null)
                     _confirmVisit = new ViewModelBase.RelayCommand(
                         arg => {
+                            List<Product> products = new List<Product>();
+                            List<SingleUseProduct> sProducts = new List<SingleUseProduct>();
                             double finalPrice = 0;//Cena końcowa obliczana na podstawie zużycia produktów i cen usług
                             //aktualizacja zużycia
                             if (Products != null)
@@ -197,6 +199,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                                 foreach (Product v in Products)
                                 {
                                     inventory.UseUp(v, (uint)v.SuggestedConsumption);
+                                    products.Add(v);
                                     finalPrice += (v.SuggestedConsumption / v.Capacity) * v.Price;
                                 }
                             }
@@ -205,6 +208,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                                 foreach (SingleUseProduct v in SingleUseProducts)
                                 {
                                     inventory.UseUp(v, (uint)v.SuggestedConsumption);
+                                    sProducts.Add(v);
                                     finalPrice += v.SuggestedConsumption * v.Price;
                                 }
                             }
@@ -218,7 +222,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             }
 
                             VisitRecord visitRecord = new VisitRecord();
-                            visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate));
+                            visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate), products, sProducts);
                             ChangeView?.Invoke("ViewMenuWindow", false);
                         },
                         arg => ServicesChecked != null && ServicesChecked.Count > 0 && CurrentClient != null);

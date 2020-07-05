@@ -28,6 +28,11 @@ namespace FryzjerManager.Model
             Data_Access data = Data_Access.getInstance();
             data.AddVisit(visit);
         }
+        public void Add(Visit visit, List<Product> products, List<SingleUseProduct> sProducts)
+        {
+            Data_Access data = Data_Access.getInstance();
+            data.AddVisit(visit, products, sProducts);
+        }
         public void Clear()
         {
             Visits = new List<Visit>();
