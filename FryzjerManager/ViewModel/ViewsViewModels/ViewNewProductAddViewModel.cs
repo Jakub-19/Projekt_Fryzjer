@@ -27,7 +27,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             if (IsSingleUse)
                                 product = new SingleUseProduct(0, ProductName, 0, double.Parse(ProductPrice));
                             else
-                                product = new Product(0, ProductName, 0, 0, int.Parse(ProductCapacity), double.Parse(ProductPrice));
+                                product = new Product(0, ProductName, 0, 0, int.Parse(ProductCapacity), Math.Round(double.Parse(ProductPrice), 2));
                             TransferData?.Invoke(product);
                             Clear();
                         },
