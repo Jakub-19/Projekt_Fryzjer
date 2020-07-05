@@ -432,7 +432,8 @@ namespace FryzjerManager.DAL
             string command = "SELECT id_v, price,date " +
                 "FROM visits " +
                 "WHERE " +
-                "id_c=" + client.ID;
+                "id_c=" + client.ID+" " +
+                "ORDER BY date";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
