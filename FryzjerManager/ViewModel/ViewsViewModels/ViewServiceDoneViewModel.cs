@@ -225,6 +225,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
 
                             VisitRecord visitRecord = new VisitRecord();
                             visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate), products, sProducts);
+                            Clear();
                             ChangeView?.Invoke("ViewMenuWindow", false);
                         },
                         arg => { 
