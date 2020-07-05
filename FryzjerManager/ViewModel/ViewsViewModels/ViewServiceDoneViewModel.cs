@@ -225,7 +225,20 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate), products, sProducts);
                             ChangeView?.Invoke("ViewMenuWindow", false);
                         },
-                        arg => ServicesChecked != null && ServicesChecked.Count > 0 && CurrentClient != null);
+                        arg => { 
+                            foreach (var v in SingleUseProducts)
+                            {
+                                if (v.SuggestedConsumption > v.Count)
+                                    return false;
+                            }
+                            foreach (var v in Products)
+                            {
+                                int available = v.Ml + v.Count * v.Capacity;
+                                if (v.SuggestedConsumption > available)
+                                    return false;
+                            }
+                            return ServicesChecked != null && ServicesChecked.Count > 0 && CurrentClient != null; 
+                        });
                 return _confirmVisit;
             }
         }
