@@ -61,6 +61,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 ViewProductSearchViewModel1.IsSingleUsed = false;
                 ViewProductSearchViewModel1.TransferData += GetProduct;
                 ViewProductSearchViewModel1.GoHomeAction += GotoMainMenuFunc;
+                ViewProductSearchViewModel1.ShowOnlyAvailable = true;
                 OnPropertyChanged(nameof(ViewProductSearchViewModel1));
             }
         }
@@ -86,6 +87,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                 ViewProductSearchViewModel2.IsSingleUsed = true;
                 ViewProductSearchViewModel2.TransferData += GetSingleUseProduct;
                 ViewProductSearchViewModel2.GoHomeAction += GotoMainMenuFunc;
+                ViewProductSearchViewModel2.ShowOnlyAvailable = true;
                 OnPropertyChanged(nameof(ViewProductSearchViewModel2));
             }
         }

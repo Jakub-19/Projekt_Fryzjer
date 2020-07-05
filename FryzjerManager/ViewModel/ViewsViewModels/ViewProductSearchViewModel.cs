@@ -15,6 +15,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
     public class ViewProductSearchViewModel : ViewModelBase.ViewModelBase
     {
         public bool IsSingleUsed { get; set; }
+        public bool ShowOnlyAvailable { get; set; } = false;
         private ICommand _searchProduct = null;
         public ICommand SearchProduct
         {
@@ -25,14 +26,27 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                         arg => {
                             if (IsSingleUsed)
                             {
-                                inventory.GetSingleUseProducts(ProductName);
-                                OnPropertyChanged(nameof(Products));
+                                if(ShowOnlyAvailable)
+                                {
+                                    inventory.GetSingleUseProducts(ProductName);
+                                }
+                                else
+                                {
+                                    inventory.GetAllSingleUseProducts(ProductName);
+                                }
                             }
                             else
                             {
-                                inventory.GetProducts(ProductName);
-                                OnPropertyChanged(nameof(Products));
+                                if (ShowOnlyAvailable)
+                                {
+                                    inventory.GetProducts(ProductName);
+                                }
+                                else
+                                {
+                                    inventory.GetAllProducts(ProductName);
+                                }
                             }
+                            OnPropertyChanged(nameof(Products));
                         },
                         arg => true);
                 return _searchProduct;
