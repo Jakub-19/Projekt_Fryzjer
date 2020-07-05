@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace FryzjerManager.DAL
 {
@@ -247,7 +248,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "INSERT INTO disposable_products(name, quantity, price) VALUES('" + name + "','" + count + "','" + price + "')";
+            string command = "INSERT INTO disposable_products(name, quantity, price) VALUES('" + name + "','" + count + "','" + price.ToString(CultureInfo.InvariantCulture) + "')";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             con.Close();
@@ -265,7 +266,7 @@ namespace FryzjerManager.DAL
                 con.Open();
             }
             catch { }
-            string command = "INSERT INTO products(name, quantity_item,ml,capacity, price) VALUES('" + name + "','" + count + "','" + ml + "','" + capacity + "','" + price + "')";
+            string command = "INSERT INTO products(name, quantity_item,ml,capacity, price) VALUES('" + name + "','" + count + "','" + ml + "','" + capacity + "','" + price.ToString(CultureInfo.InvariantCulture) + "')";
             MySqlCommand cmd = new MySqlCommand(command, con);
             MySqlDataReader rdr = cmd.ExecuteReader();
             con.Close();
@@ -401,7 +402,7 @@ namespace FryzjerManager.DAL
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = con;
 
-            cmd.CommandText = "INSERT INTO visits (id_c,date,price) VALUES (" + id_c + ",'" + visit.Date.ToString("yyyy-MM-dd") + "'," + visit.FullPrice + ")";
+            cmd.CommandText = "INSERT INTO visits (id_c,date,price) VALUES (" + id_c + ",'" + visit.Date.ToString("yyyy-MM-dd") + "'," + visit.FullPrice.ToString(CultureInfo.InvariantCulture) + ")";
             cmd.ExecuteNonQuery();
 
             cmd.CommandText = "SELECT MAX(id_v) FROM visits";

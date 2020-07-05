@@ -223,7 +223,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                                 finalPrice += v.Price;
                             }
 
-                            Math.Round(finalPrice, 2);
+                            finalPrice = Math.Round(finalPrice, 2);
                             VisitRecord visitRecord = new VisitRecord();
                             visitRecord.Add(new Visit(finalPrice, CurrentClient, services, VisitDate), products, sProducts);
                             Clear();
