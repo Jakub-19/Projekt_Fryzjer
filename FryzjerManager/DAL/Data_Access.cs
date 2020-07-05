@@ -313,7 +313,7 @@ namespace FryzjerManager.DAL
         }
 
         //Funkcje przypisujące produkt oraz ilośc jaka została zużyta do wizyty w bazie danych
-        public void AddProductToVisit(Product product, Visit visit)
+        public void AddProductToVisit(Product product, int? id_v)
         {
             try
             {
@@ -323,12 +323,12 @@ namespace FryzjerManager.DAL
             string command = "INSERT productvisit " +
                 "(id_v,id_p,quantity)  " +
                 "VALUES " +
-                "(" + visit.ID + "," + product.ID + "," + product.SuggestedConsumption + ")";
+                "(" + id_v + "," + product.ID + "," + product.SuggestedConsumption + ")";
             MySqlCommand cmd = new MySqlCommand(command, con);
             cmd.ExecuteReader();
             con.Close();
         }
-        public void AddSingleUseProductToVisit(SingleUseProduct product, Visit visit)
+        public void AddSingleUseProductToVisit(SingleUseProduct product, int? id_v)
         {
             try
             {
@@ -338,7 +338,7 @@ namespace FryzjerManager.DAL
             string command = "INSERT dproductvisit " +
                 "(id_v,id_dp,quantity)  " +
                 "VALUES " +
-                "(" + visit.ID + "," + product.ID + "," + product.SuggestedConsumption + ")";
+                "(" + id_v + "," + product.ID + "," + product.SuggestedConsumption + ")";
             MySqlCommand cmd = new MySqlCommand(command, con);
             cmd.ExecuteReader();
             con.Close();
@@ -392,6 +392,35 @@ namespace FryzjerManager.DAL
                 cmd.ExecuteNonQuery();
             }
             con.Close();
+        }
+        public void AddVisit(Visit visit, List<Product> products, List<SingleUseProduct>singleUseProducts)
+        {
+            var id_c = visit.Person.ID;
+            int id_v = 0;
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = con;
+
+            cmd.CommandText = "INSERT INTO visits (id_c,date,price) VALUES (" + id_c + ",'" + visit.Date.ToString("yyyy-MM-dd") + "'," + visit.FullPrice + ")";
+            cmd.ExecuteNonQuery();
+
+            cmd.CommandText = "SELECT MAX(id_v) FROM visits";
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                id_v = rdr.GetInt32(0);
+            }
+            rdr.Close();
+            foreach (var s in visit.TypeOfService)
+            {
+                cmd.CommandText = "INSERT INTO servicevisit (id_s,id_v) VALUES (" + s.ID + "," + id_v + ")";
+                cmd.ExecuteNonQuery();
+            }
+            con.Close();
+            foreach (var product in products)
+                AddProductToVisit(product, id_v);
+            foreach (var product in singleUseProducts)
+                AddSingleUseProductToVisit(product, id_v);
         }
 
         //Funkcja wypisująca wszystkie wizyty jednego klienta
