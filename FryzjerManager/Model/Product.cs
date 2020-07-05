@@ -12,10 +12,10 @@ namespace FryzjerManager.Model
         public int ID { get; set; }
         public string Name { get; set; }
         public int Count { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public int SuggestedConsumption { get; set; }
 
-        public SingleUseProduct(int id, string name, int count, int price)
+        public SingleUseProduct(int id, string name, int count, double price)
         {
             ID = id;
             Name = name;

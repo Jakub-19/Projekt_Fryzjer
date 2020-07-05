@@ -241,7 +241,7 @@ namespace FryzjerManager.DAL
         {
             string name = product.Name;
             int count = product.Count;
-            int price = product.Price;
+            double price = product.Price;
             try
             {
                 con.Open();
@@ -257,7 +257,7 @@ namespace FryzjerManager.DAL
         {
             string name = product.Name;
             int count = product.Count;
-            int price = product.Price;
+            double price = product.Price;
             int ml = product.Ml;
             int capacity = product.Capacity;
             try
