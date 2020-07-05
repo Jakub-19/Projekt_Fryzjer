@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
+    //Encja services
     public class Service
     {
         public int ID { get; set; }

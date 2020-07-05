@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FryzjerManager.Model
 {
+    //encja disposable product
     public class SingleUseProduct
     {
         public int ID { get; set; }
@@ -27,6 +28,7 @@ namespace FryzjerManager.Model
             return ID+" "+Name;
         }
     }
+    //encja product klasa dziedziczy po klasie singleUseProduct
     public class Product : SingleUseProduct
     {
         public int Ml { get; set; }
