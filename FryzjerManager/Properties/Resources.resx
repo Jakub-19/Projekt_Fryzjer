@@ -267,6 +267,9 @@
   <data name="ViewNewProductAddProductCheckBoxContent" xml:space="preserve">
     <value>Reusable product</value>
   </data>
+  <data name="ViewNewProductAddTitle" xml:space="preserve">
+    <value>Add new product</value>
+  </data>
   <data name="ViewProductSearchButtonSearchLabelContent" xml:space="preserve">
     <value>Search</value>
   </data>
@@ -275,6 +278,9 @@
   </data>
   <data name="ViewProductSearchTitle" xml:space="preserve">
     <value>Product search</value>
+  </data>
+  <data name="ViewSericeHistoryTitle" xml:space="preserve">
+    <value>Client history</value>
   </data>
   <data name="ViewServiceDoneAcceptButtonText" xml:space="preserve">
     <value>Accept</value>

@@ -511,6 +511,15 @@ namespace FryzjerManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new product.
+        /// </summary>
+        public static string ViewNewProductAddTitle {
+            get {
+                return ResourceManager.GetString("ViewNewProductAddTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string ViewProductSearchButtonSearchLabelContent {
@@ -534,6 +543,15 @@ namespace FryzjerManager.Properties {
         public static string ViewProductSearchTitle {
             get {
                 return ResourceManager.GetString("ViewProductSearchTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client history.
+        /// </summary>
+        public static string ViewSericeHistoryTitle {
+            get {
+                return ResourceManager.GetString("ViewSericeHistoryTitle", resourceCulture);
             }
         }
         

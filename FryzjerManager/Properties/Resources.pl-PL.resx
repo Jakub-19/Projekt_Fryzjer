@@ -267,6 +267,9 @@
   <data name="ViewNewProductAddProductCheckBoxContent" xml:space="preserve">
     <value>Produkt wielorazowy</value>
   </data>
+  <data name="ViewNewProductAddTitle" xml:space="preserve">
+    <value>Dodaj nowy produkt</value>
+  </data>
   <data name="ViewProductSearchButtonSearchLabelContent" xml:space="preserve">
     <value>Szukaj</value>
   </data>
@@ -275,6 +278,9 @@
   </data>
   <data name="ViewProductSearchTitle" xml:space="preserve">
     <value>Wyszukiwanie produktu</value>
+  </data>
+  <data name="ViewSericeHistoryTitle" xml:space="preserve">
+    <value>Historia klienta</value>
   </data>
   <data name="ViewServiceDoneAcceptButtonText" xml:space="preserve">
     <value>Zatwierdź</value>
