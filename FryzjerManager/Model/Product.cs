@@ -33,7 +33,7 @@ namespace FryzjerManager.Model
     {
         public int Ml { get; set; }
         public int Capacity { get; set; }
-        public Product(int id, string name, int count, int ml, int capacity, int price) : base(id, name, count, price)
+        public Product(int id, string name, int count, int ml, int capacity, double price) : base(id, name, count, price)
         {
             Ml = ml;
             Capacity = capacity;

@@ -25,14 +25,14 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                         arg => {
                             object product;
                             if (IsSingleUse)
-                                product = new SingleUseProduct(0, ProductName, 0, int.Parse(ProductPrice));
+                                product = new SingleUseProduct(0, ProductName, 0, double.Parse(ProductPrice));
                             else
-                                product = new Product(0, ProductName, 0, 0, int.Parse(ProductCapacity), int.Parse(ProductPrice));
+                                product = new Product(0, ProductName, 0, 0, int.Parse(ProductCapacity), double.Parse(ProductPrice));
                             TransferData?.Invoke(product);
                             Clear();
                         },
                         arg => (!string.IsNullOrEmpty(ProductName) && !string.IsNullOrEmpty(ProductPrice)) && 
-                            (IsSingleUse || (!string.IsNullOrEmpty(ProductCapacity) && int.TryParse(ProductCapacity, out int x))) && int.TryParse(ProductPrice, out int z));
+                            (IsSingleUse || (!string.IsNullOrEmpty(ProductCapacity) && int.TryParse(ProductCapacity, out int x))) && double.TryParse(ProductPrice, out double z));
                 return _addProduct;
             }
         }
