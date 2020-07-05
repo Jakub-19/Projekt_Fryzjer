@@ -176,6 +176,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                                 else
                                     inventory.AddNew(v);
                             }
+                            Clear();
                             ChangeView?.Invoke("ViewMainStock", false);
                         },
                         arg => Products.Count > 0 || SingleUseProducts.Count > 0 || NewProducts.Count > 0);

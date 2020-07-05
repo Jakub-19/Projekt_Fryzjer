@@ -29,6 +29,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             else
                                 product = new Product(0, ProductName, 0, 0, int.Parse(ProductCapacity), int.Parse(ProductPrice));
                             TransferData?.Invoke(product);
+                            Clear();
                         },
                         arg => (!string.IsNullOrEmpty(ProductName) && !string.IsNullOrEmpty(ProductPrice)) && 
                             (IsSingleUse || (!string.IsNullOrEmpty(ProductCapacity) && int.TryParse(ProductCapacity, out int x))) && int.TryParse(ProductPrice, out int z));
@@ -68,6 +69,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                     _goBack = new ViewModelBase.RelayCommand(
                         arg => {
                             GoBackAction?.Invoke();
+                            Clear();
                         }, arg => true);
                 return _goBack;
             }
