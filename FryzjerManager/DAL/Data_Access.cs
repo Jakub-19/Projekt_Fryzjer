@@ -450,6 +450,34 @@ namespace FryzjerManager.DAL
         {
             return ProductExists(product.Name);
         }
+        public void AddProductToVisit(Product product, Visit visit)
+        {
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "INSERT productvisit " +
+                "(id_v,id_p,quantity)  " +
+                "VALUES " +
+                "("+visit.ID+","+product.ID+","+product.SuggestedConsumption+")";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            cmd.ExecuteReader();
+        }
+        public void AddSingleUseProductToVisit(SingleUseProduct product, Visit visit)
+        {
+            try
+            {
+                con.Open();
+            }
+            catch { }
+            string command = "INSERT dproductvisit " +
+                "(id_v,id_dp,quantity)  " +
+                "VALUES " +
+                "(" + visit.ID + "," + product.ID + "," + product.SuggestedConsumption + ")";
+            MySqlCommand cmd = new MySqlCommand(command, con);
+            cmd.ExecuteReader();
+        }
         #endregion
         public List<Service> ShowAllServices()
         {
@@ -495,7 +523,6 @@ namespace FryzjerManager.DAL
                 cmd.ExecuteNonQuery();
             }
             con.Close();
-            // Co z tymi produktami?
         }
         public List<Visit> ShowVisitsForClient(Client client)
         {
