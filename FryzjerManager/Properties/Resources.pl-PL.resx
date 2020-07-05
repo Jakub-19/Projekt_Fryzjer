@@ -273,6 +273,9 @@
   <data name="ViewProductSearchNameofProductLabelContent" xml:space="preserve">
     <value>Nazwa szukanego produktu</value>
   </data>
+  <data name="ViewProductSearchTitle" xml:space="preserve">
+    <value>Wyszukiwanie produktu</value>
+  </data>
   <data name="ViewServiceDoneAcceptButtonText" xml:space="preserve">
     <value>Zatwierdź</value>
   </data>
