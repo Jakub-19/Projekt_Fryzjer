@@ -626,5 +626,14 @@ namespace FryzjerManager.Properties {
                 return ResourceManager.GetString("ViewServiceDoneUsedProductsSingleTextBlockText", resourceCulture);
             }
         }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu Services done:.
+        /// </summary>
+        public static string ViewServicesHistoryDone {
+            get {
+                return ResourceManager.GetString("ViewServicesHistoryDone", resourceCulture);
+            }
+        }
     }
 }

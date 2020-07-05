@@ -37,28 +37,15 @@ namespace FryzjerManager.UserControls
         }
 
         //Metoda pomocnicza wywołująca zdarzenie
-        //przy okazji metoda ta tworzy obiekt argument przekazywany przez to zdarzenie
         void RaiseNunberChanged()
         {
-            //argument zdarzenia
-            RoutedEventArgs newEventArgs =
-                    new RoutedEventArgs(AmountField.NumberChangedEvent);
-            //wywołanie zdarzenia
+            RoutedEventArgs newEventArgs = new RoutedEventArgs(AmountField.NumberChangedEvent);
             RaiseEvent(newEventArgs);
         }
 
 
-        //zarejestrowanie własności zależenej - taki mechanizm konieczny jest
-        // aby możliwe było Bindowanie tej właśności z innnymi obiektami
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register(
-                "Text",
-                typeof(string),
-                typeof(AmountField),
-                new FrameworkPropertyMetadata(null)
-            );
-        //"czysta" właściwość powiązania z właściwości zależną
-        //do niej będziemy się odnosić w XAMLU
+        //Stworzenie wlasnosci zaleznej
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(AmountField), new FrameworkPropertyMetadata(null));
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -67,9 +54,7 @@ namespace FryzjerManager.UserControls
 
 
 
-        //zdarzenie wywoływane zanim zmianie ulegnie tekst textBox-a
-        //e.Text  - string zawierający ostatnio dopisany znakm jeszcze niedodany do 
-        //własności Text obiektu textBox
+        //zdarzenie wywoływane zanim zmianie ulegnie tekst sprawdzajace czy mozna dana zmiane wprowadzic
         private void textBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             string t = ((TextBox)sender).Text;
@@ -83,9 +68,6 @@ namespace FryzjerManager.UserControls
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //przy każdej zmianie tekstu w polu textBox
-            //wyrzucamy zdarzenie, które informuje o tym,
-            //że zmieniła się liczba
             RaiseNunberChanged();
         }
     }

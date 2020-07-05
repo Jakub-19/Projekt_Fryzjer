@@ -13,7 +13,6 @@ namespace FryzjerManager.ViewModel
 {
     using V = Views;
     using VM = ViewsViewModels;
-    using R = Properties.Resources;
 
     public class MainWindowViewModel : ViewModelBase.ViewModelBase
     {

@@ -82,8 +82,8 @@
                     <RowDefinition Height="80"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" FontSize="25" Content="Wykonane usługi:" Margin="30,20,10,10" FontWeight="SemiBold" Foreground="#FF3D3D3D" />
-                <!--Do zmiany na słownik-->
+                <Label Grid.Row="0" FontSize="25" Content="{x:Static R:Resources.ViewServicesHistoryDone}" Margin="30,20,10,10" FontWeight="SemiBold" Foreground="#FF3D3D3D" />
+                
                 <ListBox Grid.Row="1" Margin="30,0,10,10" FontSize="25" Foreground="#FF3D3D3D" ItemsSource="{Binding Path=ViewModel.Services, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
 
 

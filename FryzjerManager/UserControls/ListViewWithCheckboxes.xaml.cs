@@ -27,10 +27,12 @@ namespace FryzjerManager.UserControls
         {
             InitializeComponent();
         }
+        //Zdarzenie wywolywane kiedy ktorykolwiek z checkboxow zostanie odznaczony
         private void OnUncheckItem(object sender, RoutedEventArgs e)
         {
             selectAll.IsChecked = false;
         }
+        //Zdarzenie wywolywane po kliknieciu checkboxa "zaznacz wszystkie"
         private void OnSelectAllChanged(object sender, RoutedEventArgs e)
         {
             if (selectAll.IsChecked.HasValue && selectAll.IsChecked.Value)
@@ -38,26 +40,27 @@ namespace FryzjerManager.UserControls
             else
                 checkedListView.UnselectAll();
         }
+        //Lista wszystkich opcji
         public static readonly DependencyProperty src = DependencyProperty.Register("Src", typeof(ObservableCollection<object>), typeof(ListViewWithCheckboxes), new FrameworkPropertyMetadata(null));
         public ObservableCollection<object> Src
         {
             get { return (ObservableCollection<object>)GetValue(src); }
             set { SetValue(src, value); }
         }
+        //Lista zaznaczonych opcji
         public static readonly DependencyProperty chk = DependencyProperty.Register("Chk", typeof(ObservableCollection<object>), typeof(ListViewWithCheckboxes), new FrameworkPropertyMetadata(null));
         public ObservableCollection<object> Chk
         {
             get { return (ObservableCollection<object>)GetValue(chk); }
             set { SetValue(chk, value); }
         }
-
+        //Dodanie zaznaczonych opcji do listy
         private void checkedListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ObservableCollection<object> list = new ObservableCollection<object>();
             foreach(var a in checkedListView.SelectedItems)
                 list.Add(a);
             Chk = list;
-            Debug.WriteLine("siema");
         }
     }
 }

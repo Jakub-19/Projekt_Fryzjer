@@ -36,6 +36,8 @@ namespace FryzjerManager.Views
         {
             InitializeComponent();
         }
+        #region Zdarzenia
+        //Funkcjonalność zabezpieczajaca dodawanie nowego produktu
         private void SingleUseCheckbox_Checked(object sender, RoutedEventArgs e)
         {
             MultiUseCheckbox.IsChecked = false;
@@ -59,7 +61,7 @@ namespace FryzjerManager.Views
             CapacityTextBox.IsEnabled = false;
             CapacityTextBox.Text = "";
         }
+        #endregion
 
-        
     }
 }

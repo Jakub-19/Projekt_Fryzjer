@@ -8,6 +8,7 @@ using System.Globalization;
 
 namespace FryzjerManager.ViewModel
 {
+    //Konwerter potrzebny do prawidlowego dzialania userControl "AmountField"
     class Converter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

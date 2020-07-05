@@ -306,4 +306,7 @@
   <data name="ViewServiceDoneUsedProductsSingleTextBlockText" xml:space="preserve">
     <value>Used single-use products</value>
   </data>
+  <data name="ViewServicesHistoryDone" xml:space="preserve">
+    <value>Services done:</value>
+  </data>
 </root>

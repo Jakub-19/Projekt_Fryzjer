@@ -12,7 +12,7 @@
         mc:Ignorable="d" Height="600" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="app.ico" WindowStyle="None">
 
     <Window.Resources>
-
+        <!--Tworzenie obiektów ViewModeli widoków i widoków -->
         <vm:ViewActualStockViewModel x:Key="vm1" />
         <v:ViewActualStock x:Key="view1" ViewModel="{StaticResource vm1}" />
 
@@ -22,13 +22,11 @@
         <vm:ViewCustomerAddViewModel x:Key="vm3"/>
         <v:ViewCustomerAdd x:Key="view3" ViewModel="{StaticResource vm3}"/>
 
-
         <vm:ViewCustomerSearchViewModel x:Key="vcsdVM"/>
         <v:ViewCustomerSearch x:Key="vcsd" ViewModel="{StaticResource vcsdVM}"/>
 
         <vm:ViewCustomerSearchViewModel x:Key="vcshVM"/>
         <v:ViewCustomerSearch x:Key="vcsh" ViewModel="{StaticResource vcshVM}"/>
-        
         
         <vm:ViewCustomersViewModel x:Key="vm5"/>
         <v:ViewCustomers x:Key="view5" ViewModel="{StaticResource vm5}"/>
@@ -45,8 +43,6 @@
         <vm:ViewNewProductAddViewModel x:Key="vm9"/>
         <v:ViewNewProductAdd x:Key="view9" ViewModel="{StaticResource vm9}"/>
 
-        
-        
         <vm:ViewProductSearchViewModel x:Key="vpsa1VM"/>
         <v:ViewProductSearch x:Key="vpsa1" ViewModel="{StaticResource vpsa1VM}"/>
 
@@ -59,17 +55,16 @@
         <vm:ViewProductSearchViewModel x:Key="vpsd2VM"/>
         <v:ViewProductSearch x:Key="vpsd2" ViewModel="{StaticResource vpsd2VM}"/>
 
-        
-        
         <vm:ViewServiceDoneViewModel x:Key="vm11"/>
         <v:ViewServiceDone x:Key="view11" ViewModel="{StaticResource vm11}"/>
 
         <vm:ViewServicesHistoryViewModel x:Key="vm12"/>
         <v:ViewServicesHistory x:Key="view12" ViewModel="{StaticResource vm12}"/>
 
-
+            
         <ObjectDataProvider ObjectType="{x:Type vmwwm:MainWindowViewModel}"  x:Key="mainVM">
             <ObjectDataProvider.ConstructorParameters>
+                <!--Argumenty dla kontruktora głównego VM'a-->
                 <StaticResource ResourceKey="view1"/>
                 <StaticResource ResourceKey="vm1"/>
                 <StaticResource ResourceKey="view2"/>
@@ -109,7 +104,7 @@
     </Window.Resources>
 
     <Grid Background="#FFCFCFCF" DataContext="{StaticResource mainVM}">
-        
+        <!--Powiazanie aktualnie wyswietlanego widoku do Propertiesa z glownego VM-->
         <ContentControl Content="{Binding Path=CurrentView, Mode=OneWay}"/>
 
     </Grid>
