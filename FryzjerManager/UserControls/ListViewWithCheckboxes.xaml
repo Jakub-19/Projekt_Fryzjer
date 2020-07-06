@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FryzjerManager.UserControls"
+              xmlns:R="clr-namespace:FryzjerManager.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
     <UserControl.Resources>
@@ -38,7 +39,7 @@
     
         <StackPanel>
         <CheckBox Grid.Row="0" x:Name="selectAll"  Click="OnSelectAllChanged" 
-                  Content="{Binding Path=ListViewWithCheckboxesSelectAllCheckboxContent}"/>
+                  Content="{x:Static R:Resources.ListViewWithCheckboxesSelectAllCheckboxContent}"/>
         <ListView Grid.Row="1" Height="240" SelectionChanged="checkedListView_SelectionChanged"
 			x:Name="checkedListView"
 			SelectionMode="Multiple"
