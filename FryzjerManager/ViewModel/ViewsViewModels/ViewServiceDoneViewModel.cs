@@ -230,6 +230,7 @@ namespace FryzjerManager.ViewModel.ViewsViewModels
                             ChangeView?.Invoke("ViewMenuWindow", false);
                         },
                         arg => { 
+                            //Czy w magazynie jest wystarczająca ilość produktu?
                             foreach (var v in SingleUseProducts)
                             {
                                 if (v.SuggestedConsumption > v.Count)
