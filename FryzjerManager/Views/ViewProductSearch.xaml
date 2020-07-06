@@ -23,7 +23,6 @@
                             goBack="{Binding Path=ViewModel.GoBack, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
         </Grid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <!--Do zmiany na słownik-->
             <Label Grid.Row="1" FontSize="30" VerticalAlignment="Center" Margin="10,0,10,0"
                Content="{x:Static R:Resources.ViewProductSearchNameofProductLabelContent}"/>
             <Border BorderBrush="DarkGray" BorderThickness="1" Height="40" Opacity="50" >
